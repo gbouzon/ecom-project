@@ -37,14 +37,19 @@ All users should be able to register, login, logout, have access to their own or
 
 This application will comprise a total of 24 new features (not including the required ones such as registration, login, logout and 2FA).
 
-### Allocated time
+## Allocated Time
 
 We estimate that we will spend a total of 130hrs building this project. This is merely an estimation and is subject to change.
 
-### Influences & Inspirations
+## Influences & Inspirations
 
 Inspired by common food delivery services such as UberEats, DoorDash and common marketplaces such as Walmart, Etsy and Amazon.
 
-### License
+## Contributors
+
+Giuliana Bouzon (1940108) <br>
+Danich Hang (1951307)
+
+## License
 
 This project is licensed under the GNU/General Public License version 3.0 
