@@ -8,7 +8,7 @@ Check out [Proposal](https://github.com/gbouzon/ecom-project/blob/main/proposal.
 
 ## Contributors
 
-Giuliana Bouzon (1940108)
+Giuliana Bouzon (1940108) <br>
 Danich Hang (1951307)
 
 ## License
