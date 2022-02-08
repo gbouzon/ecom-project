@@ -15,13 +15,15 @@ All users should be able to register, login, logout, have access to their own or
 ## Features for sellers
 
 - Manage products (add, delete, modify)
-- Create and customize their store profile
+- Create and modify their store profile
 - Retrieve customer information
 - Manage customer orders (confirm, close, retrieve)
-- Process transactions
+- **Process transactions**[^1]
 - Search customer database
 - Search product catalog
-- Manage deliveries
+- **Manage deliveries** [^2]
+[^1]: It seems like this should happen in the order confirmation unless you care to explain
+[^2]: Are you adding requests, confirming pickups, and confirming delivery of orders?
 
 ## Features for buyers/clients
 
@@ -30,8 +32,9 @@ All users should be able to register, login, logout, have access to their own or
 - Add services to a "preferred" section -> able to like services and keep them in a more easily accessible tab
 - Search the application for different stores as well as the catalog for a specific store
 - See product details
-- Search for products 
+- **Search for products** [^3]
 - Track deliveries
+[^3]: Repetition of part of the point 2 bullets above? 
 
 ## Total Features
 
