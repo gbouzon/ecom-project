@@ -17,24 +17,21 @@ All users should be able to register, login, logout, have access to their own or
 - Manage products (add, delete, modify)
 - Create and modify their store profile
 - Retrieve customer information
-- Manage customer orders (confirm, close, retrieve)
-- **Process transactions**[^1]
+- Manage customer orders (confirm, process transaction, close, retrieve)
 - Search customer database
 - Search product catalog
-- **Manage deliveries** [^2]
-[^1]: It seems like this should happen in the order confirmation unless you care to explain
-[^2]: Are you adding requests, confirming pickups, and confirming delivery of orders?
+- Update order status (confirmed, in progress, ready for pickup)
 
 ## Features for buyers/clients
 
 - Manage cart (add, delete, modify)
 - Modify information (registration, name, address, phone number, billing)
 - Add services to a "preferred" section -> able to like services and keep them in a more easily accessible tab
-- Search the application for different stores as well as the catalog for a specific store
+- Search the application for different stores
+- Search for products of a specific store
 - See product details
-- **Search for products** [^3]
-- Track deliveries
-[^3]: Repetition of part of the point 2 bullets above? 
+- Track order status (view confirmed, in progress and ready for pickup)
+- Able to cancel order before its status is "in progress"
 
 ## Total Features
 
