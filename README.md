@@ -4,7 +4,11 @@ Winter 2022. Repository for Ecommerce term project in 420-411-VA
 
 ## Project Proposal
 
-Check out [Proposal](https://github.com/gbouzon/ecom-project/blob/main/proposal.md) for our project proposal.
+Check out [Proposal](https://github.com/gbouzon/ecom-project/blob/main/documentation/proposal.md) for our project proposal.
+
+## Feature Suite
+
+## ERD
 
 ## Contributors
 
