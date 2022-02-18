@@ -10,8 +10,8 @@ Make a marketplace for food delivery services to make it easier for small busine
 
 ## Features
 
-All users (registered and visitors) have visitor features but visitors do not have access to user features (registration required).
-Both buyers and sellers have access to user features (user features are the shared features between these two entities).
+All users (registered and visitors) have visitor features but visitors do not have access to registered user features (registration required).
+Both buyers and sellers have access to user features and visitor features (user features are the shared features between these two entities).
 
 ## Features for a visitor (not a registered user)
 
@@ -20,6 +20,8 @@ Both buyers and sellers have access to user features (user features are the shar
 - Search the application for different stores
 - Search a store catalog for different products
 
+Check out [Visitors](https://github.com/gbouzon/ecom-project/tree/main/acceptance/visitors) for our Visitor Feature Suite.
+
 ## Features for users (sellers and buyers - registered)
 
 - Register
@@ -27,6 +29,8 @@ Both buyers and sellers have access to user features (user features are the shar
 - Logout
 - 2FA
 - Access their own records (profile, orders)
+
+Check out [Users](https://github.com/gbouzon/ecom-project/tree/main/acceptance/users) for our Users Feature Suite.
 
 ## Features for sellers
 
@@ -38,6 +42,8 @@ Both buyers and sellers have access to user features (user features are the shar
 - Update order status (confirmed, in progress, ready for pickup)
 - Able to cancel orders if payment does not go through
 
+Check out [Sellers](https://github.com/gbouzon/ecom-project/tree/main/acceptance/sellers) for our Sellers Feature Suite.
+
 ## Features for buyers/clients
 
 - Manage cart (add, delete, modify)
@@ -46,6 +52,8 @@ Both buyers and sellers have access to user features (user features are the shar
 - See product details
 - Track order status (view confirmed, in progress and ready for pickup)
 - Able to cancel order before its status is "in progress"
+
+Check out [Buyers](https://github.com/gbouzon/ecom-project/tree/main/acceptance/buyers) for our Buyers Feature Suite.
 
 ## Total Features
 

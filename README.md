@@ -8,6 +8,8 @@ Check out [Proposal](https://github.com/gbouzon/ecom-project/blob/main/documenta
 
 ## Feature Suite
 
+Check out [Features](https://github.com/gbouzon/ecom-project/tree/main/acceptance) for our feature suite.
+
 ## ERD
 
 ## Contributors
