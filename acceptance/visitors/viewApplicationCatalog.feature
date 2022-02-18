@@ -1,14 +1,9 @@
 Feature: view the stores registered in the application
-    In order to
-    As a 
-    I need to be able to 
+    In order to browse the store catalog
+    As a visitor
+    I need to be able to view the stores registered in the application
 
-    Scenario: 
-    Given 
-    When 
-    Then 
-
-    Scenario: 
-    Given 
-    When 
-    Then 
+    Scenario: try viewing the store catalog
+    Given I am on the application
+    When I click on "View Store Catalog"
+    Then I see a list of stores

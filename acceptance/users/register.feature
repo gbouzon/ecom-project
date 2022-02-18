@@ -1,5 +1,5 @@
 Feature: register
-    In order to
+    In order to access the application's full functionality
     As a 
     I need to be able to 
 

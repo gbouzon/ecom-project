@@ -10,5 +10,5 @@ Feature: login
 
     Scenario: try logging in incorrectly
     Given I have registered an account for username "Tarzan", with password "jane"
-    When I log in with username "Tarzan" and password "jane"
+    When I log in with username "Tarzan" and password "1234"
     Then I see the "Incorrect username/password combination!"
