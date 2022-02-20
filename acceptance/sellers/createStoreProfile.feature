@@ -1,14 +1,9 @@
 Feature: create my store profile
-    In order to built my store profile
+    In order to build my store front
     As a seller
-    I need to be able to login and create the profile
+    I need to be able to create my store profile
 
     Scenario: try creating a profile
-    Given I am logged into an account
-    When I click on "create"
+    Given I am logged into an account and have entered my profile information
+    When I click on "Create profile"
     Then I see "Profile created successfully"
-
-    Scenario: try creating a profile
-    Given I am  not logged into an account
-    When I click on "create"
-    Then I see "U need to have a account to create a profile"
