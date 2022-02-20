@@ -1,14 +1,9 @@
 Feature: modify a product
-    In order to
-    As a 
-    I need to be able to 
+    In order to edit product information
+    As a seller
+    I need to be able to modify the product
 
-    Scenario: 
-    Given 
-    When 
-    Then 
-
-    Scenario: 
-    Given 
-    When 
-    Then 
+    Scenario: try modifying product information
+    Given I am logged into my account and change the product information
+    When I click on "save"
+    Then I see "Product is updated"

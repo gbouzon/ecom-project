@@ -1,14 +1,9 @@
 Feature: search for a specific customer
-    In order to
-    As a 
-    I need to be able to 
+    In order to look for a specific customer
+    As a seller
+    I need to be able to retrieve the specific customer
 
-    Scenario: 
-    Given 
-    When 
-    Then 
-
-    Scenario: 
-    Given 
-    When 
-    Then 
+    Scenario: try to search for a specific customer
+    Given I am logged into my account and search for the customer 
+    When I click "search"
+    Then I see "the specific customer information"
