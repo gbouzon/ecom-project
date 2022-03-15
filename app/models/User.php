@@ -7,11 +7,10 @@
                 parent::__construct();
             }
 
-            
-            function get($username) {
-                $SQL = 'SELECT * FROM user WHERE username = :username';
+            function get($email) {
+                $SQL = 'SELECT * FROM user WHERE email = :email';
                 $STMT = self::$_connection->prepare($SQL);
-                $STMT->execute(['username'=>$username]);
+                $STMT->execute(['email'=>$email]);
                 $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\User");
                 return $STMT->fetch();
             }
@@ -24,22 +23,25 @@
                 return $STMT->fetch();
             }
 
-            function getUserProfile($user_id) { //get profile from user? question marrk>>>
-                $SQL = 'SELECT * FROM profile WHERE user_id = :user_id';
-                $STMT = self::$_connection->prepare($SQL);
-                $STMT->execute(['user_id'=>$user_id]);
-                $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Profile");
-                return $STMT->fetch();
-            }
+            // function getUserProfile($user_id) { //get profile from user? question marrk>>>
+            //     $SQL = 'SELECT * FROM profile WHERE user_id = :user_id';
+            //     $STMT = self::$_connection->prepare($SQL);
+            //     $STMT->execute(['user_id'=>$user_id]);
+            //     $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Profile");
+            //     return $STMT->fetch();
+            // } // not sure if we need this
 
+
+
+            
             function exists() {
-                return $this->get($this->username) != false;
+                return $this->get($this->email) != false;
             }
 
             function insert() {
-                $SQL = 'INSERT INTO user(username, password_hash) VALUES(:username, :password_hash)';
+                $SQL = 'INSERT INTO user(first_name, middle_name, last_name, email, phone, password_hash) VALUES(:first_name, :middle_name, :last_name, :email, :phone, :password_hash)';
 		        $STMT = self::$_connection->prepare($SQL);
-		        $STMT->execute(['username'=>$this->username,'password_hash'=>$this->password_hash]);
+		        $STMT->execute(['first_name'=>$this->first_name,'middle_name'=>$this->middle_name,'last_name'=>$this->last_name,'email'=>$this->email,'phone'=>$this->phone, 'password_hash'=>$this->password_hash]);
             }
 
             function delete() {
