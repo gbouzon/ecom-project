@@ -9,11 +9,11 @@
                     $this->view('User/login');
                 else {//there is a form submitted
                     $user = new \app\models\User();
-                    $user = $user->get($_POST['username']);
+                    $user = $user->get($_POST['email']);
                     if ($user) 
                         if(password_verify($_POST['password'], $user->password_hash)) {
                             //yay! login - store that state in a session
-                            $_SESSION['username'] = $user->username;
+                            $_SESSION['email'] = $user->email;
                             $_SESSION['user_id'] = $user->user_id;
                             if ($user->getUserProfile($user->user_id)) {
                                 $profile = $user->getUserProfile($user->user_id);
@@ -22,9 +22,9 @@
                             header('location:/Main/index');
                         } 
                         else
-                            $this->view('User/login','Incorrect username/password combination.');
+                            $this->view('User/login','Incorrect email/password combination.');
                     else
-                        $this->view('User/login','Incorrect username/password combination.');
+                        $this->view('User/login','Incorrect email/password combination.');
                 }
             }
         
@@ -33,17 +33,29 @@
                     $this->view('User/register');
                 else { //there is a form submitted
                     $newUser = new \app\models\User();
-                    $newUser->username = $_POST['username'];
+                    $newUser->email = $_POST['email'];
+                    $newUser->first_name = $_POST['first_name'];
+                    $newUser->middle_name = $_POST['middle_name'];
+                    $newUser->last_name = $_POST['last_name'];
+                    $newUser->phone = $_POST['phone'];
+
         
                     if (!$newUser->exists() && $_POST['password'] == $_POST['password_confirm']) {
                          $newUser->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
         
                         $newUser->insert();
-                        header('location:/Main/index');
+                            if($_POST['userType'] == "Seller"){
+                                header('location:/Profile/create');
+                            }else{
+                                // TO-DO
+                                echo("buyer profile");
+                            }
+                            // header('location:/Main/index');
                     }
-                    else 
-                        $this->view('User/register','The user account with that username already exists.');
+                    else {
+                        $this->view('User/register','The user account with that email already exists.');
                 }
+             }
             }
         
             #[\app\filters\Login]
