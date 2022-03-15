@@ -8,21 +8,22 @@
 	</head>
 	<body>
 		<div class='container'>
-
+			<?php
+				$this->view('subviews/navigation');
+			?>
 		<h1>Log into your user account</h1>
 		<form method='post' action=''>
-			<label class='form-label'>Username:<input type='text' name='username' class='form-control' /></label><br>
+			<label class='form-label'>Email:<input type='text' name='email' class='form-control' /></label><br>
 			<label class='form-label'>Password:<input type='password' name='password' class='form-control' /></label><br>
 			<input type="submit" name='action' value='Login!' class='form-control' />
 		</form>
 		No account? <a href="/User/register">Register here.</a> <br>
-		
 			<?php
 				if ($data)
-					echo $data;
-
-				$this->view('subviews/navigation');
+					echo "<div class='alert alert-danger' role='alert'> $data</div>";
 			?>
+		
+			
 		</div>
 	</body>
 </html>

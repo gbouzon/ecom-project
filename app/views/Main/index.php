@@ -9,12 +9,11 @@
     </head>
     <body>
         <div class='container'>
-            <h1>Welcome to Meal Times!</h1>
-            
             <?php
                // $this->view('subviews/publications', $data);
                 $this->view('subviews/navigation');
             ?>
+            <h1  class="text-center">Welcome to Meal Times!</h1>
         </div>
     </body>
 </html>
