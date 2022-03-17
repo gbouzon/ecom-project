@@ -13,5 +13,18 @@
                 $this->view('subviews/navigation');
             ?>
             <h1  class="text-center">Welcome to Meal Times!</h1>
+            <div>
+                <?php
+                foreach ($data as $store) {
+                    echo "<div class='card m-2'>
+                        <div class='card-body'>
+                            <h3 class='text-info'><b><a href='/Store/index/$store->store_id'>$store->store_name</a></b></h3>
+                            <h6> $store->store_address</h6>
+                            <p>$store->description<p/>
+                        </div>
+                    </div>";
+                }
+                ?>
+
     </body>
 </html>
