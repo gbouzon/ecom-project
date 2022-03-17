@@ -3,35 +3,19 @@
 
         class Search extends \app\core\Controller {
 
-            private $publication;
-            private $publicationsArray;
+            public function searchStores() {
+                $store = new \app\models\Store();
+                $stores = $store->getByStoreName($_POST['search']);
 
-            private function updatePublications() {
-                $this->publication = new \app\models\Publication();
-                $this->publicationsArray = $this->publication->getAllPublic();
-            }
-
-            public function searchByTitle() {
-                $this->updatePublications();
-                $matchingPubs = array();
-                if (isset($_POST['action'])) {
-                    for ($i = 0; $i < count($this->publicationsArray); $i++) {
-                        if (str_contains(strtolower($this->publicationsArray[$i]->publication_title), strtolower($_POST['search'])))
-                            array_push($matchingPubs, $this->publicationsArray[$i]);
-                    }
-                    $this->view('subviews/search', $matchingPubs);
-                }
+                if (isset($_POST['action'])) 
+                    $this->view('subviews/search', $stores);
             } 
 
-            public function searchByContent() {
-                $this->updatePublications();
-                $matchingPubs = array();
-                if (isset($_POST['action'])) {
-                    for ($i = 0; $i < count($this->publicationsArray); $i++) {
-                        if (str_contains(strtolower($this->publicationsArray[$i]->publication_text), strtolower($_POST['search'])))
-                            array_push($matchingPubs, $this->publicationsArray[$i]);
-                    }
-                    $this->view('subviews/search', $matchingPubs);
-                }
+            public function searchProducts() { //figure out what this entails
+                $store = new \app\models\Store();
+                $products = $store->getByProductName($_POST['search']);
+
+                if (isset($_POST['action'])) 
+                    $this->view('subviews/search', $products);
             }
         }

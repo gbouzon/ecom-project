@@ -15,6 +15,14 @@
                 return $STMT->fetch();
             }
 
+            function getStore($user_id) { //user_id is unique for now, see if changes needed later
+                $SQL = 'SELECT * FROM store WHERE user_id = :user_id';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute(['user_id'=> $user_id]);
+                $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Store");
+                return $STMT->fetch();
+            }
+
             function getById($user_id) { //get by user_id
                 $SQL = 'SELECT * FROM user WHERE user_id = :user_id';
                 $STMT = self::$_connection->prepare($SQL);
@@ -23,21 +31,11 @@
                 return $STMT->fetch();
             }
 
-            // function getUserProfile($user_id) { //get profile from user? question marrk>>>
-            //     $SQL = 'SELECT * FROM profile WHERE user_id = :user_id';
-            //     $STMT = self::$_connection->prepare($SQL);
-            //     $STMT->execute(['user_id'=>$user_id]);
-            //     $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Profile");
-            //     return $STMT->fetch();
-            // } // not sure if we need this
-
-
-
-            
             function exists() {
                 return $this->get($this->email) != false;
             }
 
+            //check inserts, updates and deletes later
             function insert() {
                 $SQL = 'INSERT INTO user(first_name, middle_name, last_name, email, phone, password_hash) VALUES(:first_name, :middle_name, :last_name, :email, :phone, :password_hash)';
 		        $STMT = self::$_connection->prepare($SQL);

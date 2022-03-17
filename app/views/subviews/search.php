@@ -2,15 +2,18 @@
     <h2>Search Index</h2>
     <ol>
         <?php
-            foreach($data as $publication) {
-                //getting username, refactor later
-                $profile = $publication->getProfile($publication->profile_id);
-                $user = $publication->getUser($profile->user_id);
-                $username = $user->username;
-                $timestamp = $publication->getTimestamp($publication->publication_id);
-                
-                echo "<li><a href = '/Publication/index/$publication->publication_id'>$publication->publication_title by $username at $timestamp</a></li>";
+        if ($data != null) {
+            if (get_class($data[0]) == "app\models\Store") {
+                foreach($data as $store) {    
+                    echo "<li><a href = '/Store/index/$store->store_id'>$store->store_name</a></li>";
+                }
             }
+            else if (get_class($data[0]) == "app\models\Product") {
+                foreach($data as $product) {    
+                    echo "<li><a href = '/Product/index/$product->product_id'>$product->product_name</a></li>";
+                }
+            }
+        }
         ?>
     </ol>
 </div>
