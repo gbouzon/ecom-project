@@ -1,0 +1,11 @@
+
+- implement pictures (fix bug)
+- product_list -> delete from db altogether and update code accordingly
+- add new column in user table to store type (store or customer)
+- change code in User controller (register method, make store be created only
+after user logs in so -> login method instead of register)
+- implement validation
+- implement filters
+- implement security checks (ex: only allow owner of the store to add a product)
+- implement update and delete methods for Product model
+
