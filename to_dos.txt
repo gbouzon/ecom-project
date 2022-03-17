@@ -1,11 +1,12 @@
 
 - implement pictures (fix bug)
 - product_list -> delete from db altogether and update code accordingly
-- add new column in user table to store type (store or customer)
+- add new column in user table to store type (store or customer) , - update the delete method for store after
 - change code in User controller (register method, make store be created only
 after user logs in so -> login method instead of register)
 - implement validation
 - implement filters
 - implement security checks (ex: only allow owner of the store to add a product)
-- implement update and delete methods for Product model
+- implement update and delete methods for Product model - DONE
+- need to add a if statment for the update and delete link for product(View/Store/subviews/products).
 
