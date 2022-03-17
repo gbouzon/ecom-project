@@ -8,21 +8,12 @@
     </head>
     <body>
         <?php
-            $this->view('subviews/navigation');
-        ?>
-        
+            $this->view('subviews/navigation', $data->store_id);
+        ?>  
         <div class='container'>
             <?php
                 $this->view('Store/details_subview', $data);
-            ?>
-    
-            <?php
-                if (isset($_SESSION['store_id']) && $_SESSION['store_id'] == $data->store_id){
-                    echo "<li><a href='/Product/create/$data->store_id'>Add an item</a></li>  <br>";
-                    echo "<li><a href='/Store/update/$data->store_id'>update</a></li>  <br>";
-                    echo "<li><a href='/Store/delete/$data->store_id'>Delete</a></li>  <br>";
-                }
-                     //do check for this and make sure only owner is allowed
+                //do check for this and make sure only owner is allowed
                 $products = $data->getProducts($data->store_id);
                 $this->view('subviews/products', $products); //implement this
             ?>

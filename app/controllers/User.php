@@ -24,13 +24,15 @@
                             //yay! login - store that state in a session
                             $_SESSION['email'] = $user->email;
                             $_SESSION['user_id'] = $user->user_id;
+                            if($user->getStore($_SESSION['user_id']) != false){
+                                $_SESSION['store_id'] = $user->getStore($_SESSION['user_id'])->store_id; //test this too
+                            }
                             header('location:/User/index/' . $user->user_id); //->back to home page after login?
                         } 
                         else
                             $this->view('User/login','Incorrect email/password combination.');
                     }
-                    else if ($user->getStore($_SESSION['user_id']) != false)
-                        $_SESSION['store_id'] = $user->getStore($_SESSION['user_id'])->store_id; //test this too
+                            
                     else
                         $this->view('User/login','Incorrect email/password combination.');
                 }

@@ -23,7 +23,9 @@
                     <img alt = 'No picture was added' src = '/pictures/<?= $product->product_image ?>'> <br> <br>
             </form>
             <?php
-                $this->view('Store/details_subview', $data->getStore($_SESSION['user_id']));
+                if($data->getStore($_SESSION['user_id'])){
+                    $this->view('Store/details_subview', $data->getStore($_SESSION['user_id']));
+                }
             ?>
         </div>
     </body>
