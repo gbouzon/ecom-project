@@ -20,6 +20,7 @@
                     //$newStore->product_list = ; //redo this later, product/create link, add to array, then concatenate to string using , as delimiter for ids
                     $newStore->description = $_POST['description'];
                     $newStore->insert($user_id);
+                    
 
                     $store_id = $newStore->getLast()->store_id; //test this
                     $_SESSION['store_id'] = $store_id;
@@ -45,5 +46,20 @@
                     header('location:/Store/index/' . $store_id);
                     //todo: make create view 
                 }
+            }
+
+            public function delete($store_id) {
+                $store = new \app\models\Store(); 
+                $store = $store->get($store_id);
+
+                $products = new \app\models\Product(); 
+                $products = $products->getAllFromStore($store_id); 
+
+                foreach ($products as $product){
+                    $product->delete(); 
+                }
+
+                $store->delete($store_id); 
+                header('location:/User/index/' . $_SESSION['user_id']);
             }
         }
