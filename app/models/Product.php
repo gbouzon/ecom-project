@@ -30,19 +30,19 @@
                 $STMT->execute(['store_id'=>$this->store_id, 'product_name'=>$this->product_name, 'product_image'=>$this->product_image, 'product_availability'=>$this->product_availability,
                 'product_quantity'=>$this->product_quantity, 'product_price'=>$this->product_price, 'product_description'=>$this->product_description]);
             }
-        
-            /* IMPLEMENT THIS LATER
-            function update(){
-                $SQL = 'UPDATE animal SET name = :name, dob = :dob, picture = :picture WHERE animal_id = :animal_id';
-                $STMT = self::$_connection->prepare($SQL);
-                $STMT->execute(['name'=>$this->name,'dob'=>$this->dob,'picture'=>$this->picture,'animal_id'=>$this->animal_id]);
-            }
-        
-            function delete($animal_id){
-                $SQL = 'DELETE FROM animal WHERE animal_id = :animal_id';
-                $STMT = self::$_connection->prepare($SQL);
-                $STMT->execute(['animal_id'=>$animal_id]);
-            }
-            */
 
+            function delete(){
+                $SQL = 'DELETE FROM product WHERE product_id = :product_id';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute(['product_id'=>$this->product_id]);
+            }
+
+            function update() {
+                $SQL = 'UPDATE product SET store_id  = :store_id, product_name = :product_name, product_image = :product_image, product_availability = :product_availability, product_quantity = :product_quantity, product_price = :product_price, product_description = :product_description WHERE product_id = :product_id';
+    
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute(['store_id'=>$this->store_id, 'product_name'=>$this->product_name, 'product_image'=>$this->product_image, 'product_availability'=>$this->product_availability,
+                'product_quantity'=>$this->product_quantity, 'product_price'=>$this->product_price, 'product_description'=>$this->product_description, 'product_id' =>$this->product_id]);
+            }
+            
         }
