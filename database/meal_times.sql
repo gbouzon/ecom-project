@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2022 at 04:44 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.12
+-- Generation Time: Mar 17, 2022 at 07:34 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,14 +43,22 @@ CREATE TABLE `cart` (
 
 CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
+  `store_id` int(11) NOT NULL,
   `product_name` varchar(30) NOT NULL,
-  `product_image` varchar(50) NOT NULL DEFAULT 'blank.png',
+  `product_image` varchar(50) DEFAULT 'blank.png',
   `product_availability` tinyint(4) NOT NULL DEFAULT 1 COMMENT 'product is generally available when it''s added. 0 means sold out and 1 means available',
   `product_quantity` int(11) NOT NULL,
   `product_price` double NOT NULL,
-  `product_description` text NOT NULL,
-  `product_category_id` int(11) NOT NULL
+  `product_description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`product_id`, `store_id`, `product_name`, `product_image`, `product_availability`, `product_quantity`, `product_price`, `product_description`) VALUES
+(1, 1, 'Vanilla Cupcake', 'blank.png', 1, 5, 3.5, 'A simple Vanilla cupcake!'),
+(2, 1, 'Strawberry cupcake', 'blank.png', 1, 10, 3.5, 'A Strawberry cupcake!');
 
 -- --------------------------------------------------------
 
@@ -79,6 +87,13 @@ CREATE TABLE `store` (
   `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `store`
+--
+
+INSERT INTO `store` (`store_id`, `user_id`, `store_name`, `store_address`, `product_list`, `description`) VALUES
+(1, 7, 'The Jane Store', '122, Avenue something', NULL, 'This is a store for Jane');
+
 -- --------------------------------------------------------
 
 --
@@ -102,7 +117,10 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `first_name`, `middle_name`, `last_name`, `email`, `phone`, `password_hash`, `picture`) VALUES
 (3, 'Danich', '', 'Hang', 'test@email.com', '51445559999', '$2y$10$m940Yn2vBnKdvdlXb6tNPuv67FFYVB2H/ejRZuvfhfmRC9oUtPHqq', 'blank.jpg'),
-(4, 'testName', '', 'testName', 'test1@email.com', '514555555555', '$2y$10$lwoxhY4Oy0O7zgyGZS5gGOfJe1QfJfM/zbzTWQT3sWnW/zYW1l/16', 'blank.jpg');
+(4, 'testName', '', 'testName', 'test1@email.com', '514555555555', '$2y$10$lwoxhY4Oy0O7zgyGZS5gGOfJe1QfJfM/zbzTWQT3sWnW/zYW1l/16', 'blank.jpg'),
+(5, 'Giuliana', '', 'Bouzon', 'test@gmail.com', '', '$2y$10$WNVhD/V6S4p1xJlnBuGGwOEA9eMXIaMWuSUKfTFrKvRqV34Qku.Au', 'blank.jpg'),
+(6, 'Test', '', 'LN', 'test2@gmail.com', '', '$2y$10$22OmPhpZJ9qGGPIqHP5SyudHGh1duP1SOlS3IQuW9A/lJfLjqB9x.', 'blank.jpg'),
+(7, 'Tarzan', '', 'Tarzan', 'tarzan@gmail.com', '', '$2y$10$AdsrMkKusrGe8E3j52SrGuTZc5gXGa1sHKJ4zMv4bUVVtkAfD/GAG', 'blank.jpg');
 
 --
 -- Indexes for dumped tables
@@ -119,7 +137,7 @@ ALTER TABLE `cart`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`product_id`),
-  ADD KEY `product_category_fk` (`product_category_id`);
+  ADD KEY `product_store_fk` (`store_id`);
 
 --
 -- Indexes for table `product_category`
@@ -132,6 +150,7 @@ ALTER TABLE `product_category`
 --
 ALTER TABLE `store`
   ADD PRIMARY KEY (`store_id`),
+  ADD UNIQUE KEY `user_id` (`user_id`),
   ADD KEY `User_Store_id` (`user_id`);
 
 --
@@ -155,7 +174,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product_category`
@@ -167,13 +186,13 @@ ALTER TABLE `product_category`
 -- AUTO_INCREMENT for table `store`
 --
 ALTER TABLE `store`
-  MODIFY `store_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `store_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
@@ -183,7 +202,7 @@ ALTER TABLE `user`
 -- Constraints for table `product`
 --
 ALTER TABLE `product`
-  ADD CONSTRAINT `product_category_fk` FOREIGN KEY (`product_category_id`) REFERENCES `product_category` (`product_category_id`);
+  ADD CONSTRAINT `product_store_fk` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`);
 
 --
 -- Constraints for table `store`
