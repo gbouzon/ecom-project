@@ -48,7 +48,7 @@
             }
     
             function update() {
-                $SQL = 'UPDATE store SET store_name = :store_name, store_address = :store_address, product_list = :product_list, description = :description WHERE store_id = :store_ud';
+                $SQL = 'UPDATE store SET store_name = :store_name, store_address = :store_address, product_list = :product_list, description = :description WHERE store_id = :store_id';
                 $STMT = self::$_connection->prepare($SQL);
                 $STMT->execute(['store_name'=>$this->store_name, 'store_address'=>$this->store_address, 'product_list'=>$this->product_list, 'description'=>$this->description, 'store_id'=>$this->store_id]);
             }
