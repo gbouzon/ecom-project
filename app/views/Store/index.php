@@ -13,9 +13,6 @@
         <div class='container'>
             <?php
                 $this->view('Store/details_subview', $data);
-                //do check for this and make sure only owner is allowed
-                $products = $data->getProducts($data->store_id);
-                $this->view('subviews/products', $products); //implement this
             ?>
         </div>
     </body>

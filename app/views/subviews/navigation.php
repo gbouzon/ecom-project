@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
 	<div class="collapse navbar-collapse" >
 		<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link" href='/Main/index'>Home Page</a></li>
+				<li class="nav-item active"><a class="nav-link" href='/Main/index'>Home</a></li>
 
 				<?php
 					if (!isset($_SESSION['user_id'])) {
@@ -15,8 +15,8 @@
 								<a class= \"nav-link\" href='/User/login'>Log in</a>
 								</li>";
 					}
-
 					else { 
+						echo "<li class=\"nav-item active\"><a class= \"nav-link\" href='/User/index/".$_SESSION['user_id']."'>My Profile</a></li>";
 						echo "<li class=\"nav-item active\"><a class= \"nav-link\" href='/User/logout'>Log out</a></li>";
 					}	
 				?>

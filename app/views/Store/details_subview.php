@@ -9,6 +9,9 @@
                 if (isset($_SESSION['store_id']) && $_SESSION['store_id'] == $data->store_id){
                     echo "<a href='/Product/create/$data->store_id'>Add an item</a>  | <a href='/Store/update/$data->store_id'>update</a> | <a href='/Store/delete/$data->store_id'>Delete</a>";
                 }
+
+                $products = $data->getProducts($data->store_id);
+                $this->view('subviews/products', $products); //implement this
             ?>
 
 
