@@ -9,6 +9,7 @@
                 $this->view('Product/index', $product);
             }
 
+            #[\app\filters\LoginAsStore]
             public function create($product_id) {
                 if (!isset($_POST['action'])) { 
                     $this->view('Product/create');
@@ -17,6 +18,7 @@
 			        $filename = 'blank.png';
                     $product = new \app\models\Product();
                     $product->product_id = $product_id;
+                    $product->store_id = $_SESSION['store_id'];
                     $product->product_name = $_POST['product_name'];
                     $product->product_image = $filename; //change this later
                     $product->product_availability = $this->getAvailability($_POST['product_quantity']);
@@ -24,7 +26,7 @@
                     $product->product_price = $_POST['product_price'];
                     $product->product_description = $_POST['product_description'];
                     $product->insert();
-                    header("location:/product/index/$product_id");
+                    header("location:/Store/index/". $_SESSION['store_id']);
                 }
             }
 
@@ -35,7 +37,7 @@
                     return 1;
             }
 
-
+            #[\app\filters\LoginAsStore]
             public function update($product_id) {
                 $product = new \app\models\Product(); 
                 $product = $product->get($product_id);
@@ -56,12 +58,12 @@
                 }
             }
 
+            #[\app\filters\LoginAsStore]
             public function delete($product_id) {
                 $product = new \app\models\Product(); 
                 $product = $product->get($product_id);
-               
+              
                 $product->delete(); 
-
                 header('location:/store/index/' . $product->store_id);
             }
             

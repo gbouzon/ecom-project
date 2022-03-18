@@ -8,7 +8,8 @@
                 $store = $myStore->get($store_id);
                 $this->view('Store/index', $store);
             }
-
+            
+            #[\app\filters\Login]
             public function create($user_id) {
                 if (!isset($_POST['action'])) {	//display the view if I don't submit the form
                     $this->view('Store/create');
@@ -19,6 +20,7 @@
                     $newStore->store_address = $_POST['store_address'];
                     //$newStore->product_list = ; //redo this later, product/create link, add to array, then concatenate to string using , as delimiter for ids
                     $newStore->description = $_POST['description'];
+
                     $newStore->insert($user_id);
                     
 
@@ -29,6 +31,7 @@
                 }
             }
 
+            #[\app\filters\LoginAsStore]
             public function update($store_id) {
                 $store = new \app\models\Store(); 
                 $store = $store->get($store_id);
@@ -41,13 +44,11 @@
                     // $store->product_list = ; //redo this later, product/create link, add to array, then concatenate to string using , as delimiter for ids
                     $store->description = $_POST['description'];
                     $store->update($store_id);
-                    // $store_id = $newStore->getLast()->store_id; //test this
-                    // $_SESSION['store_id'] = $store_id;
                     header('location:/Store/index/' . $store_id);
-                    //todo: make create view 
                 }
             }
 
+            #[\app\filters\LoginAsStore]
             public function delete($store_id) {
                 $store = new \app\models\Store(); 
                 $store = $store->get($store_id);
@@ -59,7 +60,8 @@
                     $product->delete(); 
                 }
 
-                $store->delete($store_id); 
+                $user::updateUserType();
+                $store->delete($store_id);
                 header('location:/User/index/' . $_SESSION['user_id']);
             }
         }
