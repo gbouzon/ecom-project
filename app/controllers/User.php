@@ -2,7 +2,8 @@
     namespace app\controllers;
    
         class User extends \app\core\Controller {
-
+            
+            #[\app\filters\Login]
             public function index($user_id) {
                 $myUser = new \app\models\User();
                 $myUser = $myUser->getById($user_id);
