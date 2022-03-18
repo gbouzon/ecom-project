@@ -14,15 +14,20 @@
 
             <h1>Profile details</h1>
             <form method='post' action='' enctype = 'multipart/form-data'>
-                <label class='form-label'>First name:<input type='text' name='first_name' class='form-control' value = '<?= $data->first_name?>' /></label>
-                <label class='form-label'>Middle name:<input type='text' name='middle_name' class='form-control' value = '<?= $data->middle_name?>' /></label>
-                <label class='form-label'>Last name:<input type='text' name='last_name' class='form-control'value = '<?= $data->last_name?>'  /></label> <br>
-                <label class='form-label'>Email:<input type='text' name='email' class='form-control' value = '<?= $data->email?>' /></label><br>
-                <label class='form-label'>Phone number:<input type='text' name='phone' class='form-control' value = '<?= $data->phone?>' /></label><br>
+                <label class='form-label'>First name:<input disabled type='text' name='first_name' class='form-control' value = '<?= $data->first_name?>' /></label>
+                <label class='form-label'>Middle name:<input disabled type='text' name='middle_name' class='form-control' value = '<?= $data->middle_name?>' /></label>
+                <label class='form-label'>Last name:<input disabled type='text' name='last_name' class='form-control'value = '<?= $data->last_name?>'  /></label> <br>
+                <label class='form-label'>Email:<input disabled type='email' name='email' class='form-control' value = '<?= $data->email?>' /></label><br>
+                <label class='form-label'>Phone number:<input disabled type='text' name='phone' class='form-control' value = '<?= $data->phone?>' /></label><br>
                 <label class = 'form-label'>Profile picture: <br>
                     <img alt = 'No picture was added' src = '/pictures/<?= $product->product_image ?>'> <br> <br>
             </form>
             <?php
+                if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $data->user_id){
+                    echo "<a href='/User/update/$data->user_id'>update</a> | <a href='/User/delete/$data->user_id'>Delete</a>";
+                }
+
+
                 if($data->getStore($_SESSION['user_id'])){
                     $this->view('Store/details_subview', $data->getStore($_SESSION['user_id']));
                 }

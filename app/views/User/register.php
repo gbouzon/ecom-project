@@ -15,17 +15,17 @@
 			<h1>Register your user account</h1>
 		
 			<form method='post' action='' enctype = 'multipart/form-data'>
-				<label class='form-label'>First name:<input type='text' name='first_name' class='form-control' /></label>
+				<label class='form-label'>First name:<input type='text' name='first_name' class='form-control'  required/></label>
 				<label class='form-label'>Middle name:<input type='text' name='middle_name' class='form-control' /></label>
-				<label class='form-label'>Last name:<input type='text' name='last_name' class='form-control' /></label> <br>
-				<label class='form-label'>Email:<input type='text' name='email' class='form-control' /></label><br>
+				<label class='form-label'>Last name:<input type='text' name='last_name' class='form-control'  required/></label> <br>
+				<label class='form-label'>Email:<input type='email' name='email' class='form-control'  required/></label><br>
 				<label class='form-label'>Phone Number:<input type='text' name='phone' class='form-control' /></label><br>
-				<label class='form-label'>Password:<input type='password' name='password' class='form-control' /></label><br>
-				<label class='form-label'>Password confirmation:<input type='password' name='password_confirm' class='form-control' /></label><br>
+				<label class='form-label'>Password:<input type='password' name='password' class='form-control'  required/></label><br>
+				<label class='form-label'>Password confirmation:<input type='password' name='password_confirm' class='form-control'  required /></label><br>
 
-				<input class="form-check-input" type="radio" name="userType" value="customer" ><label class="form-check-label">Customer</label>	
+				<input class="form-check-input" type="radio" name="user_type" value="0" checked ><label class="form-check-label">Customer</label>	
 
-				<input class="form-check-input" type="radio" name="userType" value="store"><label class="form-check-label" >Store</label> <br>
+				<input class="form-check-input" type="radio" name="user_type" value="1"><label class="form-check-label" >Store</label> <br>
 
 				<label class = 'form-label'>Profile picture (if you want to change it): 
                     <input type = 'file' name = 'picture' class = 'form-control'></label><br>
