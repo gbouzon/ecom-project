@@ -97,7 +97,7 @@
                     }
                 }
                 else
-                    header('location:/User/index/' . $_SESSION['user_id']);
+                    header('location:/User/index/' . $user_id); // in case manipulating the url
             }
 
             #[\app\filters\Login]

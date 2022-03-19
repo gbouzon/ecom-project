@@ -50,7 +50,7 @@
                     }
                 }
                 else 
-                    header('location:/Store/index/' . $_SESSION['store_id']);
+                    header('location:/Store/index/' . $store_id); //in case manipulating the url
             }
 
             #[\app\filters\LoginAsStore]
