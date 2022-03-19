@@ -15,10 +15,7 @@
             <form method='post' action='' enctype = 'multipart/form-data'>
                 <img alt = '' src = 'app\\pictures\\<?= $data->product_image?>' width = 200 height = 200> <br> 
                 <label class='form-label'>Product price:<input disabled type='number' name='product_price' class='form-control' value ='<?= $data->product_price ?>' /></label> <br>
-                <label class='form-label'>Product description:<textarea disabled name='product_description' cols="80" class='form-control'> <?= $data->product_description ?> </textarea></label><br>
-
-                
-                    
+                <label class='form-label'>Product description:<textarea disabled name='product_description' cols="80" class='form-control'> <?= $data->product_description ?> </textarea></label><br>    
         <div>
     </body>
 </html>
