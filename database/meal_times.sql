@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2022 at 05:53 PM
+-- Generation Time: Mar 19, 2022 at 06:43 AM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.1
+-- PHP Version: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -65,18 +65,6 @@ INSERT INTO `product` (`product_id`, `store_id`, `product_name`, `product_image`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_category`
---
-
-CREATE TABLE `product_category` (
-  `product_category_id` int(11) NOT NULL,
-  `category_name` varchar(50) NOT NULL,
-  `category_description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `store`
 --
 
@@ -85,7 +73,6 @@ CREATE TABLE `store` (
   `user_id` int(11) NOT NULL,
   `store_name` varchar(50) NOT NULL,
   `store_address` varchar(95) NOT NULL,
-  `product_list` text DEFAULT NULL,
   `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -93,10 +80,10 @@ CREATE TABLE `store` (
 -- Dumping data for table `store`
 --
 
-INSERT INTO `store` (`store_id`, `user_id`, `store_name`, `store_address`, `product_list`, `description`) VALUES
-(1, 7, 'The Jane Store', '122, Avenue something', NULL, 'This is a store for Jane'),
-(3, 4, 'Pizza Store', '4843 12e avenue', NULL, 'This is a pizza place lol'),
-(4, 9, 'Change to Pizza Store ', '4843 12e avenue', NULL, 'dsfasd');
+INSERT INTO `store` (`store_id`, `user_id`, `store_name`, `store_address`, `description`) VALUES
+(1, 7, 'The Jane Store', '122, Avenue something', 'This is a store for Jane'),
+(3, 4, 'Pizza Store', '4843 12e avenue', 'This is a pizza place lol'),
+(4, 9, 'Change to Pizza Store ', '4843 12e avenue', 'dsfasd');
 
 -- --------------------------------------------------------
 
@@ -129,7 +116,9 @@ INSERT INTO `user` (`user_id`, `user_type`, `first_name`, `middle_name`, `last_n
 (8, 0, 'David', '', 'H', 'David@hotmail.com', '444444444', '$2y$10$DmBcPSHFHz.IyL7wZy3Xie9awxEPXOSfzTvu2CPSpoky1nbvP7y06', 'blank.jpg'),
 (9, 1, 'Pizza', '', 'Owner', 'Pizza@gmail.c0m', '', '$2y$10$cI/U7cWgFMz9cYGHyCzUJexw2GVhjKjBvtd/R9C38OIQljHpBa6Dq', 'blank.jpg'),
 (10, 0, 'pizza', '', 'pizzA', 'PIZAAA@email.com', '', '$2y$10$tdEjyULpOjETswvFCQJ40e8tKQ5NolJyP3AAcq4e44JkwZEAyERbK', 'blank.jpg'),
-(12, 0, 'customer1', '', 'customer1', 'customer1@email.com', '', '$2y$10$0KRM8jHFaNrtqXq5QnThRuQPCx/fROQDKbxuL8OQLL6RE4NS.rApC', 'blank.jpg');
+(12, 0, 'customer1', '', 'customer1', 'customer1@email.com', '', '$2y$10$0KRM8jHFaNrtqXq5QnThRuQPCx/fROQDKbxuL8OQLL6RE4NS.rApC', 'blank.jpg'),
+(16, 0, 'test', '', 'test', 'test32@gmail.com', '', '$2y$10$Zm.s9phtx9S8dIrnmxvToelx0nrZHphAqgky3YUm9v7eg2Nmx0796', 'blank.jpg'),
+(17, 0, 'test', '', 'test', 'test33@gmail.com', '', '$2y$10$d4JnMSwMICafQ5AKRJouvuFU.bHCN6SbDiKTbQPMiUrHE8lndZO2S', 'blank.jpg');
 
 --
 -- Indexes for dumped tables
@@ -163,19 +152,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `store`
 --
 ALTER TABLE `store`
-  MODIFY `store_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `store_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
