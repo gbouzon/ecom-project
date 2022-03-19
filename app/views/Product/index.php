@@ -7,22 +7,18 @@
         <title><?= $data->product_name ?></title>
     </head>
     <body>
-
-    
-            <?php
-				$this->view('subviews/navigation');
-			?>
-        <h2>Product:</h2>
+        <?php
+			$this->view('subviews/navigation');
+		?>
+        <h2><?= $data->product_name?></h2>
         <div>
-        <form method='post' action='' enctype = 'multipart/form-data'>
-				<label class='form-label'>Item name:<input disabled type='text' name='product_name' class='form-control' value ='<?= $data->product_name ?>' /></label>
-				<label class='form-label'>Item quantity:<input disabled type='number' name='product_quantity' class='form-control' value ='<?= $data->product_quantity ?>' /></label>
-				<label class='form-label'>Item price:<input disabled type='number' name='product_price' class='form-control' value ='<?= $data->product_price ?>' /></label> <br>
-                <label class='form-label'>Item description:<textarea disabled name='product_description' cols="80" class='form-control'> <?= $data->product_description ?> </textarea></label><br>
+            <form method='post' action='' enctype = 'multipart/form-data'>
+                <img alt = '' src = 'app\\pictures\\<?= $data->product_image?>' width = 200 height = 200> <br> 
+                <label class='form-label'>Product price:<input disabled type='number' name='product_price' class='form-control' value ='<?= $data->product_price ?>' /></label> <br>
+                <label class='form-label'>Product description:<textarea disabled name='product_description' cols="80" class='form-control'> <?= $data->product_description ?> </textarea></label><br>
 
-				<label class = 'form-label'>Item picture: 
-                    <input type = 'file' name = 'product_image' class = 'form-control'></label><br>
-				
+                
+                    
         <div>
     </body>
 </html>

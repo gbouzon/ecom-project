@@ -31,7 +31,7 @@
                 'product_quantity'=>$this->product_quantity, 'product_price'=>$this->product_price, 'product_description'=>$this->product_description]);
             }
 
-            function delete(){
+            function delete() {
                 $SQL = 'DELETE FROM product WHERE product_id = :product_id';
                 $STMT = self::$_connection->prepare($SQL);
                 $STMT->execute(['product_id'=>$this->product_id]);
@@ -43,6 +43,5 @@
                 $STMT = self::$_connection->prepare($SQL);
                 $STMT->execute(['store_id'=>$this->store_id, 'product_name'=>$this->product_name, 'product_image'=>$this->product_image, 'product_availability'=>$this->product_availability,
                 'product_quantity'=>$this->product_quantity, 'product_price'=>$this->product_price, 'product_description'=>$this->product_description, 'product_id' =>$this->product_id]);
-            }
-            
+            }   
         }
