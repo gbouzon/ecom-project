@@ -217,10 +217,12 @@ class AcceptanceTester extends \Codeception\Actor
     }
     
     /**
-     * @Given I enter in the search bar :term and am on page :url
+     * @Given I enter in the search bar :term and am on page :url and choose option :option
      */
-    public function iEnterInTheSearchBar($term, $url) {
-        $this->amOnPage($url);        
+    public function iEnterInTheSearchBar($term, $url, $option) {
+        $this->amOnPage($url); 
+        $this->selectOption('form select[name=search_type]', $option);
+        $this->seeInField('form select[name=search_type]', $option);       
         $this->fillField('search', $term);
     }
     
