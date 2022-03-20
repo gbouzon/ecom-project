@@ -51,12 +51,12 @@
 			        $filename = (!$filename) ? 'blank.png' : $filename;
 
                     $newUser = new \app\models\User();
-                    $newUser->email = $_POST['email'];
-                    $newUser->first_name = $_POST['first_name'];
-                    $newUser->middle_name = $_POST['middle_name'];
-                    $newUser->last_name = $_POST['last_name'];
+                    $newUser->email = trim($_POST['email']);
+                    $newUser->first_name = trim($_POST['first_name']);
+                    $newUser->middle_name = trim($_POST['middle_name']);
+                    $newUser->last_name = trim($_POST['last_name']);
                     $newUser->user_type = (int) $_POST['user_type'];
-                    $newUser->phone = $_POST['phone'];
+                    $newUser->phone = trim($_POST['phone']);
                     $newUser->picture = $filename;
         
                     if (!$newUser->exists() && $_POST['password'] == $_POST['password_confirm']) {
@@ -86,11 +86,11 @@
                             $user->picture = $filename;
                         }
 
-                        $user->email = $_POST['email'];
-                        $user->first_name = $_POST['first_name'];
-                        $user->middle_name = $_POST['middle_name'];
-                        $user->last_name = $_POST['last_name'];
-                        $user->phone = $_POST['phone'];
+                        $user->email = trim($_POST['email']);
+                        $user->first_name = trim($_POST['first_name']);
+                        $user->middle_name = trim($_POST['middle_name']);
+                        $user->last_name = trim($_POST['last_name']);
+                        $user->phone = trim($_POST['phone']);
 
                         $user->update();
                         header('location:/User/index/' . $_SESSION['user_id']);

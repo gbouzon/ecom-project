@@ -19,12 +19,12 @@
                         $filename = Main::imageUpload("product_image");
                         $product = new \app\models\Product();
                         $product->store_id = $store_id;
-                        $product->product_name = $_POST['product_name'];
+                        $product->product_name = trim($_POST['product_name']);
                         $product->product_image = $filename; 
-                        $product->product_availability = $this->getAvailability($_POST['product_quantity']);
-                        $product->product_quantity = $_POST['product_quantity'];
-                        $product->product_price = $_POST['product_price'];
-                        $product->product_description = $_POST['product_description'];
+                        $product->product_availability = $this->getAvailability(trim($_POST['product_quantity']));
+                        $product->product_quantity = trim($_POST['product_quantity']);
+                        $product->product_price = trim($_POST['product_price']);
+                        $product->product_description = trim($_POST['product_description']);
 
                         $product->insert();
                         header("location:/Store/index/". $_SESSION['store_id']);
@@ -58,10 +58,10 @@
                             $product->product_imagee = $filename;
                         }
 
-                        $product->product_name = $_POST['product_name'];
-                        $product->product_quantity= $_POST['product_quantity'];
-                        $product->product_price = $_POST['product_price'];
-                        $product->product_description = $_POST['product_description'];
+                        $product->product_name = trim($_POST['product_name']);
+                        $product->product_quantity= trim($_POST['product_quantity']);
+                        $product->product_price = trim($_POST['product_price']);
+                        $product->product_description = trim($_POST['product_description']);
 
                         $product->update($product_id);        
                         header('location:/Store/index/' . $_SESSION['store_id']);

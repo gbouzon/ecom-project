@@ -1,2 +1,1 @@
-tests\acceptance\newAnimal.feature:Create a blue cat
-tests\acceptance\newAnimal.feature:Create a green dog
+tests\acceptance\sellers\addProduct.feature:try adding an item to my catalog

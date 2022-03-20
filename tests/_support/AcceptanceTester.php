@@ -277,6 +277,16 @@ class AcceptanceTester extends \Codeception\Actor
         $this->click('My Profile');
         $this->click($link);
     }
+
+    /**
+     * @When I enter :value1 in :field1 and :value2 in :field2 and :value3 in :field3 and click :button
+     */
+    public function iEnterInAndInAndInAndClick($value1, $field1, $value2, $field2, $value3, $field3, $button) {
+        $this->fillField($field1, $value1);
+        $this->fillField($field2, $value2);
+        $this->fillField($field3, $value3);
+        $this->click($button);
+    }
     
     /**
      * @Given I am on the store's page
