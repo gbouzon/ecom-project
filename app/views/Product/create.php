@@ -17,7 +17,7 @@
 			<form method='post' action='' enctype = 'multipart/form-data'>
 				<label class='form-label'>Item name:<input type='text' name='product_name' class='form-control' required/></label>
 				<label class='form-label'>Item quantity:<input type='number' name='product_quantity' class='form-control' required/></label>
-				<label class='form-label'>Item price:<input type='number' name='product_price' class='form-control' required/></label> <br>
+				<label class='form-label'>Item price:<input type='double' name='product_price' class='form-control' required/></label> <br>
                 <label class='form-label'>Item description:<textarea name='product_description' cols="80" class='form-control' required></textarea></label><br>
 
 				<label class = 'form-label'>Product picture: 
