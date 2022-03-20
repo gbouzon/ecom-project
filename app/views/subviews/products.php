@@ -6,7 +6,7 @@
                     <div class='card-body'> 
                     <a href = '/Product/index/$product->product_id'>$product->product_name</a> <br> <br>
             
-                <img alt = '' src = 'ecom\\ecom-project\\app\\pictures\\<?= $product->product_image?>' width = 100 height = 100> <br>
+                <img alt = '' src = '\\app\\pictures\\<?= $product->product_image?>' width = 100 height = 100> <br>
                 Price: $$product->product_price <br>
                 Description: $product->product_description <br> <br>";
 

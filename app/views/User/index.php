@@ -15,7 +15,7 @@
             <h1><?= $data->first_name . " " . $data->last_name?>'s Profile</h1>
             <form method='post' action='' enctype = 'multipart/form-data'>
                 <label class = 'form-label'>Profile picture: <br>
-                    <img alt = '' src = 'app\\pictures\\<?= $data->picture?>' width = 100 height = 100> <br> <br>
+                    <img alt = '' src = '\\app\\pictures\\<?= $data->picture?>' width = 100 height = 100> <br> <br>
                 <label class='form-label'>First name:<input disabled type='text' name='first_name' class='form-control' value = '<?= $data->first_name?>' /></label>
                 <label class='form-label'>Middle name:<input disabled type='text' name='middle_name' class='form-control' value = '<?= $data->middle_name?>' /></label>
                 <label class='form-label'>Last name:<input disabled type='text' name='last_name' class='form-control'value = '<?= $data->last_name?>'  /></label> <br>
