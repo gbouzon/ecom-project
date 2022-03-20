@@ -4,6 +4,6 @@ Feature: view the product catalog for a store
     I need to be able to view the products of registered stores
 
     Scenario: try viewing the product catalog
-    Given I am on a store's page
-    When I click on "Menu"
-    Then I see the store's menu
+    Given I am on page "/Main/index"
+    When I click "The Jane Store"
+    Then I see "Vanilla Cupcake"

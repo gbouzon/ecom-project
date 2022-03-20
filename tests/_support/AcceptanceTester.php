@@ -202,12 +202,6 @@ class AcceptanceTester extends \Codeception\Actor
         throw new \PHPUnit\Framework\IncompleteTestError("Step `I see :arg1 and the main page` is not defined");
     }
     
-    /**
-     * @Given I am on the application
-     */
-    public function iAmOnTheApplication() {
-        throw new \PHPUnit\Framework\IncompleteTestError("Step `I am on the application` is not defined");
-    }
     
     /**
      * @When I click on :arg1 after filling the registration form
@@ -224,6 +218,21 @@ class AcceptanceTester extends \Codeception\Actor
         $this->selectOption('form select[name=search_type]', $option);
         $this->seeInField('form select[name=search_type]', $option);       
         $this->fillField('search', $term);
+    }
+
+    /**
+     * @Given I am on page :url
+     */
+    public function iAmOnPage($url) {
+        $this->amOnPage($url);
+    }
+
+    /**
+     * @Then I see :store and :store2
+     */
+    public function iSeeAnd($store, $store2) {
+        $this->see($store);
+        $this->see($store2);
     }
     
     /**
