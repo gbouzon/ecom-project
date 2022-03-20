@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2022 at 06:04 PM
+-- Generation Time: Mar 20, 2022 at 04:03 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -58,6 +58,8 @@ CREATE TABLE `cart_item` (
 CREATE TABLE `order` (
   `order_id` int(11) NOT NULL,
   `cart_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `store_id` int(11) NOT NULL,
   `total` double NOT NULL,
   `createAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `order_status` tinyint(1) NOT NULL COMMENT '0 = pending, 1 = accepted, 3 = ready to pick up, 4 = close'
@@ -184,7 +186,9 @@ ALTER TABLE `cart_item`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`order_id`),
-  ADD KEY `order_cart_fk` (`cart_id`);
+  ADD KEY `order_cart_fk` (`cart_id`),
+  ADD KEY `order_user_fk` (`user_id`),
+  ADD KEY `order_store_fk` (`store_id`);
 
 --
 -- Indexes for table `product`
@@ -268,7 +272,9 @@ ALTER TABLE `cart_item`
 -- Constraints for table `order`
 --
 ALTER TABLE `order`
-  ADD CONSTRAINT `order_cart_fk` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`cart_id`);
+  ADD CONSTRAINT `order_cart_fk` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`cart_id`),
+  ADD CONSTRAINT `order_store_fk` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`),
+  ADD CONSTRAINT `order_user_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `store`
