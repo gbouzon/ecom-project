@@ -61,15 +61,16 @@
                 if ($store_id == $_SESSION['store_id']) {
                     $store = $store->get($store_id);
 
-                    $products = new \app\models\Product(); 
-                    $products = $products->getAllFromStore($store_id); 
+                    $product = new \app\models\Product(); 
+                    $products = $product->getAllFromStore($store_id); 
 
-                    foreach ($products as $product) {
-                        $product->delete(); 
+                    foreach ($products as $item) {
+                        $item->delete(); 
                     }
 
                     $user->updateUserType();
                     $store->delete($store_id);
+                    unset($_SESSION['store_id']);
                     header('location:/User/index/' . $_SESSION['user_id']);
                 }
                 else 

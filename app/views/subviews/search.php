@@ -19,6 +19,8 @@
                     $this->view('subviews/products', $data);;
             }
         }
+        else 
+            echo "The search returned no results.";
         ?>
     </body>
 </html>
