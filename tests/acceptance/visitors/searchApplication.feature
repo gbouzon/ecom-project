@@ -4,11 +4,11 @@ Feature: search application for stores
     I need to be able to search the application for the store
 
     Scenario: try searching for a registered store
-    Given I enter the store name in the search bar
-    When I press "Enter"
-    Then I see the link with the name of the store I searched for
+    Given I enter in the search bar "Store" and am on page "/Main/index"
+    When I click "Search"
+    Then I see "Store"
 
     Scenario: try searching for a store that isn't registered
-    Given I enter the store name in the search bar
-    When I press "Enter"
-    Then I see "No stores were found with that name"
+    Given I enter in the search bar "Dog" and am on page "/Main/index"
+    When I click "Search"
+    Then I see "The search returned no results."

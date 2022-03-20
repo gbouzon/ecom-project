@@ -39,14 +39,7 @@ class AcceptanceTester extends \Codeception\Actor
      */                                                                                                                      
     public function iSeeAStatusBarWithTheCorrespondingStatus() {                                                                                                                           
         throw new \PHPUnit\Framework\IncompleteTestError("Step `I see a status bar with the corresponding status` is not defined");                                                                                                                 
-    }   
-    
-    /**                                                                                                                      
-     * @Given I am logged into my account                                                                                    
-     */                                                                                                                      
-    public function iAmLoggedIntoMyAccount() {                                                                                                                           
-        throw new \PHPUnit\Framework\IncompleteTestError("Step `I am logged into my account` is not defined");              
-    } 
+    }    
     
     /**                                                                                                                      
      * @Given I am not logged into the application                                                                           
@@ -81,14 +74,7 @@ class AcceptanceTester extends \Codeception\Actor
      */                                                                                                                      
     public function iAmLoggedIntoAnAccountAndHaveEnteredMyProfileInformation() {                                                                                                                           
         throw new \PHPUnit\Framework\IncompleteTestError("Step `I am logged into an account and have entered my profile information` is not defined");                                                                                              
-    }
-    
-    /**                                                                                                                      
-     * @When I click :arg1                                                                                                   
-     */                                                                                                                      
-    public function iClick($arg1) {                                                                                                                           
-        throw new \PHPUnit\Framework\IncompleteTestError("Step `I click :arg1` is not defined");                            
-    }     
+    }    
     
     /**                                                                                                                      
      * @Given I am logged into my account and change the product information                                                 
@@ -231,24 +217,25 @@ class AcceptanceTester extends \Codeception\Actor
     }
     
     /**
-     * @Given I enter the store name in the search bar
+     * @Given I enter in the search bar :term and am on page :url
      */
-    public function iEnterTheStoreNameInTheSearchBar() {
-        throw new \PHPUnit\Framework\IncompleteTestError("Step `I enter the store name in the search bar` is not defined");
+    public function iEnterInTheSearchBar($term, $url) {
+        $this->amOnPage($url);        
+        $this->fillField('search', $term);
     }
     
     /**
-     * @When I press :arg1
+     * @When I click :arg1
      */
-    public function iPress($arg1) {
-        throw new \PHPUnit\Framework\IncompleteTestError("Step `I press :arg1` is not defined");
+    public function iClick($arg1) {
+        $this->click($arg1);
     }
     
     /**
-     * @Then I see the link with the name of the store I searched for
+     * @Then I see :name
      */
-    public function iSeeTheLinkWithTheNameOfTheStoreISearchedFor() {
-        throw new \PHPUnit\Framework\IncompleteTestError("Step `I see the link with the name of the store I searched for` is not defined");
+    public function iSee($name) {
+        $this->see($name);
     }
     
     /**
@@ -273,52 +260,23 @@ class AcceptanceTester extends \Codeception\Actor
     }
     
     /**
-     * @Then I see a list of stores
+     * @Then I see a list of stores :stores
      */
-    public function iSeeAListOfStores() {
-        throw new \PHPUnit\Framework\IncompleteTestError("Step `I see a list of stores` is not defined");
+    public function iSeeAListOfStores($stores) {
+        $this->see($stores);
     }            
     
     /**
-     * @Given I am on a store's page
+     * @Given I am on a store's page :url
      */
-    public function iAmOnAStoresPage() {
-        throw new \PHPUnit\Framework\IncompleteTestError("Step `I am on a store's page` is not defined");
+    public function iAmOnAStoresPage($url) {
+        $this->amOnPage($url);
     }                                                           
     
     /**
-     * @Then I see the store's menu
+     * @Then I see the store's menu :menu
      */
-    public function iSeeTheStoresMenu() {
-        throw new \PHPUnit\Framework\IncompleteTestError("Step `I see the store's menu` is not defined");
-    }
-
-    /**
-    * @Given I am on :arg1
-    */
-    public function iAmOn($url)
-    {
-        $this->amOnPage($url); //make the browser go on a URL
-    }
-    /**
-    * @When I enter :arg1 in the search box
-    */
-    public function iEnterInTheSearchBox($term)
-    {
-        $this->fillField('q', $term);//write the term in the box
-    }
-    /**
-    * @When click Search
-    */
-    public function clickSearch()
-    {
-        $this->click('Google Search');
-    }
-    /**
-    * @Then I see :arg1
-    */
-    public function iSee($arg1)
-    {
-        $this->see($arg1);//assert that you can see the string
+    public function iSeeTheStoresMenu($menu) {
+        $this->see($menu);
     }
 }
