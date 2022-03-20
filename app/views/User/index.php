@@ -7,10 +7,11 @@
         <title><?= $data->first_name . " " . $data->last_name?></title>
     </head>
     <body>
+        
+        <div class='container'>
         <?php
             $this->view('subviews/navigation');
         ?>
-        <div class='container'>
 
             <h1><?= $data->first_name . " " . $data->last_name?>'s Profile</h1>
             <form method='post' action='' enctype = 'multipart/form-data'>

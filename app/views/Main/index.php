@@ -11,20 +11,18 @@
         <div class='container'>
             <?php
                 $this->view('subviews/navigation');
+                
             ?>
             <br> <h1 class="text-center">Welcome to Meal Times!</h1> <br>
+
+
+            
             <div>
                 <?php
-                    foreach ($data as $store) {
-                        echo "<div class='card  w-50'>
-                            <div class='card-body'>
-                                <h3 class='text-info'><b><a href='/Store/index/$store->store_id'>$store->store_name</a></b></h3>
-                                <h6> $store->store_address</h6>
-                                <p>$store->description<p/>
-                            </div>
-                        </div>";
-                    }
+                    $this->view('subviews/storeList', $data);
                 ?>
+
+                
         </div>
     </body>
 </html>
