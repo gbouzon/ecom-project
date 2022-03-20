@@ -15,10 +15,10 @@
 			<h1>Add a Product</h1>
 		
 			<form method='post' action='' enctype = 'multipart/form-data'>
-				<label class='form-label'>Item name:<input type='text' name='product_name' class='form-control' required/></label>
-				<label class='form-label'>Item quantity:<input type='number' name='product_quantity' class='form-control' required/></label>
-				<label class='form-label'>Item price:<input type='number' name='product_price' class='form-control' required/></label> <br>
-                <label class='form-label'>Item description:<textarea name='product_description' cols="80" class='form-control' required></textarea></label><br>
+				<label class='form-label'>Product name:<input type='text' name='product_name' class='form-control' required/></label>
+				<label class='form-label'>Product quantity:<input type='number' name='product_quantity' class='form-control' required/></label>
+				<label class='form-label'>Product price:<input type='number' name='product_price' class='form-control' required/></label> <br>
+                <label class='form-label'>Product description:<textarea name='product_description' cols="80" class='form-control' ></textarea></label><br>
 
 				<label class = 'form-label'>Product picture: 
                     <input type = 'file' name = 'product_image' class = 'form-control'></label><br>
