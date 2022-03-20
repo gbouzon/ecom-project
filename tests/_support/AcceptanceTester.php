@@ -279,12 +279,12 @@ class AcceptanceTester extends \Codeception\Actor
     }
 
     /**
-     * @When I enter :name in :field_name and :quantity in :field_q and :price in :field_price and click :button
+     * @When I enter :value1 in :field1 and :value2 in :field2 and :value3 in :field3 and click :button
      */
-    public function iEnterInAndInAndInAndClick($name, $field_name, $quantity, $field_q, $price, $field_price, $button) {
-        $this->fillField($field_name, $name);
-        $this->fillField($field_q, (int) $quantity);
-        $this->fillField($field_price, (double) $price);
+    public function iEnterInAndInAndInAndClick($value1, $field1, $value2, $field2, $value3, $field3, $button) {
+        $this->fillField($field1, $value1);
+        $this->fillField($field2, $value2);
+        $this->fillField($field3, $value3);
         $this->click($button);
     }
     
