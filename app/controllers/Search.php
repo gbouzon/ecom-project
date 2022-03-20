@@ -5,7 +5,7 @@
 
             public function searchStores() {
                 $store = new \app\models\Store();
-                $stores = $store->getByStoreName($_POST['search']);
+                $stores = $store->getByStoreName(trim($_POST['search']));
 
                 if (isset($_POST['action'])) 
                     $this->view('subviews/search', $stores);
