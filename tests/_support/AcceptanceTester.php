@@ -248,6 +248,35 @@ class AcceptanceTester extends \Codeception\Actor
     public function iSee($name) {
         $this->see($name);
     }
+
+    /**
+     * @When I enter :value in :field and click :button
+     */
+    public function iEnterInAndClick($value, $field, $button) {
+        $this->fillField($field, $value);
+        $this->click($button);
+    }
+
+    /**
+     * @Given I am on page :url and click :link
+     */
+    public function iAmOnPageAndClick($url, $link) {
+        $this->amOnPage($url);
+        $this->click($link);
+    }
+
+
+    /**
+     * @Given I am logged in with :email and :password and click :link
+     */
+    public function iAmLoggedInWith($email, $password, $link) {
+        $this->amOnPage("User/login");
+        $this->fillField('email', $email);
+        $this->fillField('password', $password);
+        $this->click("Login!");
+        $this->click('My Profile');
+        $this->click($link);
+    }
     
     /**
      * @Given I am on the store's page
