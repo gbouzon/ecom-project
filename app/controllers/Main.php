@@ -15,14 +15,15 @@
         
                 $acceptedTypes = ['image/jpeg'=>'jpg', 'image/gif'=>'gif', 'image/png'=>'png'];
  
-                if (empty($file['tmp_name']))
+                if (empty($file['tmp_name'])) {
                     return false;
+                }
         
                 $fileData = getimagesize($file['tmp_name']); 
                 if ($fileData && in_array($fileData['mime'],array_keys($acceptedTypes))) {
                     $folder = 'app\\pictures';
                     $filename = uniqid() . '.' . $acceptedTypes[$fileData['mime']];
-                    move_uploaded_file($_FILES['picture']['tmp_name'],"$folder\\$filename");
+                    move_uploaded_file($_FILES[$file_uploaded]['tmp_name'],"$folder\\$filename");
                 }
         
                 return $filename;
