@@ -76,7 +76,7 @@
                 $product = new \app\models\Product(); 
                 $product = $product->get($product_id);
 
-                if ($product->store_id == $_SESSION['session_id']) { //checking if product belongs to store
+                if ($product->store_id == $_SESSION['store_id']) { //checking if product belongs to store
                     if ($product->product_image != 'blank.jpg')
                         unlink('app\\pictures\\' . $product->product_image);
                         
@@ -84,6 +84,5 @@
                 }
 
                 header('location:/Store/index/' . $_SESSION['store_id']);
-            }
-            
+            } 
         }
