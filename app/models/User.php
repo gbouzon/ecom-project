@@ -50,7 +50,7 @@
             }
 
             function updateUserType() {
-                $SQL = 'UPDATE store SET user_type = :user_type WHERE user_id = :user_id';
+                $SQL = 'UPDATE user SET user_type = :user_type WHERE user_id = :user_id';
                 $STMT = self::$_connection->prepare($SQL);
                 $STMT->execute(['user_type'=>$this->user_type,'user_id'=>$this->user_id]);
             }
