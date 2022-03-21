@@ -1,6 +1,6 @@
 Feature: access previous orders
     In order to view previous orders
-    As a user 
+    As a buyer
     I need to be able to access my order record
 
     Scenario: try viewing a past order

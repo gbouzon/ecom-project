@@ -20,7 +20,7 @@ Both buyers and sellers have access to user features and visitor features (user 
 - Search the application for different stores
 - Search a store catalog for different products
 
-Check out [Visitors](https://github.com/gbouzon/ecom-project/tree/main/acceptance/visitors) for our Visitor Feature Suite.
+Check out [Visitors](https://github.com/gbouzon/ecom-project/tree/main/tests/acceptance/visitors) for our Visitor Feature Suite.
 
 ## Features for users (sellers and buyers - registered)
 
@@ -30,34 +30,33 @@ Check out [Visitors](https://github.com/gbouzon/ecom-project/tree/main/acceptanc
 - 2FA
 - Access their own records (profile, orders)
 
-Check out [Users](https://github.com/gbouzon/ecom-project/tree/main/acceptance/users) for our Users Feature Suite.
+Check out [Users](https://github.com/gbouzon/ecom-project/tree/main/tests/acceptance/users) for our Users Feature Suite.
 
 ## Features for sellers
 
 - Manage products (add, delete, modify)
 - Create and modify their store profile
 - Retrieve customer information
-- Manage customer orders (confirm, process transaction, close, retrieve)
-- Search customer database
-- Update order status (confirmed, in progress, ready for pickup)
-- Able to cancel orders if payment does not go through
+- Manage customer orders (confirm, close, retrieve)
+- Update order status (confirmed, in progress, ready for pickup, closed)
+- Able to cancel orders 
 
-Check out [Sellers](https://github.com/gbouzon/ecom-project/tree/main/acceptance/sellers) for our Sellers Feature Suite.
+Check out [Sellers](https://github.com/gbouzon/ecom-project/tree/main/tests/acceptance/sellers) for our Sellers Feature Suite.
 
 ## Features for buyers/clients
 
 - Manage cart (add, delete, modify)
-- Modify information (registration, name, address, phone number, billing)
+- Modify information (registration, name, address, phone number)
 - Add services to a "preferred" section -> able to like services and keep them in a more easily accessible tab
 - See product details
-- Track order status (view confirmed, in progress and ready for pickup)
+- Track order status (view confirmed, in progress, ready for pickup, closed)
 - Able to cancel order before its status is "in progress"
 
-Check out [Buyers](https://github.com/gbouzon/ecom-project/tree/main/acceptance/buyers) for our Buyers Feature Suite.
+Check out [Buyers](https://github.com/gbouzon/ecom-project/tree/main/tests/acceptance/buyers) for our Buyers Feature Suite.
 
 ## Total Features
 
-This application will comprise a total of 25 new features (not including the required ones such as registration, login, logout and 2FA).
+This application will comprise a total of 23 new features (not including the required ones such as registration, login, logout and 2FA).
 
 ## Allocated Time
 
