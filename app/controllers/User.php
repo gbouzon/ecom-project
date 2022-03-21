@@ -21,6 +21,8 @@
                         if (password_verify($_POST['password'], $user->password_hash)) {
                             $_SESSION['email'] = $user->email;
                             $_SESSION['user_id'] = $user->user_id;
+                            $cart = new \app\controllers\Cart();
+                            $cart = $cart->createCart();
 
                             $store = $user->getStore($_SESSION['user_id']); 
                             

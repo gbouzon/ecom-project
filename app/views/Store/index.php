@@ -7,6 +7,7 @@
         <title><?= $data->store_name ?></title>
     </head>
     <body>
+    <div class='container'>
         <?php
             $this->view('subviews/navigation', $data->store_id);
         ?>  

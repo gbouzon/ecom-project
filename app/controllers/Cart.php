@@ -20,34 +20,62 @@
                 $product = new \app\models\Product();
                 $product = $product->get($product_id);
 
-                $cart = new \app\models\Order();
-                $cart = $cart->getUserCart($_SESSION['user_id']);
-                if($cart == false){
-                    $cart = new \app\models\Order();
-                    $cart->user_id = $_SESSION['user_id'];
-                    $cart->store_id = $store_id;
-                    $cart->order_status = 0; 
-                    $cart->order_id = $cart->create();
-                } 
-                    $newProduct = new \app\models\Order_detail();
-                    $newProduct->order_id = $cart->order_id;
-                    $newProduct->product_id = $product_id;
-                    $newProduct->quantity = 1;
-                    $newProduct->price = $product->product_price;
-                    $newProduct->insert();
-                    header('location:/Store/index/' . $store_id);
+                $order = new \app\models\Order();
+                $order = $order->getUserCart($_SESSION['user_id']);
+
+                if($order->store_id == null){
+                    $order->updateStore_id($store_id);
+                }
+
+                if($order->store_id != $product->store_id){
+                    $cart = new \app\controllers\Cart();
+                    $order->updateStore_id($store_id);
+                    $cart->clearCart($order->order_id);
+                }
+                
+
+                $newProduct = new \app\models\Order_detail();
+                $newProduct->order_id = $order->order_id;
+                $newProduct->product_id = $product_id;
+                $newProduct->quantity = 1;
+                $newProduct->price = $product->product_price;
+                $newProduct->insert();
+               header('location:/Store/index/' . $store_id);
             }
 
-            
+            public function createCart(){
+                $cart = new \app\models\Order();
+                $cart->user_id = $_SESSION['user_id'];
+                $cart->order_status = 0; 
+                $cart->order_id = $cart->create();
+            }
+
+
 
             #[\app\filters\Login]
             public function deleteFromCart($order_detail_id){
                 $product = new \app\models\Order_detail();
                 $product = $product->get($order_detail_id);
+
                 $order= new \app\models\Order();
                 $order = $order->get($product->order_id);
                 if($order->user_id == $_SESSION['user_id']){
                     $product->delete(); 
+                }
+                header('location:/Cart/Index');   
+            }
+
+            #[\app\filters\Login]
+            public function clearCart($order_id){
+                $cart_products = new \app\models\Order_detail();
+                $cart_products = $cart_products->getOrder($order_id);
+               
+                $order= new \app\models\Order();
+                $order = $order->get($order_id);
+                if($order->user_id == $_SESSION['user_id']){
+                    foreach($cart_products as $product){
+                        $product->delete();  
+                    }
                 }
                 header('location:/Cart/Index');   
             }

@@ -12,7 +12,12 @@
             <?php
                 $this->view('subviews/navigation');
             ?>
-            <br> <h1 class="text-center">Cart Detail</h1> <br> 
+            <br> <h1 class="text-center">Cart Detail</h1> <br>
+            <?php
+                if($data == "error"){
+                    $this->view('Cart/error');
+                }
+            ?>
             <table class="table table-striped">
                 <tr><th></th><th>Name</th><th>Quantity</th><th>Price</th><th>Action</th></tr>
                 <?php
@@ -25,7 +30,8 @@
                     }
                 ?>
             </table>
-            <a href='/Order/place/$order_detail->order_id' class="btn btn-success"> Place Order</a>
+            <a href='/Cart/clearCart/<?=$order_detail->order_id?>' class="btn btn-success"> Clear Cart</a>
+            <a href='/Order/place/<?=$order_detail->order_id?>' class="btn btn-success"> Place Order</a>
         </div>
     </body>
 </html>

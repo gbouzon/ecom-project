@@ -54,7 +54,9 @@
             }
 
             
-            function update() {
-
+            function updateStore_id($store_id) {
+                $SQL = 'UPDATE `order` SET store_id  = :store_id WHERE order_id = :order_id';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute(['store_id'=>$store_id,'order_id'=>$this->order_id]);
             }
         }

@@ -15,7 +15,7 @@
                     </div>";
             } else {
 
-                echo "<a class=\"btn btn-primary\" href='/Cart/addToCart/$product->product_id/$product->store_id' class='m-2'> Add to Cart </a> 
+                echo "<a class=\"btn btn-primary\" href='/Cart/addToCart/$product->product_id/$product->store_id' onclick='return confirm(\"Your Cart will be clear if u want to add this product. Are u sure?\")' class='m-2'> Add to Cart </a> 
                     </div>
                     </div>";
             }
