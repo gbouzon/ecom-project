@@ -38,6 +38,8 @@
                     header('location:/Store/index/' . $store_id);
             }
 
+            
+
             #[\app\filters\Login]
             public function deleteFromCart($order_detail_id){
                 $product = new \app\models\Order_detail();

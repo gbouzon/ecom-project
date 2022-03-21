@@ -11,7 +11,6 @@
         <div class='container'>
             <?php
                 $this->view('subviews/navigation');
-                
             ?>
             <br> <h1 class="text-center">Welcome to Meal Times!</h1> <br>
 
