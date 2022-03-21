@@ -4,11 +4,11 @@ Feature: login
     I need to be able to login
 
     Scenario: try logging in correctly
-    Given I have registered an account for username "Tarzan", with password "jane"
-    When I log in with "Tarzan", with "jane"
-    Then I see the "main page"
+    Given I am on page "/User/login"
+    When I enter "tarzan@gmail.com" in "email" and "jane" in "password" and click "Login!"
+    Then I am redirected to "Store/index/10"
 
     Scenario: try logging in incorrectly
-    Given I have registered an account for username "Tarzan", with password "jane"
-    When I log in with username "Tarzan" and password "1234"
-    Then I see the "Incorrect username/password combination!"
+    Given I am on page "/User/login"
+    When I enter "tarzan@gmail.com" in "email" and "1234" in "password" and click "Login!"
+    Then I see "Incorrect email/password combination."

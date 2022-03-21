@@ -116,6 +116,15 @@ class AcceptanceTester extends \Codeception\Actor
     public function iAmRedirectedTo($page) {
         $this->amOnPage($page);
     }
+
+    /**
+     * @When I enter :value1 in :field1 and :value2 in :field2 and click :button
+     */
+    public function iEnterInAndInAndClick($value1, $field1, $value2, $field2, $button) {
+        $this->fillField($field1, $value1);
+        $this->fillField($field2, $value2);
+        $this->click($button);
+    }
     
     /**
      * @Given I am on the store's page
