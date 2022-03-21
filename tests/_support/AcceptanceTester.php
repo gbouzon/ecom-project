@@ -89,6 +89,16 @@ class AcceptanceTester extends \Codeception\Actor
     }
 
     /**
+     * @Given I am logged in with :email and :password
+     */
+    public function iAmLoggedInWithAnd($email, $password) {
+        $this->amOnPage("User/login");
+        $this->fillField('email', $email);
+        $this->fillField('password', $password);
+        $this->click("Login!");
+    }
+
+    /**
      * @When I enter :value1 in :field1 and :value2 in :field2 and :value3 in :field3 and click :button
      */
     public function iEnterInAndInAndInAndClick($value1, $field1, $value2, $field2, $value3, $field3, $button) {
