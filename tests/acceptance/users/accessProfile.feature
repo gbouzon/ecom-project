@@ -4,6 +4,6 @@ Feature: access my profile
     I need to be able to access my profile
 
     Scenario: try modifying my first name
-    Given I am logged in to my account
-    When I click on "Save" after modifying my first name
-    Then I see "Profile successfully modified!"
+    Given I am logged in with "test@gmail.com" and "1234" and click "Update"
+    When I enter "Test" in "first_name" and click "Update!"
+    Then I see "Test Bouzon"

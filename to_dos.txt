@@ -9,7 +9,9 @@ DONE - implement security checks (ex: only allow owner of the store to add a pro
 DONE - implement update and delete methods for Product model 
 
 - implement changePassword() for users -> for part 2
-- fix view for search by product (Search)
-- implement addToCart
-- make tables for cart and orders
+DONE - fix view for search by product (Search)
+DONE - implement addToCart
+DONE - make tables for cart and orders
+
+- need a check in addToCart(), only one cart per User, clear Cart(update Store_id) if user want to add an item from an difference Store 
 

@@ -125,6 +125,7 @@ class AcceptanceTester extends \Codeception\Actor
         $this->fillField($field2, $value2);
         $this->click($button);
     }
+
     
     /**
      * @Given I am on the store's page

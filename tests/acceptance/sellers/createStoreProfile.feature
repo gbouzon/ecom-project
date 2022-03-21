@@ -4,6 +4,6 @@ Feature: create my store profile
     I need to be able to create my store profile
 
     Scenario: try creating a profile
-    Given I am logged into an account and have entered my profile information
-    When I click on "Create profile"
-    Then I see "Profile created successfully"
+    Given I am logged in with "test@gmail.com" and "1234" and click "Create a Store"
+    When I enter "Test Store" in "store_name" and "249 street" in "store_address" and "a test store" in "description" and click "Create!"
+    Then I see "Test Store" and "Products:"

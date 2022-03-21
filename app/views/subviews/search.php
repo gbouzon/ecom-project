@@ -1,34 +1,26 @@
-<div style = "position:absolute;top:100px;right:140px;">
-    <h2>Search Index</h2>
-    <ol>
-        <?php
+<html>
+    <head>
+            <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+            <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+            
+        <title>Home page</title>
+    </head>
+    <body>
+        <div class='container'>
+            <br> <h1 class="text-center">Search</h1> <br>
+            <?php
         if ($data != null) {
             if (get_class($data[0]) == "app\models\Store") {
-                foreach($data as $store) {    
-                    echo "<div class='card '>
-                            <div class='card-body'>
-                                <h3 class='text-info'><b><a href='/Store/index/$store->store_id'>$store->store_name</a></b></h3>
-                                <h6> $store->store_address</h6>
-                                <p>$store->description<p/>
-                            </div>
-                        </div>";
-                }
+                    $this->view('subviews/storeList', $data);
             }
-            else if (get_class($data[0]) == "app\models\Product") {
-
-                foreach($data as $product) {  
-                    echo "<div class='card '>
-                    <div class='card-body'>
-                        <h3 class='text-info'><b><a href='/Product/index/$product->product_id'>$product->product_name</a></b></h3>
-                        <h6> $$product->product_price</h6>
-                        <p>$product->product_description<p/>
-                    </div>
-                </div>";  
-                }
+            else if (get_class($data[0]) == "app\models\Product") {   
+                    $this->view('subviews/products', $data);;
             }
         }
         else 
             echo "The search returned no results.";
         ?>
-    </ol>
-</div>
+    </body>
+</html>

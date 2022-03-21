@@ -17,9 +17,9 @@
                     }
                     else {	//process the data when the form has been submitted, id, title, text
                         $newStore = new \app\models\Store();
-                        $newStore->store_name = $_POST['store_name'];
-                        $newStore->store_address = $_POST['store_address'];
-                        $newStore->description = $_POST['description'];
+                        $newStore->store_name = trim($_POST['store_name']);
+                        $newStore->store_address = trim($_POST['store_address']);
+                        $newStore->description = trim($_POST['description']);
 
                         $newStore->insert($user_id);
 
@@ -41,9 +41,9 @@
                         $this->view('Store/update', $store);
                     }
                     else {
-                        $store->store_name = $_POST['store_name'];
-                        $store->store_address = $_POST['store_address'];
-                        $store->description = $_POST['description'];
+                        $store->store_name = trim($_POST['store_name']);
+                        $store->store_address = trim($_POST['store_address']);
+                        $store->description = trim($_POST['description']);
 
                         $store->update($store_id);
                         header('location:/Store/index/' . $_SESSION['store_id']);

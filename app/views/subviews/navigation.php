@@ -16,17 +16,12 @@
 				}
 				else { 
 					echo "<li class=\"nav-item active\"><a class= \"nav-link\" href='/User/index/".$_SESSION['user_id']."'>My Profile</a></li>";
+					echo "<li class=\"nav-item active\"><a class= \"nav-link\" href='/Cart/index'>Cart</a></li>";
 					echo "<li class=\"nav-item active\"><a class= \"nav-link\" href='/User/logout'>Log out</a></li>";
+					
 				}	
-			?>
-			<?php
+
 				$this->view('Search/index');
-				$searcher = new \app\controllers\Search();
-				$type = filter_input(INPUT_POST, 'search_type');
-				if ($type === "store")
-					$searcher->searchStores();
-				else if ($type === "product")
-					$searcher->searchProducts();
 			?>
 		</ul>
 	</div>
