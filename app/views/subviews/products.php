@@ -13,9 +13,12 @@
                 echo "<a class=\"btn btn-primary\" href='/Product/update/$product->product_id' class='m-2'>Update</a>
                     <a class=\"btn btn-primary\" href='/Product/delete/$product->product_id' onclick='return confirm(\"Are you sure?\");' class='m-2'>Delete</a></div>
                     </div>";
-            } else {
-
+            } else if(isset($_SESSION['order->store_id'])  && $_SESSION['order->store_id'] != $product->store_id) {
                 echo "<a class=\"btn btn-primary\" href='/Cart/addToCart/$product->product_id/$product->store_id' onclick='return confirm(\"Your Cart will be clear if u want to add this product. Are u sure?\")' class='m-2'> Add to Cart </a> 
+                    </div>
+                    </div>";
+            } else {
+                echo "<a class=\"btn btn-primary\" href='/Cart/addToCart/$product->product_id/$product->store_id' class='m-2'> Add to Cart </a> 
                     </div>
                     </div>";
             }

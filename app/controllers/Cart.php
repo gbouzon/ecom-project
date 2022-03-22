@@ -25,11 +25,13 @@
 
                 if($order->store_id == null){
                     $order->updateStore_id($store_id);
+                    $_SESSION['order->store_id'] = $store_id;
                 }
 
                 if($order->store_id != $product->store_id){
                     $cart = new \app\controllers\Cart();
                     $order->updateStore_id($store_id);
+                    $_SESSION['order->store_id'] = $store_id;
                     $cart->clearCart($order->order_id);
                 }
                 
