@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2022 at 02:02 AM
+-- Generation Time: Mar 22, 2022 at 06:17 AM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.1
+-- PHP Version: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -49,7 +49,9 @@ INSERT INTO `order` (`order_id`, `user_id`, `store_id`, `total`, `createAt`, `or
 (6, 12, NULL, NULL, '2022-03-21 03:37:23', 0),
 (7, 10, NULL, NULL, '2022-03-21 03:37:45', 0),
 (8, 15, NULL, NULL, '2022-03-21 03:38:00', 0),
-(9, 15, NULL, NULL, '2022-03-21 04:39:12', 0);
+(9, 15, NULL, NULL, '2022-03-21 04:39:12', 0),
+(10, 5, 3, NULL, '2022-03-22 01:32:30', 0),
+(11, 7, 4, NULL, '2022-03-22 02:40:19', 0);
 
 -- --------------------------------------------------------
 
@@ -74,15 +76,12 @@ INSERT INTO `order_detail` (`order_detail_id`, `order_id`, `product_id`, `quanti
 (9, 1, 5, 1, 13.33),
 (10, 1, 5, 1, 13.33),
 (11, 1, 5, 1, 13.33),
-(17, 1, 1, 1, 3.5),
-(18, 1, 1, 1, 3.5),
 (19, 1, 8, 1, 16),
-(20, 1, 1, 1, 3.5),
-(22, 5, 1, 1, 3.5),
-(23, 5, 1, 1, 3.5),
-(24, 6, 1, 1, 3.5),
 (25, 7, 5, 1, 13.33),
-(73, 4, 5, 1, 13.33);
+(73, 4, 5, 1, 13.33),
+(80, 11, 9, 1, 16),
+(81, 11, 9, 1, 16),
+(82, 11, 10, 1, 14);
 
 -- --------------------------------------------------------
 
@@ -106,13 +105,13 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `store_id`, `product_name`, `product_image`, `product_availability`, `product_quantity`, `product_price`, `product_description`) VALUES
-(1, 1, 'Vanilla Cupcake', 'blank.png', 1, 5, 3.5, 'A simple Vanilla cupcake!'),
-(2, 1, 'Strawberry cupcake', 'blank.png', 1, 10, 3.5, 'A Strawberry cupcake!'),
 (5, 3, 'Cheese Pizza ', 'blank.png', 1, 100, 13.33, 'This is a Chesse Pizza'),
 (6, 5, 'Customer2 Store item 0', 'blank.png', 1, 1, 9.99, 'Customer2 Store item'),
 (8, 3, 'Pepperoni pizza ', '6235ff762f7c0.jpg', 1, 1, 16, 'This is a pepperoni Pizza'),
 (9, 4, 'Poutine', '62377897f40b4.jpg', 1, 100, 16, 'This a an poutine !'),
-(10, 4, 'Rouge Bol', '623778d1cd398.jpg', 1, 100, 14, 'This a Bol');
+(10, 4, 'Rouge Bol', '623778d1cd398.jpg', 1, 100, 14, 'This a Bol'),
+(13, 1, 'Strawberry Cupcake', '62393ae131675.jpg', 1, 12, 2.5, 'A simple strawberry cupcake!'),
+(14, 1, 'Vanilla Cupcake', '', 1, 12, 2.5, 'A simple Vanilla cupcake!');
 
 -- --------------------------------------------------------
 
@@ -231,19 +230,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `order_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `order_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `store`
@@ -265,21 +264,21 @@ ALTER TABLE `user`
 -- Constraints for table `order`
 --
 ALTER TABLE `order`
-  ADD CONSTRAINT `order_store_fk` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`),
-  ADD CONSTRAINT `order_user_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+  ADD CONSTRAINT `order_store_fk` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `order_user_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  ADD CONSTRAINT `order_detail_order_fk` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`),
-  ADD CONSTRAINT `order_detail_product_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
+  ADD CONSTRAINT `order_detail_order_fk` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `order_detail_product_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `store`
 --
 ALTER TABLE `store`
-  ADD CONSTRAINT `User_Store_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+  ADD CONSTRAINT `User_Store_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
