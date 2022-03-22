@@ -20,6 +20,7 @@
                         </div>";
             } else {
                 echo "<a class=\"btn btn-primary\" href='/Cart/addToCart/$product->product_id/$product->store_id' onclick='return confirm(\"Product successfully added to cart!\")' class='m-2'> Add to Cart </a> 
+
                     </div>
                     </div>";
             }
