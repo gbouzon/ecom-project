@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2022 at 07:42 PM
+-- Generation Time: Mar 22, 2022 at 02:02 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `order` (
   `order_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `store_id` int(11) NOT NULL,
+  `store_id` int(11) DEFAULT NULL,
   `total` double DEFAULT NULL,
   `createAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `order_status` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0 = in \r\nCart, 1 = pending, 2 = accepted, 3 = ready to pick up, 4 = close'
@@ -44,7 +44,12 @@ INSERT INTO `order` (`order_id`, `user_id`, `store_id`, `total`, `createAt`, `or
 (1, 8, 3, NULL, '2022-03-20 15:06:00', 0),
 (2, 8, 1, NULL, '2022-03-20 16:46:45', 0),
 (3, 8, 1, NULL, '2022-03-20 16:48:55', 0),
-(4, 15, 1, NULL, '2022-03-20 17:11:47', 0);
+(4, 15, 3, NULL, '2022-03-21 04:42:17', 0),
+(5, 3, 1, NULL, '2022-03-21 02:52:17', 0),
+(6, 12, NULL, NULL, '2022-03-21 03:37:23', 0),
+(7, 10, NULL, NULL, '2022-03-21 03:37:45', 0),
+(8, 15, NULL, NULL, '2022-03-21 03:38:00', 0),
+(9, 15, NULL, NULL, '2022-03-21 04:39:12', 0);
 
 -- --------------------------------------------------------
 
@@ -73,7 +78,11 @@ INSERT INTO `order_detail` (`order_detail_id`, `order_id`, `product_id`, `quanti
 (18, 1, 1, 1, 3.5),
 (19, 1, 8, 1, 16),
 (20, 1, 1, 1, 3.5),
-(21, 4, 1, 1, 3.5);
+(22, 5, 1, 1, 3.5),
+(23, 5, 1, 1, 3.5),
+(24, 6, 1, 1, 3.5),
+(25, 7, 5, 1, 13.33),
+(73, 4, 5, 1, 13.33);
 
 -- --------------------------------------------------------
 
@@ -101,7 +110,21 @@ INSERT INTO `product` (`product_id`, `store_id`, `product_name`, `product_image`
 (2, 1, 'Strawberry cupcake', 'blank.png', 1, 10, 3.5, 'A Strawberry cupcake!'),
 (5, 3, 'Cheese Pizza ', 'blank.png', 1, 100, 13.33, 'This is a Chesse Pizza'),
 (6, 5, 'Customer2 Store item 0', 'blank.png', 1, 1, 9.99, 'Customer2 Store item'),
-(8, 3, 'Pepperoni pizza ', '6235ff762f7c0.jpg', 1, 1, 16, 'This is a pepperoni Pizza');
+(8, 3, 'Pepperoni pizza ', '6235ff762f7c0.jpg', 1, 1, 16, 'This is a pepperoni Pizza'),
+(9, 4, 'Poutine', '62377897f40b4.jpg', 1, 100, 16, 'This a an poutine !'),
+(10, 4, 'Rouge Bol', '623778d1cd398.jpg', 1, 100, 14, 'This a Bol');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_category`
+--
+
+CREATE TABLE `product_category` (
+  `product_category_id` int(11) NOT NULL,
+  `category_name` varchar(50) NOT NULL,
+  `category_description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -122,9 +145,9 @@ CREATE TABLE `store` (
 --
 
 INSERT INTO `store` (`store_id`, `user_id`, `store_name`, `store_address`, `description`) VALUES
-(1, 7, 'The Jane Store', '122, Avenue something', 'Test'),
+(1, 7, 'The Jane Store', '122, Avenue something', 'This is a store for Jane'),
 (3, 4, 'Pizza Store', '4843 12e avenue', ' This is a pizza place lol'),
-(4, 9, 'Change to Pizza Store ', '4843 12e avenue', 'dsfasd');
+(4, 9, 'Poulet Rouge', '4843 12e avenue', 'This is a Poulet rouge Store');
 
 -- --------------------------------------------------------
 
@@ -151,9 +174,9 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`user_id`, `user_type`, `first_name`, `middle_name`, `last_name`, `email`, `phone`, `password_hash`, `picture`) VALUES
 (3, 0, 'Danich', '', 'Hang', 'test@email.com', '51445559999', '$2y$10$m940Yn2vBnKdvdlXb6tNPuv67FFYVB2H/ejRZuvfhfmRC9oUtPHqq', 'blank.jpg'),
 (4, 1, 'Jeremy ', '', 'Vison', 'jeremyvison@hotmail.com', '514555555555', '$2y$10$lwoxhY4Oy0O7zgyGZS5gGOfJe1QfJfM/zbzTWQT3sWnW/zYW1l/16', 'blank.jpg'),
-(5, 0, 'Test', '', 'Bouzon', 'test@gmail.com', '', '$2y$10$WNVhD/V6S4p1xJlnBuGGwOEA9eMXIaMWuSUKfTFrKvRqV34Qku.Au', 'blank.jpg'),
+(5, 0, 'Giuliana', '', 'Bouzon', 'test@gmail.com', '', '$2y$10$WNVhD/V6S4p1xJlnBuGGwOEA9eMXIaMWuSUKfTFrKvRqV34Qku.Au', 'blank.jpg'),
 (6, 0, 'Test', '', 'LN', 'test2@gmail.com', '', '$2y$10$22OmPhpZJ9qGGPIqHP5SyudHGh1duP1SOlS3IQuW9A/lJfLjqB9x.', 'blank.jpg'),
-(7, 1, 'TarzanTest', '', 'Tarzan', 'tarzan@gmail.com', '', '$2y$10$AdsrMkKusrGe8E3j52SrGuTZc5gXGa1sHKJ4zMv4bUVVtkAfD/GAG', 'blank.jpg'),
+(7, 1, 'Tarzan', '', 'Tarzan', 'tarzan@gmail.com', '', '$2y$10$AdsrMkKusrGe8E3j52SrGuTZc5gXGa1sHKJ4zMv4bUVVtkAfD/GAG', 'blank.jpg'),
 (8, 0, 'David', '', 'H', 'David@hotmail.com', '444444444', '$2y$10$DmBcPSHFHz.IyL7wZy3Xie9awxEPXOSfzTvu2CPSpoky1nbvP7y06', 'blank.jpg'),
 (9, 1, 'Pizza', '', 'Owner', 'Pizza@gmail.c0m', '', '$2y$10$cI/U7cWgFMz9cYGHyCzUJexw2GVhjKjBvtd/R9C38OIQljHpBa6Dq', 'blank.jpg'),
 (10, 0, 'pizza', '', 'pizzA', 'PIZAAA@email.com', '', '$2y$10$tdEjyULpOjETswvFCQJ40e8tKQ5NolJyP3AAcq4e44JkwZEAyERbK', 'blank.jpg'),
@@ -208,19 +231,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `order_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `order_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `store`
