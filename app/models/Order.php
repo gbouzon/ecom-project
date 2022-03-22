@@ -27,7 +27,7 @@
                 // where status is != to 0
                 $SQL = 'SELECT * FROM `order` WHERE user_id = :user_id';
                 $STMT = self::$_connection->prepare($SQL);
-                $STMT->execute(['user_id'=>$user_id, 'store_id'=>$store_id ]);
+                $STMT->execute(['user_id'=>$user_id]);
                 $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Order");
                 return $STMT->fetchAll();
             }

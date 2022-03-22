@@ -3,7 +3,7 @@
 
         class Main extends \app\core\Controller {
 
-            public function index() { //TODO: implement, figure out format
+            public function index() { 
                 $stores = new \app\models\Store();
                 $stores = $stores->getAll(); 
                 $this->view('Main/index', $stores);
@@ -21,7 +21,7 @@
         
                 $fileData = getimagesize($file['tmp_name']); 
                 if ($fileData && in_array($fileData['mime'],array_keys($acceptedTypes))) {
-                    $folder = 'app\\pictures';
+                    $folder = 'pictures';
                     $filename = uniqid() . '.' . $acceptedTypes[$fileData['mime']];
                     move_uploaded_file($_FILES[$file_uploaded]['tmp_name'],"$folder\\$filename");
                 }

@@ -13,15 +13,10 @@
                 $this->view('subviews/navigation');
             ?>
             <br> <h1 class="text-center">Welcome to Meal Times!</h1> <br>
-
-
-            
             <div>
                 <?php
                     $this->view('subviews/storeList', $data);
-                ?>
-
-                
+                ?>   
         </div>
     </body>
 </html>

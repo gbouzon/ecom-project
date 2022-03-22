@@ -21,6 +21,7 @@
                         if (password_verify($_POST['password'], $user->password_hash)) {
                             $_SESSION['email'] = $user->email;
                             $_SESSION['user_id'] = $user->user_id;
+
                             $cart = new \app\controllers\Cart();
                             $cart = $cart->createCart();
 
@@ -82,8 +83,8 @@
                     } else {
                         $filename = Main::imageUpload("picture");
                         if (!$filename) {
-                            if ($user->picture != 'blank.jpg')
-                                unlink('app\\pictures\\' . $user->picture);
+                            if ($user->picture != 'blank.png')
+                                unlink('pictures\\' . $user->picture);
 
                             $user->picture = $filename;
                         }

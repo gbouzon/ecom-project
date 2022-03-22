@@ -15,7 +15,7 @@
                     if (!isset($_POST['action'])) { 
                         $this->view('Product/create');
                     }
-                    else {  //implement pictures later
+                    else { 
                         $filename = Main::imageUpload("product_image");
                         $product = new \app\models\Product();
                         $product->store_id = $store_id;
@@ -53,7 +53,7 @@
                         $filename = Main::imageUpload("product_image");
                         if (!$filename) {
                             if ($product->product_image != 'blank.jpg')
-                                unlink('app\\pictures\\' . $product->product_image);
+                                unlink('pictures\\' . $product->product_image);
 
                             $product->product_imagee = $filename;
                         }
@@ -77,8 +77,8 @@
                 $product = $product->get($product_id);
 
                 if ($product->store_id == $_SESSION['store_id']) { //checking if product belongs to store
-                    if ($product->product_image != 'blank.jpg')
-                        unlink('app\\pictures\\' . $product->product_image);
+                    if ($product->product_image != 'blank.png')
+                        unlink('pictures\\' . $product->product_image);
                         
                     $product->delete();
                 }

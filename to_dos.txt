@@ -14,4 +14,5 @@ DONE - implement addToCart
 DONE - make tables for cart and orders
 
 - need a check in addToCart(), only one cart per User, clear Cart(update Store_id) if user want to add an item from an difference Store 
+- add buttons to change product quantities in cart and add checks (make sure it doesn't exceed stock, if == 0 change availability)
 

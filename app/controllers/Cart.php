@@ -1,10 +1,10 @@
 <?php
     namespace app\controllers;
 
+        #[\app\filters\Login]
         class Cart extends \app\core\Controller {
 
-            #[\app\filters\Login]
-            public function index(){
+            public function index() {
 
                 $cart = new \app\models\Order();
                 $cart = $cart->getUserCart($_SESSION['user_id']);
@@ -12,10 +12,8 @@
                 $products = new \app\models\Order_detail();
                 $products = $products->getOrder($cart->order_id);
                 $this->view('Cart/index', $products);
-
             }
 
-            #[\app\filters\Login]
             public function addToCart($product_id, $store_id){
                 $product = new \app\models\Product();
                 $product = $product->get($product_id);
@@ -30,6 +28,7 @@
                 if($order->store_id != $product->store_id){
                     $cart = new \app\controllers\Cart();
                     $order->updateStore_id($store_id);
+                    $_SESSION['order->store_id'] = $store_id;
                     $cart->clearCart($order->order_id);
                 }
                 
@@ -43,16 +42,13 @@
                header('location:/Store/index/' . $store_id);
             }
 
-            public function createCart(){
+            public function createCart() {
                 $cart = new \app\models\Order();
                 $cart->user_id = $_SESSION['user_id'];
                 $cart->order_status = 0; 
                 $cart->order_id = $cart->create();
             }
 
-
-
-            #[\app\filters\Login]
             public function deleteFromCart($order_detail_id){
                 $product = new \app\models\Order_detail();
                 $product = $product->get($order_detail_id);
@@ -65,7 +61,6 @@
                 header('location:/Cart/Index');   
             }
 
-            #[\app\filters\Login]
             public function clearCart($order_id){
                 $cart_products = new \app\models\Order_detail();
                 $cart_products = $cart_products->getOrder($order_id);
@@ -80,5 +75,3 @@
                 header('location:/Cart/Index');   
             }
         }
-
-

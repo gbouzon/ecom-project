@@ -12,21 +12,21 @@
             <?php
                 $this->view('subviews/navigation');
             ?>
-            <br> <h1 class="text-center">Cart Detail</h1> <br>
+            <br> <h1 class="text-center">Your Cart</h1> <br>
             <?php
-                if($data == "error"){
+                if ($data == "error"){
                     $this->view('Cart/error');
                 }
             ?>
             <table class="table table-striped">
                 <tr><th></th><th>Name</th><th>Quantity</th><th>Price</th><th>Action</th></tr>
                 <?php
-                 foreach ($data as $order_detail) {
-                 $product = new \app\models\Product();
-                 $product = $product->get($order_detail->product_id);
-                    echo " <tr><td><img alt = '' src = 'ecom\\ecom-project\\app\\pictures\\<?= $product->product_image?>' width = 100 height = 100></td>
-                     <td>$product->product_name</td><td>$order_detail->quantity</td><td>$product->product_price</td>
-                     <td><a href='/Cart/deleteFromCart/$order_detail->order_detail_id' onclick='return confirm(\"Are you sure?\");' class='m-2'>Delete</a></td></tr>";
+                    foreach ($data as $order_detail) {
+                        $product = new \app\models\Product();
+                        $product = $product->get($order_detail->product_id);
+                        echo " <tr><td><img alt = '' src = '\\pictures\\$product->product_image' width = 100 height = 100></td>
+                            <td>$product->product_name</td><td>$order_detail->quantity</td><td>$$product->product_price</td>
+                            <td><a href='/Cart/deleteFromCart/$order_detail->order_detail_id' onclick='return confirm(\"Are you sure?\");' class='m-2'>Delete</a></td></tr>";
                     }
                 ?>
             </table>
