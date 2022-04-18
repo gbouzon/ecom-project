@@ -59,4 +59,16 @@
                 $STMT = self::$_connection->prepare($SQL);
                 $STMT->execute(['store_id'=>$store_id,'order_id'=>$this->order_id]);
             }
+
+            function updateStatus($status) {
+                $SQL = 'UPDATE `order` SET order_status  = :status WHERE order_id = :order_id';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute(['status'=>$status,'order_id'=>$this->order_id]);
+            }
+
+            function addTotal($total) {
+                $SQL = 'UPDATE `order` SET total  = :total WHERE order_id = :order_id';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute(['total'=>$total,'order_id'=>$this->order_id]);
+            }
         }
