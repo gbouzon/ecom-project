@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2022 at 06:17 AM
+-- Generation Time: Apr 18, 2022 at 07:32 PM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.0.13
+-- PHP Version: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,14 +44,16 @@ INSERT INTO `order` (`order_id`, `user_id`, `store_id`, `total`, `createAt`, `or
 (1, 8, 3, NULL, '2022-03-20 15:06:00', 0),
 (2, 8, 1, NULL, '2022-03-20 16:46:45', 0),
 (3, 8, 1, NULL, '2022-03-20 16:48:55', 0),
-(4, 15, 3, NULL, '2022-03-21 04:42:17', 0),
+(4, 15, 4, NULL, '2022-03-22 04:03:17', 0),
 (5, 3, 1, NULL, '2022-03-21 02:52:17', 0),
-(6, 12, NULL, NULL, '2022-03-21 03:37:23', 0),
+(6, 12, 1, NULL, '2022-04-18 17:22:23', 1),
 (7, 10, NULL, NULL, '2022-03-21 03:37:45', 0),
 (8, 15, NULL, NULL, '2022-03-21 03:38:00', 0),
 (9, 15, NULL, NULL, '2022-03-21 04:39:12', 0),
-(10, 5, 3, NULL, '2022-03-22 01:32:30', 0),
-(11, 7, 4, NULL, '2022-03-22 02:40:19', 0);
+(10, 15, NULL, NULL, '2022-03-22 01:11:17', 0),
+(11, 15, NULL, NULL, '2022-03-22 03:59:12', 0),
+(12, 12, 3, 30.652335, '2022-04-18 17:25:39', 1),
+(13, 12, NULL, NULL, '2022-04-18 14:02:42', 0);
 
 -- --------------------------------------------------------
 
@@ -64,6 +66,7 @@ CREATE TABLE `order_detail` (
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL DEFAULT 0,
+  `unit_price` double NOT NULL,
   `price` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -71,17 +74,10 @@ CREATE TABLE `order_detail` (
 -- Dumping data for table `order_detail`
 --
 
-INSERT INTO `order_detail` (`order_detail_id`, `order_id`, `product_id`, `quantity`, `price`) VALUES
-(5, 1, 5, 1, 13.33),
-(9, 1, 5, 1, 13.33),
-(10, 1, 5, 1, 13.33),
-(11, 1, 5, 1, 13.33),
-(19, 1, 8, 1, 16),
-(25, 7, 5, 1, 13.33),
-(73, 4, 5, 1, 13.33),
-(80, 11, 9, 1, 16),
-(81, 11, 9, 1, 16),
-(82, 11, 10, 1, 14);
+INSERT INTO `order_detail` (`order_detail_id`, `order_id`, `product_id`, `quantity`, `unit_price`, `price`) VALUES
+(112, 6, 1, 2, 3.5, 7),
+(114, 6, 2, 1, 3.5, 3.5),
+(115, 12, 5, 2, 13.33, 26.66);
 
 -- --------------------------------------------------------
 
@@ -105,13 +101,13 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `store_id`, `product_name`, `product_image`, `product_availability`, `product_quantity`, `product_price`, `product_description`) VALUES
+(1, 1, 'Vanilla Cupcake', 'blank.png', 1, 5, 3.5, 'A simple Vanilla cupcake!'),
+(2, 1, 'Strawberry cupcake', 'blank.png', 1, 10, 3.5, 'A Strawberry cupcake!'),
 (5, 3, 'Cheese Pizza ', 'blank.png', 1, 100, 13.33, 'This is a Chesse Pizza'),
 (6, 5, 'Customer2 Store item 0', 'blank.png', 1, 1, 9.99, 'Customer2 Store item'),
 (8, 3, 'Pepperoni pizza ', '6235ff762f7c0.jpg', 1, 1, 16, 'This is a pepperoni Pizza'),
 (9, 4, 'Poutine', '62377897f40b4.jpg', 1, 100, 16, 'This a an poutine !'),
-(10, 4, 'Rouge Bol', '623778d1cd398.jpg', 1, 100, 14, 'This a Bol'),
-(13, 1, 'Strawberry Cupcake', '62393ae131675.jpg', 1, 12, 2.5, 'A simple strawberry cupcake!'),
-(14, 1, 'Vanilla Cupcake', '', 1, 12, 2.5, 'A simple Vanilla cupcake!');
+(10, 4, 'Rouge Bol', '623778d1cd398.jpg', 1, 100, 14, 'This a Bol');
 
 -- --------------------------------------------------------
 
@@ -199,7 +195,7 @@ ALTER TABLE `order`
 --
 ALTER TABLE `order_detail`
   ADD PRIMARY KEY (`order_detail_id`),
-  ADD KEY `order_detail_order_fk` (`order_id`),
+  ADD UNIQUE KEY `order_id` (`order_id`,`product_id`),
   ADD KEY `order_detail_product_fk` (`product_id`);
 
 --
@@ -230,19 +226,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `order_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `order_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `store`
@@ -264,21 +260,21 @@ ALTER TABLE `user`
 -- Constraints for table `order`
 --
 ALTER TABLE `order`
-  ADD CONSTRAINT `order_store_fk` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `order_user_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `order_store_fk` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`),
+  ADD CONSTRAINT `order_user_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  ADD CONSTRAINT `order_detail_order_fk` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `order_detail_product_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `order_detail_order_fk` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`),
+  ADD CONSTRAINT `order_detail_product_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 --
 -- Constraints for table `store`
 --
 ALTER TABLE `store`
-  ADD CONSTRAINT `User_Store_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `User_Store_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
