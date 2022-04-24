@@ -31,6 +31,18 @@
                 return $STMT->fetchAll();
             }
 
+            function getAllProducts($order_id) {
+                $SQL = 'SELECT order_detail.order_id, order_detail.product_id, order_detail.quantity,  product.product_id , product.product_name 
+                FROM order_detail 
+                INNER JOIN product
+                ON order_detail.product_id = product.product_id
+                WHERE order_id = :order_id';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute(['order_id'=>$order_id]);
+                $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Order_detail");
+                return $STMT->fetchAll();
+            }
+
             function getByUser($user_id) {
                 $SQL = 'SELECT * FROM order_detail WHERE user_id = :user_id';
                 $STMT = self::$_connection->prepare($SQL);
@@ -39,7 +51,6 @@
                 return $STMT->fetchAll();
             }
 
-            
             function insert() {
                 $SQL = 'INSERT INTO order_detail(order_id, product_id, quantity, price, unit_price)VALUES(:order_id, :product_id, :quantity, :price, :unit_price) ON DUPLICATE KEY UPDATE quantity =  quantity + :quantity, price = price + unit_price';
                 $STMT = self::$_connection->prepare($SQL);

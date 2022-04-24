@@ -3,15 +3,42 @@
 
         class order extends \app\core\Controller {
 
-            public function index($product_id) { 
-               
-            }
-
-            public function orderHistory($user_id) { 
+            #[\app\filters\Login]
+            public function userOrderHistory() { 
+                $orders = new \app\models\Order();
+                $orders = $orders->getUserOrder($_SESSION['user_id']);
                // retrieve the order and the order_detail 
-               $this->view('Order/orderHistory');
+               $this->view('Order/userOrderHistory', $orders);
             }
 
+            #[\app\filters\LoginAsStore]
+            public function storeOrderList() { 
+                $orders = new \app\models\Order();
+                $orders = $orders->getStoreOrder($_SESSION['store_id']);
+                $productArray = [];
+                
+                $products = new \app\models\Order_detail();
+                foreach($orders as $order){
+                    array_push($productArray, $products->getAllProducts($order->order_id));
+                }
+               $this->view('Order/storeOrderList', array($orders, $productArray));
+            }
+
+            #[\app\filters\LoginAsStore]
+            public function storeOrderHistory() { 
+                $orders = new \app\models\Order();
+                $orders = $orders->getStoreClosedOrder($_SESSION['store_id']);
+                $productArray = [];
+                
+                $products = new \app\models\Order_detail();
+                foreach($orders as $order){
+                    array_push($productArray, $products->getAllProducts($order->order_id));
+                }
+               $this->view('Order/storeOrderHistory', array($orders, $productArray));
+            }
+
+
+            #[\app\filters\Login]
             public function orderPlace($order_id){
                 $order = new \app\models\Order();
                 $order = $order->get($order_id);
@@ -31,12 +58,32 @@
                 } else {
                     $order->updateStatus(1);
                     $order->addTotal($total['Total']); 
-                    header('Location:/Order/orderHistory/' . $_SESSION['user_id']);
+                    $cart = new \app\controllers\Cart();
+                    $cart->createCart();
+                    header('Location:/Order/userOrderHistory');
                 }
                
             }
 
-            public function totalPrice($order_id){
+            #[\app\filters\Login]
+            public function viewOrderDetails($store_id, $order_id, $flag){
+                $total = $this::totalPrice($order_id);
+                $store = new \app\models\Store();
+                $store = $store->get($store_id);
+
+                $user = new \app\models\User();
+                $user = $user->getById($_SESSION['user_id']);
+
+                $items = new \app\models\Order_detail();
+                $items = $items->getOrder($order_id);
+
+                if($flag != 1)
+                    $this->view('Order/orderDetails', array($store, $user, $items, $total));
+                else 
+                    $this->view('Order/storeOrderDetails', array($store, $user, $items, $total));   
+            }
+
+            private function totalPrice($order_id){
                 $TPSratio = 0.05;
                 $TVQratio = 0.09975; 
                 $subtotal = 0; 
@@ -55,19 +102,27 @@
                 return $totalPrice; 
             }
 
-            #[\app\filters\LoginAsStore]
-            public function create($store_id) {
-               
-            }
+            #[\app\filters\Login]
+             public function userCancelOrder($order_id){
+                $cart = new \app\controllers\Cart();
+                $order = new \app\models\Order();
+                $order = $order->get($order_id);
+
+                if($order->order_status == 1){
+                    // set the order status to 0; 
+                    $order->updateStatus(0);
+                    // clear cart
+                    $cart->clear($order->order_id);
+                    header('Location:/Order/userOrderHistory');
+                }
+             }
 
             #[\app\filters\LoginAsStore]
-            public function update($product_id) {
-               
-            }
+            public function updateStatus($order_id, $newStatus) {
+                $order = new \app\models\Order();
+                $order = $order->get($order_id);
 
-            #[\app\filters\LoginAsStore]
-            public function delete($product_id) {
-
-            }
-            
+                $order->updateStatus($newStatus);
+                header('Location:/Order/storeOrderHistory');
+            }       
         }

@@ -13,13 +13,21 @@
 					echo "<li class= \"nav-item active\" >
 							<a class= \"nav-link\" href='/User/login'>Log in</a>
 							</li>";
+				}else {
+					if(!isset($_SESSION['store_id'])){
+						echo "<li class=\"nav-item active\"><a class= \"nav-link\" href='/User/index/".$_SESSION['user_id']."'>My Profile</a></li>";
+						echo "<li class=\"nav-item active\"><a class= \"nav-link\" href='/Order/userOrderHistory'>Order History</a></li>";
+						echo "<li class=\"nav-item active\"><a class= \"nav-link\" href='/Cart/index'>Cart</a></li>";
+						echo "<li class=\"nav-item active\"><a class= \"nav-link\" href='/User/logout'>Log out</a></li>";
+					} else{
+						echo "<li class=\"nav-item active\"><a class= \"nav-link\" href='/User/index/".$_SESSION['user_id']."'>My Profile</a></li>";
+						echo "<li class=\"nav-item active\"><a class= \"nav-link\" href='/Order/storeOrderList'>Order List</a></li>";
+						echo "<li class=\"nav-item active\"><a class= \"nav-link\" href='/Order/storeOrderHistory'>Order History</a></li>";
+						echo "<li class=\"nav-item active\"><a class= \"nav-link\" href='/User/logout'>Log out</a></li>";
+						
+					}
 				}
-				else { 
-					echo "<li class=\"nav-item active\"><a class= \"nav-link\" href='/User/index/".$_SESSION['user_id']."'>My Profile</a></li>";
-					echo "<li class=\"nav-item active\"><a class= \"nav-link\" href='/Cart/index'>Cart</a></li>";
-					echo "<li class=\"nav-item active\"><a class= \"nav-link\" href='/User/logout'>Log out</a></li>";
-					
-				}	
+				 	
 				$this->view('Search/index');
 				?>
 			
