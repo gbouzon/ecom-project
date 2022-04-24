@@ -14,6 +14,14 @@
                 $this->view('Cart/index', $products);
             }
 
+
+            public function createCart() {
+                $cart = new \app\models\Order();
+                $cart->user_id = $_SESSION['user_id'];
+                $cart->order_status = 0; 
+                $cart->order_id = $cart->create();
+            }
+
             public function addToCart($product_id, $store_id){
                 $product = new \app\models\Product();
                 $product = $product->get($product_id);
