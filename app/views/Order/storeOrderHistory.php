@@ -56,7 +56,7 @@
                         
                         <div class='card-body'>
                         <p> <b>Total:</b> $ " . round($order->total,2) . "<p/>
-                        <a href='/Order/viewOrderDetails/$order->store_id/$order->order_id/1' class='btn btn-outline-secondary'>Detail</a>
+                        <a href='/Order/viewOrderDetails/$order->user_id/$order->order_id/1' class='btn btn-outline-secondary'>Detail</a>
                         </div>
                         </div>";
                     }  

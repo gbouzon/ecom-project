@@ -22,9 +22,9 @@
                         <h4>Client information</h4>  
 				    </div>
 				    <div class='card-body'>
-                        <label class='form-label'><span style='font-size:110%;'>Name: </span><?= $data[1]->first_name ?> <?= $data[1]->middle_name ?> <?= $data[1]->last_name ?></label> </label><br>
-                        <label class='form-label'><span style='font-size:110%;'>Email: </span><?= $data[1]->email ?></label><br>
-                        <label class='form-label'><span style='font-size:110%;'>Phone number: </span><?= $data[1]->phone ?></label><br>
+                        <label class='form-label'><span style='font-size:110%;'>Name: </span><?= $data[0]->first_name ?> <?= $data[0]->middle_name ?> <?= $data[0]->last_name ?></label> </label><br>
+                        <label class='form-label'><span style='font-size:110%;'>Email: </span><?= $data[0]->email ?></label><br>
+                        <label class='form-label'><span style='font-size:110%;'>Phone number: </span><?= $data[0]->phone ?></label><br>
 				    </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
         <table class="table table-striped">
             <tr><th></th><th>Name</th><th>Quantity</th><th>Price</th></tr>
             <?php
-                foreach ($data[2] as $order_detail) {
+                foreach ($data[1] as $order_detail) {
                     $product = new \app\models\Product();
                     $product = $product->get($order_detail->product_id);
                     echo " <tr><td><img alt = '' src = '\\pictures\\$product->product_image' width = 100 height = 100></td>
@@ -44,10 +44,10 @@
                 }        
             ?>
             
-            <tr><td>Subtotal</td><th></th><th></th><td> $<?=round($data[3]['subtotal'], 2)?></td></tr>
-            <tr><td>TPS CA</td><th></th><th></th><td>$<?=round($data[3]['TPS'], 2)?></td></tr>
-            <tr><td>TVQ QC</td><th></th><th></th><td>$<?=round($data[3]['TVQ'],2)?></td></tr>
-            <tr><th>Total</th><th></th><th></th><th>$<?=round($data[3]['Total'],2)?></th></tr>
+            <tr><td>Subtotal</td><th></th><th></th><td> $<?=round($data[2]['subtotal'], 2)?></td></tr>
+            <tr><td>TPS CA</td><th></th><th></th><td>$<?=round($data[2]['TPS'], 2)?></td></tr>
+            <tr><td>TVQ QC</td><th></th><th></th><td>$<?=round($data[2]['TVQ'],2)?></td></tr>
+            <tr><th>Total</th><th></th><th></th><th>$<?=round($data[2]['Total'],2)?></th></tr>
             </table>
         </div>
     </body>

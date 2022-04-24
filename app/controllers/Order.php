@@ -66,10 +66,8 @@
             }
 
             #[\app\filters\Login]
-            public function viewOrderDetails($store_id, $order_id, $flag){
+            public function viewOrderDetails($id, $order_id, $flag){
                 $total = $this::totalPrice($order_id);
-                $store = new \app\models\Store();
-                $store = $store->get($store_id);
 
                 $user = new \app\models\User();
                 $user = $user->getById($_SESSION['user_id']);
@@ -77,10 +75,17 @@
                 $items = new \app\models\Order_detail();
                 $items = $items->getOrder($order_id);
 
-                if($flag != 1)
+                if($flag != 1){
+                    $store = new \app\models\Store();
+                    $store = $store->get($id);
+                    $user = $user->getById($_SESSION['user_id']);
+                    
                     $this->view('Order/orderDetails', array($store, $user, $items, $total));
-                else 
-                    $this->view('Order/storeOrderDetails', array($store, $user, $items, $total));   
+                }else{
+                    $user = $user->getById($id);
+                    $this->view('Order/storeOrderDetails', array($user, $items, $total));  
+                }
+                
             }
 
             private function totalPrice($order_id){
