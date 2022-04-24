@@ -28,9 +28,10 @@
                             
                             $sum += $order_detail->price;     
                         }
+                        echo " <tr><th>Subtotal</th><th></th><th></th><th></th><th>$ $sum</th></tr>";
                     }     
                 ?>
-                  <tr><th>Subtotal</th><th></th><th></th><th></th><th>$<?=$sum?></th></tr>
+                 
             </table>
 
             <?php if($data != null){ 

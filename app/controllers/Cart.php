@@ -5,7 +5,6 @@
         class Cart extends \app\core\Controller {
 
             public function index() {
-
                 $cart = new \app\models\Order();
                 $cart = $cart->getUserCart($_SESSION['user_id']);
 
@@ -38,7 +37,7 @@
                     $cart = new \app\controllers\Cart();
                     $order->updateStore_id($store_id);
                     $_SESSION['order->store_id'] = $store_id;
-                    $cart->clearCart($order->order_id);
+                    $cart->clear($order->order_id);
                 }
 
                 $newProduct = new \app\models\Order_detail();
@@ -72,6 +71,11 @@
             }
 
             public function clearCart($order_id){
+                $this::clear($order_id);
+                header('location:/Cart/Index');   
+            }
+
+            public function clear($order_id){
                 $cart_products = new \app\models\Order_detail();
                 $cart_products = $cart_products->getOrder($order_id);
                
@@ -82,6 +86,5 @@
                         $product->delete();  
                     }
                 }
-                header('location:/Cart/Index');   
             }
         }
