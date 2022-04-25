@@ -3,7 +3,7 @@
    
         class User extends \app\core\Controller {
             
-            #[\app\filters\Login]
+            #[\app\filters\Auth]
             public function index($user_id) {
                 $myUser = new \app\models\User();
                 $myUser = $myUser->getById($user_id);
@@ -21,6 +21,11 @@
                         if (password_verify($_POST['password'], $user->password_hash)) {
                             $_SESSION['email'] = $user->email;
                             $_SESSION['user_id'] = $user->user_id;
+
+                            if ($user->secret_key != null)
+                                header('location:/User/validate2fa');
+                            else
+                                header('location:/User/setup2fa');
 
                             $cart = new \app\controllers\Cart();
                             $cart = $cart->createCart();
@@ -73,7 +78,7 @@
                 }
             }
 
-            #[\app\filters\Login]
+            #[\app\filters\Auth]
             function update($user_id) {
                 $user = new \app\models\User();
                 $user = $user->getById($user_id);//get the specific user
@@ -103,7 +108,7 @@
                     header('location:/User/index/' . $user_id); // in case manipulating the url
             }
 
-            #[\app\filters\Login]
+            #[\app\filters\Auth]
             function delete($user_id) {
                 if ($user_id == $_SESSION['user_id']) {
                     $user = new \app\models\User();
@@ -127,12 +132,56 @@
                 $user->updateUserType(); 
             }
 
-            //TODO: implement for part 2
-            public function changePassword($user_id) {
-
+            public function makeQRCode() {
+                $data = $_GET['data'];
+                \QRcode::png($data);
             }
         
-            #[\app\filters\Login]
+            public function setup2fa() {
+                if (isset($_POST['action'])) {
+                    $currentcode = $_POST['currentCode'];
+                    if (\App\core\TokenAuth6238::verify($_SESSION['secretkey'], $currentcode)) {
+                        //the user has verified their proper 2-factor authentication setup
+                        $user = new \App\models\User();
+                        $user = $user->getById($_SESSION['user_id']);
+                        $user->secret_key = $_SESSION['secretkey'];
+                        $user->update2fa();
+                        header('location:/User/index/' . $_SESSION['user_id']);
+                    }
+                    else {
+                        header('location:/User/setup2fa?error=tokennot verified!');//reload
+                    }
+                }
+                else {
+                    $secretkey = \app\core\TokenAuth6238::generateRandomClue();
+                    $_SESSION['secretkey'] = $secretkey;
+                    $url = \App\core\TokenAuth6238::getLocalCodeUrl($_SESSION['email'], 'MealTimes.com', $secretkey,'Meal Times');
+                    $this->view('User/twofasetup', $url);
+                }
+            }
+        
+            public function validate2FA() {
+                $user = new \App\models\User();
+                $user = $user->getById($_SESSION['user_id']);
+                if ($user->secret_key != null) {
+                    if (isset($_POST['action'])) {
+                        $code = $_POST['code'];
+                        $secret = $user->secret_key;
+                        if (\App\core\TokenAuth6238::verify($secret, $code)) {
+                            $_SESSION['secretkey'] = $secret;
+                            header('location:/User/index/' . $_SESSION['user_id']);
+                        }
+                        else
+                            $this->view('User/validate2fa','Invalid code. Please re-enter.');
+                    }
+                    else
+                        $this->view('User/validate2fa');
+                }
+                else
+                    header('location:/User/setup2fa');  
+            }
+        
+            //#[\app\filters\Auth]
             function logout() {
                 session_destroy(); //deletes the session ID and all data
                 header('location:/Main/index');

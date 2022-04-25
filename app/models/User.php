@@ -60,4 +60,11 @@
                 $STMT = self::$_connection->prepare($SQL);
                 $STMT->execute(['user_id'=>$_SESSION['user_id']]);
             }
+
+            
+            function update2fa() {
+                $SQL = 'UPDATE user SET secret_key = :secret_key WHERE user_id = :user_id';
+                $STMT = self::$_connection->prepare($SQL);
+                $STMT->execute(['secret_key'=>$this->secret_key,'user_id'=>$this->user_id]);
+            }
         }

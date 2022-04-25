@@ -7,7 +7,7 @@
 		<title>User login</title>
 	</head>
 	<body>
-		<div class='container'>
+		<div class='container' style='text-align:center;'>
 			<?php
 				$this->view('subviews/navigation');
 			?>
