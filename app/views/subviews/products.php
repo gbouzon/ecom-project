@@ -1,12 +1,13 @@
 <h2 class = "text-center">Products:</h2>
+<div style='text-align:center;'>
     <?php
         foreach ($data as $product) {
             echo "<div class='card'>
-            <img class=\"card-img-top\" alt = '' src = '\\pictures\\$product->product_image' width = 200 height = 200> 
+            <img class=\"card-img-top\" alt = '' src = '\\pictures\\$product->product_image' style = 'max-width:200px;max-height:200px;display:block;margin-left:auto;margin-right:auto;'> 
                     <div class='card-body'> 
                     <h5 class=\"card-title\"> <a href = '/Product/index/$product->product_id'>$product->product_name</a> </h5>
                    <h6 class=\"card-subtitle mb-2 text-muted\"> Price: $$product->product_price</h6>
-                   <br> <br>
+                    
                    <p class=\"card-text\"> Description: $product->product_description</p>";
 
             if (isset($_SESSION['store_id']) && $_SESSION['store_id'] == $product->store_id) {
@@ -35,4 +36,5 @@
             }
         }
     ?>
+</div>
  

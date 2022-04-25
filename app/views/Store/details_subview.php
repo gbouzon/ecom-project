@@ -7,14 +7,16 @@
         <title><?= $data->store_name?></title>
     </head>
     <body>
-        <h1 class = text-center><?= $data->store_name?></h1>
+        <br><h1 class = text-center><?= $data->store_name?></h1> <br>
         <form method='post' action=''>
-            <label class='form-label'>Store address:<input disabled type='text' name='store_address' class='form-control' value='<?= $data->store_address?>' /></label><br>
+            <label class='form-label'>Store address:<input disabled type='text' name='store_address' class='form-control' value='<?= $data->store_address?>' /></label><br> <br>
             <label class='form-label'>Store description:<textarea disabled type='text' name='description'  cols="80" class='form-control' > <?= $data->description?></textarea></label><br>
         </form>
             <?php
                 if (isset($_SESSION['store_id']) && $_SESSION['store_id'] == $data->store_id) {
-                    echo "<a href='/Product/create/$data->store_id'>Add a product</a>  | <a href='/Store/update/$data->store_id'>Update Store Page</a> | <a href='/Store/delete/$data->store_id'>Delete Store</a> <br> <br>";
+                    echo "<a class=\"btn btn-primary \" href='/Product/create/$data->store_id' class='m-2'>Add a product</a>  
+                     <a class=\"btn btn-primary \" href='/Store/update/$data->store_id' class='m-2'>Update Store Page</a> 
+                      <a class=\"btn btn-primary \" href='/Store/delete/$data->store_id' class='m-2'>Delete Store</a> <br> <br>";
                 }
 
                 $products = $data->getProducts($data->store_id);

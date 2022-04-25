@@ -38,7 +38,7 @@
                 foreach ($data[1] as $order_detail) {
                     $product = new \app\models\Product();
                     $product = $product->get($order_detail->product_id);
-                    echo " <tr><td><img alt = '' src = '\\pictures\\$product->product_image' width = 100 height = 100></td>
+                    echo " <tr><td><img alt = '' src = '\\pictures\\$product->product_image' style = 'max-width:200px;max-height:200px;'></td>
                             <td>$product->product_name</td><td>$order_detail->quantity</td><td>$$product->product_price</td>
                             </tr>";
                 }        

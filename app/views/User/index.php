@@ -12,31 +12,35 @@
         <?php
             $this->view('subviews/navigation');
         ?>
-
-            <h1><?= $data->first_name . " " . $data->last_name?>'s Profile</h1>
-            <form method='post' action='' enctype = 'multipart/form-data'>
-                <label class = 'form-label'>Profile picture: <br>
+            <div style = 'text-align:center;'>
+                <h1><?= $data->first_name . " " . $data->last_name?>'s Profile</h1>
+                <form method='post' action='' enctype = 'multipart/form-data'>
+                    <label class = 'form-label'>Profile picture: <br>
+                    <?php
+                        echo "<img alt = '' src = '\\pictures\\$data->picture' style = 'max-width:200px;max-height:200px;display:block;margin-left:auto;margin-right:auto;'> <br>";
+                    ?>
+                    <label class='form-label'>First name:<input disabled type='text' name='first_name' class='form-control' value = '<?= $data->first_name?>' /></label>
+                    <label class='form-label'>Middle name:<input disabled type='text' name='middle_name' class='form-control' value = '<?= $data->middle_name?>' /></label>
+                    <label class='form-label'>Last name:<input disabled type='text' name='last_name' class='form-control'value = '<?= $data->last_name?>'  /></label> <br>
+                    <label class='form-label'>Email:<input disabled type='email' name='email' class='form-control' value = '<?= $data->email?>' /></label><br>
+                    <label class='form-label'>Phone number:<input disabled type='text' name='phone' class='form-control' value = '<?= $data->phone?>' /></label><br>
+                    
+                </form>
                 <?php
-                    echo "<img alt = '' src = '\\pictures\\$data->picture' width = 100 height = 100> <br>";
-                ?>
-                <label class='form-label'>First name:<input disabled type='text' name='first_name' class='form-control' value = '<?= $data->first_name?>' /></label>
-                <label class='form-label'>Middle name:<input disabled type='text' name='middle_name' class='form-control' value = '<?= $data->middle_name?>' /></label>
-                <label class='form-label'>Last name:<input disabled type='text' name='last_name' class='form-control'value = '<?= $data->last_name?>'  /></label> <br>
-                <label class='form-label'>Email:<input disabled type='email' name='email' class='form-control' value = '<?= $data->email?>' /></label><br>
-                <label class='form-label'>Phone number:<input disabled type='text' name='phone' class='form-control' value = '<?= $data->phone?>' /></label><br>
-                
-            </form>
-            <?php
-                if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $data->user_id) {
-                    echo "<a href='/User/update/$data->user_id'>Update</a> | <a href='/User/delete/$data->user_id'>Delete</a>";
-                    if (!isset($_SESSION['store_id']))
-                        echo " | <a href ='/Store/create/$data->user_id'>Create a Store</a> <br>";
-                }
 
-                if ($data->getStore($data->user_id)) {
-                    $this->view('Store/details_subview', $data->getStore($data->user_id));
-                }
-            ?>
+                    if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $data->user_id) {
+                        echo "<a class=\"btn btn-primary\" href='/User/update/$data->user_id' class='m-2' >Update</a>
+                        <a class=\"btn btn-primary\" href='/User/delete/$data->user_id' class='m-2'>Delete</a>";
+                        if (!isset($_SESSION['store_id']))
+                            echo "<a class=\"btn btn-primary\" href ='/Store/create/$data->user_id' class='m-2'>Create a Store</a> <br>";
+                    }
+
+                    if ($data->getStore($data->user_id)) {
+                        echo "<br> <br>";
+                        $this->view('Store/details_subview', $data->getStore($data->user_id));
+                    }
+                ?>
+            </div>
         </div>
     </body>
 </html>

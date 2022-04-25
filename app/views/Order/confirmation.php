@@ -10,7 +10,6 @@
         <div class='container'>
         <?php
             $this->view('subviews/navigation');
-           
         ?>
 
         <h1>Order Confirmation </h1>
