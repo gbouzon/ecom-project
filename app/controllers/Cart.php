@@ -25,29 +25,34 @@
                 $product = new \app\models\Product();
                 $product = $product->get($product_id);
 
-                $order = new \app\models\Order();
-                $order = $order->getUserCart($_SESSION['user_id']);
+                if ($product->product_availability == 1) {
 
-                if($order->store_id == null){
-                    $order->updateStore_id($store_id);
-                    $_SESSION['order->store_id'] = $store_id;
+                    $order = new \app\models\Order();
+                    $order = $order->getUserCart($_SESSION['user_id']);
+
+                    if($order->store_id == null) {
+                        $order->updateStore_id($store_id);
+                        $_SESSION['order->store_id'] = $store_id;
+                    }
+
+                    if($order->store_id != $product->store_id){
+                        $cart = new \app\controllers\Cart();
+                        $order->updateStore_id($store_id);
+                        $_SESSION['order->store_id'] = $store_id;
+                        $cart->clear($order->order_id);
+                    }
+
+                    $newProduct = new \app\models\Order_detail();
+                    $newProduct->order_id = $order->order_id;
+                    $newProduct->product_id = $product_id;
+                    $newProduct->quantity = 1;
+                    $newProduct->unit_price = $product->product_price;
+                    $newProduct->price = $product->product_price;
+                    $newProduct->insert();
+                    header('location:/Store/index/' . $store_id);
                 }
-
-                if($order->store_id != $product->store_id){
-                    $cart = new \app\controllers\Cart();
-                    $order->updateStore_id($store_id);
-                    $_SESSION['order->store_id'] = $store_id;
-                    $cart->clear($order->order_id);
-                }
-
-                $newProduct = new \app\models\Order_detail();
-                $newProduct->order_id = $order->order_id;
-                $newProduct->product_id = $product_id;
-                $newProduct->quantity = 1;
-                $newProduct->unit_price = $product->product_price;
-                $newProduct->price = $product->product_price;
-                $newProduct->insert();
-               header('location:/Store/index/' . $store_id);
+                else
+                    header('location:/Store/index/' . $store_id);
             }
 
 
@@ -62,7 +67,8 @@
                         $product->quantity = $product->quantity - 1;
                         $product->price = $product->price - $product->unit_price;
                         $product->updatePriceAndQty();
-                    }else {
+                    }
+                    else {
                         $product->delete(); 
                     } 
                     

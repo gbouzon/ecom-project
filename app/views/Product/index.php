@@ -13,7 +13,7 @@
         <h2><?= $data->product_name?></h2>
         <div>
             <?php
-                echo "<img alt = '' src = '\\pictures\\$data->product_image' width = 200 height = 200>";
+                echo "<img alt = '' src = '\\pictures\\$data->product_image' style = 'max-height:200px;'>";
             ?>
             <form method='post' action=''>
                 <label class='form-label'>Product price:<input disabled type='number' name='product_price' class='form-control' value ='<?= $data->product_price ?>' /></label> <br>

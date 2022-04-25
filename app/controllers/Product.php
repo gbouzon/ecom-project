@@ -21,10 +21,13 @@
                         $product->store_id = $store_id;
                         $product->product_name = trim($_POST['product_name']);
                         $product->product_image = $filename; 
-                        $product->product_availability = $this->getAvailability(trim($_POST['product_quantity']));
-                        $product->product_quantity = trim($_POST['product_quantity']);
                         $product->product_price = trim($_POST['product_price']);
                         $product->product_description = trim($_POST['product_description']);
+
+                        if (isset($_POST['product_availability']))
+                            $product->isAvailable(true);
+                        else
+                            $product->isAvailable(false);
 
                         $product->insert();
                         header("location:/Store/index/". $_SESSION['store_id']);
@@ -32,13 +35,6 @@
                 }
                 else 
                     header("location:/Store/index/". $_SESSION['store_id']);
-            }
-
-            private function getAvailability($quantity) {
-                if ($quantity == 0)
-                    return 0;
-                else 
-                    return 1;
             }
 
             #[\app\filters\LoginAsStore]
@@ -59,9 +55,13 @@
                         }
 
                         $product->product_name = trim($_POST['product_name']);
-                        $product->product_quantity= trim($_POST['product_quantity']);
                         $product->product_price = trim($_POST['product_price']);
                         $product->product_description = trim($_POST['product_description']);
+
+                        if (isset($_POST['product_availability']))
+                            $product->isAvailable(true);
+                        else
+                            $product->isAvailable(false);
 
                         $product->update($product_id);        
                         header('location:/Store/index/' . $_SESSION['store_id']);
@@ -82,7 +82,6 @@
                         
                     $product->delete();
                 }
-
                 header('location:/Store/index/' . $_SESSION['store_id']);
             } 
         }

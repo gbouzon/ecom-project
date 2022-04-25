@@ -40,7 +40,7 @@
             }
     
             function insert($user_id) { 
-                if (isset($_SESSION['user_id']) || $_SESSION['user_id'] == $user_id) {
+                if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $user_id) {
                     $SQL = 'INSERT INTO store(user_id, store_name, store_address, description) VALUES(:user_id, :store_name, :store_address, :description)';
                     $STMT = self::$_connection->prepare($SQL);
                     $STMT->execute(['user_id'=>$user_id, 'store_name'=>$this->store_name, 'store_address'=>$this->store_address, 'description'=>$this->description]);

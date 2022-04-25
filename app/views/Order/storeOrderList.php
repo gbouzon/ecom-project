@@ -22,17 +22,17 @@
                                 <h6> Order at: $order->createAt</h6>
                                 ";
  
-						if($order->order_status == 1){
+						if ($order->order_status == 1) {
                             // chose to accepte, decline
 							echo "<a href='/Order/updateStatus/$order->order_id/2' class='btn btn-outline-success'>Accept order</a>&ensp;
                                 <a href='/Order/updateStatus/$order->order_id/0' class='btn btn-outline-danger'>Decline order</a>";
-						}else if($order->order_status == 2){
+						} else if ($order->order_status == 2) {
                             // finish order
 							echo "<a href='/Order/updateStatus/$order->order_id/3' class='btn btn-outline-secondary'>Order is ready for pick-up</a>";
-						}else if($order->order_status == 3){
+						} else if ($order->order_status == 3){
                             // client can come and pick up
 							echo "<a href='/Order/updateStatus/$order->order_id/4' class='btn btn-outline-secondary'>Order was pick-up</a>";
-						}else if($order->order_status == 4){
+						} else if ($order->order_status == 4){
                             // when the client pick up the order
 							echo "<h6> Closed </h6>";
 						}   
@@ -43,20 +43,20 @@
                         </div>
                         ";
                     
-                        echo" <ul class='list-group list-group-flush'>";
-                            foreach($data[1] as $products){
+                        echo " <ul class='list-group list-group-flush'>";
+                            foreach($data[1] as $products) {
                               
-                                foreach($products as $product){
-                                    if($product->order_id == $order->order_id){
+                                foreach ($products as $product) {
+                                    if ($product->order_id == $order->order_id) {
                                         echo "<li class='list-group-item'> $product->quantity  $product->product_name</li>";
                                     }
                                 }
-                               }
+                            }
                         echo "</ul>
                         
                         <div class='card-body'>
                         <p> <b>Total:</b> $ " . round($order->total,2) . "<p/>
-                        <a href='/Order/viewOrderDetails/$order->store_id/$order->order_id/1' class='btn btn-outline-secondary'>Detail</a>
+                        <a href='/Order/viewOrderDetails/$order->user_id/$order->order_id/1' class='btn btn-outline-secondary'>Detail</a>
                         </div>
                         </div>";
                     }  

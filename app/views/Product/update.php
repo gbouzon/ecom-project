@@ -9,14 +9,22 @@
     <body>
         <?php
             $this->view('subviews/navigation');
+            $available = ($data->product_availability == 0) ? false : true;
         ?>
         
         <div class='container'>
            
             <form method='post' action='' enctype = 'multipart/form-data'>
-				<label class='form-label'>Product name:<input type='text' name='product_name' class='form-control' value= '<?= $data->product_name?>' /></label>
-				<label class='form-label'>Product quantity:<input type='number' name='product_quantity' class='form-control' value='<?= $data->product_quantity?>'/></label>
+				<label class='form-label'>Product name:<input type='text' name='product_name' class='form-control' value= '<?= $data->product_name?>' /></label> <br>
 				<label class='form-label'>Product price:<input type='double' name='product_price' class='form-control' value='<?= $data->product_price?>' /></label> <br>
+                <label class='form-label'>Product available:&ensp;<input type='checkbox' name='product_availability' class='form-check-input' 
+                    <?php 
+                        if ($available) 
+                            echo 'checked';
+                        else 
+                            echo 'unchecked';
+                    ?>/>
+                </label> <br>
                 <label class='form-label'>Product description:<textarea name='product_description' cols="80" class='form-control'><?= $data->product_description?></textarea></label><br>
 
 				<label class = 'form-label'>Product picture (if you want to change it): 

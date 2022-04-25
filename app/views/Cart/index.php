@@ -17,12 +17,12 @@
             <table class="table table-striped">
                 <tr><th></th><th>Name</th><th>Quantity</th><th>Price</th><th>Action</th></tr>
                 <?php
-                $sum = 0; 
+                    $sum = 0; 
                     if($data != null){
                         foreach ($data as $order_detail) {
                             $product = new \app\models\Product();
                             $product = $product->get($order_detail->product_id);
-                            echo " <tr><td><img alt = '' src = '\\pictures\\$product->product_image' width = 100 height = 100></td>
+                            echo " <tr><td><img alt = '' src = '\\pictures\\$product->product_image' style = 'max-width:200px;' ></td>
                                 <td>$product->product_name</td><td>$order_detail->quantity</td><td>$$order_detail->price</td>
                                 <td><a href='/Cart/deleteFromCart/$order_detail->order_detail_id' onclick='return confirm(\"Are you sure?\");' class='m-2'>Delete</a></td></tr>";
                             
@@ -34,9 +34,10 @@
                  
             </table>
 
-            <?php if($data != null){ 
-                echo "<a href='/Cart/clearCart/$order_detail->order_id' class='btn btn-success'> Clear Cart</a>
-                <a href='/Order/orderPlace/$order_detail->order_id' class='btn btn-success'> Place Order</a>";
+            <?php 
+                if($data != null){ 
+                    echo "<a href='/Cart/clearCart/$order_detail->order_id' class='btn btn-success'> Clear Cart</a>
+                        <a href='/Order/orderPlace/$order_detail->order_id' class='btn btn-success'> Place Order</a>";
             }?>
             
         </div>
