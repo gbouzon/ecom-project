@@ -27,7 +27,7 @@
 
 				<input class="form-check-input" type="radio" name="user_type" value="1"><label class="form-check-label" >Store</label> <br>
 
-				<label class = 'form-label'>Profile picture (if you want to change it): 
+				<label class = 'form-label'>Profile picture
                     <input type = 'file' name = 'picture' class = 'form-control'></label><br>
 				
 				

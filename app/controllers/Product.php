@@ -47,11 +47,11 @@
                     }
                     else {
                         $filename = Main::imageUpload("product_image");
-                        if (!$filename) {
+                        if ($filename) {
                             if ($product->product_image != 'blank.jpg')
                                 unlink('pictures\\' . $product->product_image);
 
-                            $product->product_imagee = $filename;
+                            $product->product_image = $filename;
                         }
 
                         $product->product_name = trim($_POST['product_name']);
@@ -77,7 +77,7 @@
                 $product = $product->get($product_id);
 
                 if ($product->store_id == $_SESSION['store_id']) { //checking if product belongs to store
-                    if ($product->product_image != 'blank.png')
+                    if ($product->product_image != 'blank.jpg')
                         unlink('pictures\\' . $product->product_image);
                         
                     $product->delete();

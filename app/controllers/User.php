@@ -56,7 +56,6 @@
                     $this->view('User/register');
                 else { 
                     $filename = Main::imageUpload("picture");
-			        $filename = (!$filename) ? 'blank.png' : $filename;
 
                     $newUser = new \app\models\User();
                     $newUser->email = trim($_POST['email']);
@@ -78,7 +77,7 @@
                 }
             }
 
-            #[\app\filters\Auth]
+            #[\app\filters\Login]
             function update($user_id) {
                 $user = new \app\models\User();
                 $user = $user->getById($user_id);//get the specific user
@@ -87,8 +86,8 @@
                         $this->view('User/update', $user);
                     } else {
                         $filename = Main::imageUpload("picture");
-                        if (!$filename) {
-                            if ($user->picture != 'blank.png')
+                        if ($filename) {
+                            if ($user->picture != 'blank.jpg')
                                 unlink('pictures\\' . $user->picture);
 
                             $user->picture = $filename;
@@ -108,7 +107,7 @@
                     header('location:/User/index/' . $user_id); // in case manipulating the url
             }
 
-            #[\app\filters\Auth]
+            #[\app\filters\Login]
             function delete($user_id) {
                 if ($user_id == $_SESSION['user_id']) {
                     $user = new \app\models\User();
@@ -138,7 +137,7 @@
             }
         
             public function setup2fa() {
-                if (isset($_POST['action'])) {
+                if (isset($_POST['2fa'])) {
                     $currentcode = $_POST['currentCode'];
                     if (\App\core\TokenAuth6238::verify($_SESSION['secretkey'], $currentcode)) {
                         //the user has verified their proper 2-factor authentication setup
@@ -152,6 +151,9 @@
                         header('location:/User/setup2fa?error=tokennot verified!');//reload
                     }
                 }
+                else if (isset($_POST['no_2fa'])) {
+                    header('location:/User/index/' . $_SESSION['user_id']);
+                }
                 else {
                     $secretkey = \app\core\TokenAuth6238::generateRandomClue();
                     $_SESSION['secretkey'] = $secretkey;
@@ -164,7 +166,7 @@
                 $user = new \App\models\User();
                 $user = $user->getById($_SESSION['user_id']);
                 if ($user->secret_key != null) {
-                    if (isset($_POST['action'])) {
+                    if (isset($_POST['2fa'])) {
                         $code = $_POST['code'];
                         $secret = $user->secret_key;
                         if (\App\core\TokenAuth6238::verify($secret, $code)) {
@@ -181,7 +183,7 @@
                     header('location:/User/setup2fa');  
             }
         
-            //#[\app\filters\Auth]
+            #[\app\filters\Login]
             function logout() {
                 session_destroy(); //deletes the session ID and all data
                 header('location:/Main/index');

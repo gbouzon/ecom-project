@@ -3,7 +3,7 @@
 
         class order extends \app\core\Controller {
 
-            #[\app\filters\Auth]
+            #[\app\filters\Login]
             public function userOrderHistory() { 
                 $orders = new \app\models\Order();
                 $orders = $orders->getUserOrder($_SESSION['user_id']);
@@ -37,7 +37,7 @@
                $this->view('Order/storeOrderHistory', array($orders, $productArray));
             }
 
-            #[\app\filters\Auth]
+            #[\app\filters\Login]
             public function orderPlace($order_id){
                 $order = new \app\models\Order();
                 $order = $order->get($order_id);
@@ -64,7 +64,7 @@
                
             }
 
-            #[\app\filters\Auth]
+            #[\app\filters\Login]
             public function viewOrderDetails($id, $order_id, $flag){
                 $total = $this::totalPrice($order_id);
 
@@ -106,7 +106,7 @@
                 return $totalPrice; 
             }
 
-            #[\app\filters\Auth]
+            #[\app\filters\Login]
              public function userCancelOrder($order_id){
                 $cart = new \app\controllers\Cart();
                 $order = new \app\models\Order();

@@ -1,7 +1,7 @@
 <?php
     namespace app\controllers;
 
-        #[\app\filters\Auth]
+        #[\app\filters\Login]
         class Cart extends \app\core\Controller {
 
             public function index() {
