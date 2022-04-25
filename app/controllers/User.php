@@ -22,11 +22,6 @@
                             $_SESSION['email'] = $user->email;
                             $_SESSION['user_id'] = $user->user_id;
 
-                            if ($user->secret_key != null)
-                                header('location:/User/validate2fa');
-                            else
-                                header('location:/User/setup2fa');
-
                             $cart = new \app\controllers\Cart();
                             $cart = $cart->createCart();
 
@@ -40,8 +35,12 @@
                                 else 
                                     header('location:/Store/create/' . $_SESSION['user_id']);
                             }
-                            else
-                                header('location:/Main/index'); 
+                            else {
+                                if ($user->secret_key != null)
+                                    header('location:/User/validate2fa');
+                                else
+                                    header('location:/User/setup2fa');
+                            }
                         }
                         else 
                             $this->view('User/login', 'Incorrect email/password combination.');
@@ -77,7 +76,7 @@
                 }
             }
 
-            #[\app\filters\Login]
+            #[\app\filters\Auth]
             function update($user_id) {
                 $user = new \app\models\User();
                 $user = $user->getById($user_id);//get the specific user
@@ -107,7 +106,7 @@
                     header('location:/User/index/' . $user_id); // in case manipulating the url
             }
 
-            #[\app\filters\Login]
+            #[\app\filters\Auth]
             function delete($user_id) {
                 if ($user_id == $_SESSION['user_id']) {
                     $user = new \app\models\User();
@@ -152,6 +151,7 @@
                     }
                 }
                 else if (isset($_POST['no_2fa'])) {
+                    $_SESSION['secretkey'] = "nope";
                     header('location:/User/index/' . $_SESSION['user_id']);
                 }
                 else {

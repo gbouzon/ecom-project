@@ -9,7 +9,7 @@
                 $this->view('Store/index', $store);
             }
             
-            #[\app\filters\Login]
+            #[\app\filters\Auth]
             public function create($user_id) {
                 if ($user_id == $_SESSION['user_id']) {
                     if (!isset($_POST['action'])) {	//display the view if I don't submit the form
