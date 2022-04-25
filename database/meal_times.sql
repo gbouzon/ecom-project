@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2022 at 07:32 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.1
+-- Generation Time: Apr 25, 2022 at 09:19 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -53,7 +53,11 @@ INSERT INTO `order` (`order_id`, `user_id`, `store_id`, `total`, `createAt`, `or
 (10, 15, NULL, NULL, '2022-03-22 01:11:17', 0),
 (11, 15, NULL, NULL, '2022-03-22 03:59:12', 0),
 (12, 12, 3, 30.652335, '2022-04-18 17:25:39', 1),
-(13, 12, NULL, NULL, '2022-04-18 14:02:42', 0);
+(13, 12, NULL, NULL, '2022-04-18 14:02:42', 0),
+(14, 7, NULL, NULL, '2022-04-25 03:15:55', 0),
+(15, 5, 1, NULL, '2022-04-25 07:01:43', 0),
+(16, 7, NULL, NULL, '2022-04-25 06:30:15', 0),
+(17, 5, NULL, NULL, '2022-04-25 06:54:54', 0);
 
 -- --------------------------------------------------------
 
@@ -77,7 +81,8 @@ CREATE TABLE `order_detail` (
 INSERT INTO `order_detail` (`order_detail_id`, `order_id`, `product_id`, `quantity`, `unit_price`, `price`) VALUES
 (112, 6, 1, 2, 3.5, 7),
 (114, 6, 2, 1, 3.5, 3.5),
-(115, 12, 5, 2, 13.33, 26.66);
+(115, 12, 5, 2, 13.33, 26.66),
+(120, 15, 2, 2, 3.5, 7);
 
 -- --------------------------------------------------------
 
@@ -91,7 +96,6 @@ CREATE TABLE `product` (
   `product_name` varchar(30) NOT NULL,
   `product_image` varchar(50) DEFAULT 'blank.png',
   `product_availability` tinyint(4) NOT NULL DEFAULT 1 COMMENT 'product is generally available when it''s added. 0 means sold out and 1 means available',
-  `product_quantity` int(11) NOT NULL,
   `product_price` double NOT NULL,
   `product_description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -100,26 +104,14 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`product_id`, `store_id`, `product_name`, `product_image`, `product_availability`, `product_quantity`, `product_price`, `product_description`) VALUES
-(1, 1, 'Vanilla Cupcake', 'blank.png', 1, 5, 3.5, 'A simple Vanilla cupcake!'),
-(2, 1, 'Strawberry cupcake', 'blank.png', 1, 10, 3.5, 'A Strawberry cupcake!'),
-(5, 3, 'Cheese Pizza ', 'blank.png', 1, 100, 13.33, 'This is a Chesse Pizza'),
-(6, 5, 'Customer2 Store item 0', 'blank.png', 1, 1, 9.99, 'Customer2 Store item'),
-(8, 3, 'Pepperoni pizza ', '6235ff762f7c0.jpg', 1, 1, 16, 'This is a pepperoni Pizza'),
-(9, 4, 'Poutine', '62377897f40b4.jpg', 1, 100, 16, 'This a an poutine !'),
-(10, 4, 'Rouge Bol', '623778d1cd398.jpg', 1, 100, 14, 'This a Bol');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `product_category`
---
-
-CREATE TABLE `product_category` (
-  `product_category_id` int(11) NOT NULL,
-  `category_name` varchar(50) NOT NULL,
-  `category_description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `product` (`product_id`, `store_id`, `product_name`, `product_image`, `product_availability`, `product_price`, `product_description`) VALUES
+(1, 1, 'Vanilla Cupcake', 'blank.png', 0, 3.5, 'A simple Vanilla cupcake!'),
+(2, 1, 'Strawberry cupcake', 'blank.png', 1, 3.5, 'A Strawberry cupcake!'),
+(5, 3, 'Cheese Pizza ', 'blank.png', 1, 13.33, 'This is a Chesse Pizza'),
+(6, 5, 'Customer2 Store item 0', 'blank.png', 1, 9.99, 'Customer2 Store item'),
+(8, 3, 'Pepperoni pizza ', '6235ff762f7c0.jpg', 1, 16, 'This is a pepperoni Pizza'),
+(9, 4, 'Poutine', '62377897f40b4.jpg', 1, 16, 'This a an poutine !'),
+(10, 4, 'Rouge Bol', '623778d1cd398.jpg', 1, 14, 'This a Bol');
 
 -- --------------------------------------------------------
 
@@ -159,24 +151,25 @@ CREATE TABLE `user` (
   `email` varchar(254) NOT NULL,
   `phone` varchar(30) DEFAULT NULL,
   `password_hash` varchar(63) NOT NULL,
-  `picture` varchar(50) NOT NULL DEFAULT 'blank.jpg'
+  `picture` varchar(50) NOT NULL DEFAULT 'blank.jpg',
+  `secret_key` varchar(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `user_type`, `first_name`, `middle_name`, `last_name`, `email`, `phone`, `password_hash`, `picture`) VALUES
-(3, 0, 'Danich', '', 'Hang', 'test@email.com', '51445559999', '$2y$10$m940Yn2vBnKdvdlXb6tNPuv67FFYVB2H/ejRZuvfhfmRC9oUtPHqq', 'blank.jpg'),
-(4, 1, 'Jeremy ', '', 'Vison', 'jeremyvison@hotmail.com', '514555555555', '$2y$10$lwoxhY4Oy0O7zgyGZS5gGOfJe1QfJfM/zbzTWQT3sWnW/zYW1l/16', 'blank.jpg'),
-(5, 0, 'Giuliana', '', 'Bouzon', 'test@gmail.com', '', '$2y$10$WNVhD/V6S4p1xJlnBuGGwOEA9eMXIaMWuSUKfTFrKvRqV34Qku.Au', 'blank.jpg'),
-(6, 0, 'Test', '', 'LN', 'test2@gmail.com', '', '$2y$10$22OmPhpZJ9qGGPIqHP5SyudHGh1duP1SOlS3IQuW9A/lJfLjqB9x.', 'blank.jpg'),
-(7, 1, 'Tarzan', '', 'Tarzan', 'tarzan@gmail.com', '', '$2y$10$AdsrMkKusrGe8E3j52SrGuTZc5gXGa1sHKJ4zMv4bUVVtkAfD/GAG', 'blank.jpg'),
-(8, 0, 'David', '', 'H', 'David@hotmail.com', '444444444', '$2y$10$DmBcPSHFHz.IyL7wZy3Xie9awxEPXOSfzTvu2CPSpoky1nbvP7y06', 'blank.jpg'),
-(9, 1, 'Pizza', '', 'Owner', 'Pizza@gmail.c0m', '', '$2y$10$cI/U7cWgFMz9cYGHyCzUJexw2GVhjKjBvtd/R9C38OIQljHpBa6Dq', 'blank.jpg'),
-(10, 0, 'pizza', '', 'pizzA', 'PIZAAA@email.com', '', '$2y$10$tdEjyULpOjETswvFCQJ40e8tKQ5NolJyP3AAcq4e44JkwZEAyERbK', 'blank.jpg'),
-(12, 0, 'customer1', '', 'customer1', 'customer1@email.com', '', '$2y$10$0KRM8jHFaNrtqXq5QnThRuQPCx/fROQDKbxuL8OQLL6RE4NS.rApC', 'blank.jpg'),
-(15, 0, 'New user', '', 'New user', 'Newuser@gmail.com', '', '$2y$10$xNpCOY.5g99RelSvPhIbr.KPkxnyEDOpc.2mauvIJTKh7dVsTQa4e', 'blank.jpg');
+INSERT INTO `user` (`user_id`, `user_type`, `first_name`, `middle_name`, `last_name`, `email`, `phone`, `password_hash`, `picture`, `secret_key`) VALUES
+(3, 0, 'Danich', '', 'Hang', 'test@email.com', '51445559999', '$2y$10$m940Yn2vBnKdvdlXb6tNPuv67FFYVB2H/ejRZuvfhfmRC9oUtPHqq', 'blank.jpg', NULL),
+(4, 1, 'Jeremy ', '', 'Vison', 'jeremyvison@hotmail.com', '514555555555', '$2y$10$lwoxhY4Oy0O7zgyGZS5gGOfJe1QfJfM/zbzTWQT3sWnW/zYW1l/16', 'blank.jpg', NULL),
+(5, 0, 'Giuliana', '', 'Bouzon', 'test@gmail.com', '', '$2y$10$WNVhD/V6S4p1xJlnBuGGwOEA9eMXIaMWuSUKfTFrKvRqV34Qku.Au', 'blank.jpg', NULL),
+(6, 0, 'Test', '', 'LN', 'test2@gmail.com', '', '$2y$10$22OmPhpZJ9qGGPIqHP5SyudHGh1duP1SOlS3IQuW9A/lJfLjqB9x.', 'blank.jpg', NULL),
+(7, 1, 'Tarzan', '', 'Tarzan', 'tarzan@gmail.com', '', '$2y$10$AdsrMkKusrGe8E3j52SrGuTZc5gXGa1sHKJ4zMv4bUVVtkAfD/GAG', 'blank.jpg', NULL),
+(8, 0, 'David', '', 'H', 'David@hotmail.com', '444444444', '$2y$10$DmBcPSHFHz.IyL7wZy3Xie9awxEPXOSfzTvu2CPSpoky1nbvP7y06', 'blank.jpg', NULL),
+(9, 1, 'Pizza', '', 'Owner', 'Pizza@gmail.c0m', '', '$2y$10$cI/U7cWgFMz9cYGHyCzUJexw2GVhjKjBvtd/R9C38OIQljHpBa6Dq', 'blank.jpg', NULL),
+(10, 0, 'pizza', '', 'pizzA', 'PIZAAA@email.com', '', '$2y$10$tdEjyULpOjETswvFCQJ40e8tKQ5NolJyP3AAcq4e44JkwZEAyERbK', 'blank.jpg', NULL),
+(12, 0, 'customer1', '', 'customer1', 'customer1@email.com', '', '$2y$10$0KRM8jHFaNrtqXq5QnThRuQPCx/fROQDKbxuL8OQLL6RE4NS.rApC', 'blank.jpg', NULL),
+(15, 0, 'New user', '', 'New user', 'Newuser@gmail.com', '', '$2y$10$xNpCOY.5g99RelSvPhIbr.KPkxnyEDOpc.2mauvIJTKh7dVsTQa4e', 'blank.jpg', NULL);
 
 --
 -- Indexes for dumped tables
@@ -226,13 +219,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `order_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `order_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- AUTO_INCREMENT for table `product`
