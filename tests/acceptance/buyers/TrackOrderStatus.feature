@@ -4,6 +4,6 @@ Feature: track my order status
     I need to be able to track my order status
 
     Scenario: try viewing order status 
-    Given I am logged into my account and have placed an order
-    When I click on "View Order Status"
-    Then I see a status bar with the corresponding status
+    Given I am logged in with "test2@gmail.com" and "1234"
+    When I click "Order History"
+    Then I see "Pending Order..."
