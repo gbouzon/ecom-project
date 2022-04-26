@@ -21,11 +21,6 @@
                         return true; 
                     }
 
-                    else if (isset($_SESSION['user_id'])) {
-                        header('location:/User/validate2fa');
-                        return true;
-                    }
-
                     else {
                         header('location:/User/register'); //if not logged in as user -> redirecting to register
                         return true;

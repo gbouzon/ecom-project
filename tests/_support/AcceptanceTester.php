@@ -84,6 +84,7 @@ class AcceptanceTester extends \Codeception\Actor
         $this->fillField('email', $email);
         $this->fillField('password', $password);
         $this->click("Login!");
+        $this->click("Skip 2FA");
         $this->click('My Profile');
         $this->click($link);
     }
@@ -96,6 +97,7 @@ class AcceptanceTester extends \Codeception\Actor
         $this->fillField('email', $email);
         $this->fillField('password', $password);
         $this->click("Login!");
+        $this->click("Skip 2FA");
     }
 
     /**
@@ -105,6 +107,16 @@ class AcceptanceTester extends \Codeception\Actor
         $this->fillField($field1, $value1);
         $this->fillField($field2, $value2);
         $this->fillField($field3, $value3);
+        $this->click($button);
+    }
+
+    /**
+     * @When I enter :value1 in :field1 and check :box and :value2 in :field2 and click :button
+     */
+    public function iEnterInAndCheckandInAndClick($value1, $field1, $box, $value2, $field2, $button) {
+        $this->fillField($field1, $value1);
+        $this->fillField($field2, $value2);
+        $this->checkOption($box);
         $this->click($button);
     }
 
@@ -134,14 +146,6 @@ class AcceptanceTester extends \Codeception\Actor
         $this->fillField($field1, $value1);
         $this->fillField($field2, $value2);
         $this->click($button);
-    }
-
-    
-    /**
-     * @Given I am on the store's page
-     */
-    public function iAmOnTheStoresPage() {
-        throw new \PHPUnit\Framework\IncompleteTestError("Step `I am on the store's page` is not defined");
     }
     
     /**

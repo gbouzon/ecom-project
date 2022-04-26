@@ -7,9 +7,12 @@
         <title>Profile update</title>
     </head>
     <body>
-        <div class='container'>
+        <div class='container' style='text-align:center;'>
+        <?php
+			$this->view('subviews/navigation');
+		?>
 
-            <h1>Update your profile</h1>
+            <h1>Update your profile</h1> <br>
             <form method='post' action='' enctype = 'multipart/form-data'>
                 <label class='form-label'>First name:<input type='text' name='first_name' class='form-control' value='<?= $data->first_name ?>' /></label>
                 <label class='form-label'>Middle name:<input type='text' name='middle_name' class='form-control' value='<?= $data->middle_name ?>' /></label>
@@ -17,8 +20,8 @@
                 <label class='form-label'>Email:<input type='text' name='email' class='form-control' value='<?= $data->email ?>' /></label><br>
                 <label class='form-label'>Phone number:<input type='text' name='phone' class='form-control' value='<?= $data->phone ?>' /></label><br>
                 <label class = 'form-label'>Profile picture (if you want to change it): 
-                    <input type = 'file' name = 'picture' class = 'form-control'></label><br>
-                <input type="submit" name='action' value='Update!' class='form-control' />
+                    <input type = 'file' name = 'picture' class = 'form-control'></label><br> <br>
+                <input class = 'btn btn-primary' type="submit" name='action' value='Update!' class='form-control' />
             </form>
         </div>
     </body>

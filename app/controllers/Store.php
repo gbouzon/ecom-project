@@ -3,6 +3,7 @@
 
         class Store extends \app\core\Controller { 
 
+            
             public function index($store_id) { //shows store profile?
                 $myStore = new \app\models\Store();
                 $store = $myStore->get($store_id);

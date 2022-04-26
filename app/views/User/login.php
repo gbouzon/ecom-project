@@ -11,11 +11,11 @@
 			<?php
 				$this->view('subviews/navigation');
 			?>
-		<h1>Log into your user account</h1>
+		<h1>Log into your user account</h1> <br>
 		<form method='post' action=''>
 			<label class='form-label'>Email:<input type='text' name='email' class='form-control' /></label><br>
-			<label class='form-label'>Password:<input type='password' name='password' class='form-control' /></label><br>
-			<input type="submit" name='action' value='Login!' class='form-control' />
+			<label class='form-label'>Password:<input type='password' name='password' class='form-control' /></label><br> <br>
+			<input class = 'btn btn-primary' type="submit" name='action' value='Login!' class='form-control' /> <br> <br>
 		</form>
 		No account? <a href="/User/register">Register here.</a> <br>
 			<?php

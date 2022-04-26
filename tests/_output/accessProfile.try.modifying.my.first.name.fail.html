@@ -1,23 +1,20 @@
 <html>
-	<head>
-		<!-- CSS only -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-		<!-- JavaScript Bundle with Popper -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-		<title>User login</title>
-	</head>
-	<body>
-		<div class='container'>
-			<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+    <head>
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+            <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <title>Acceptance Tester</title>
+    </head>
+    <body>
+        
+        <div class='container'>
+        <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
 	<div class="collapse navbar-collapse" >
 		<ul class="navbar-nav">
 			<li class="nav-item active"><a class="nav-link" href='/Main/index'>Home</a></li>
 
-			<li class= "nav-item active" >
-					<a class= "nav-link" href='/User/register'>Register</a>
-					</li><li class= "nav-item active" >
-							<a class= "nav-link" href='/User/login'>Log in</a>
-							</li>			<html>
+			<li class="nav-item active"><a class= "nav-link" href='/User/index/21'>My Profile</a></li><li class="nav-item active"><a class= "nav-link" href='/Order/userOrderHistory'>Order History</a></li><li class="nav-item active"><a class= "nav-link" href='/Cart/index'>Cart</a></li><li class="nav-item active"><a class= "nav-link" href='/User/logout'>Log out</a></li><html>
 	<head>
 		<title>Search</title>
 	</head>
@@ -31,18 +28,26 @@
 			<button type="submit" name="action">Search</button>
 		</form>
 	</body>
-</html>		</ul>
+</html>			
+		</ul>
 	</div>
 </nav>
-		<h1>Log into your user account</h1>
-		<form method='post' action=''>
-			<label class='form-label'>Email:<input type='text' name='email' class='form-control' /></label><br>
-			<label class='form-label'>Password:<input type='password' name='password' class='form-control' /></label><br>
-			<input type="submit" name='action' value='Login!' class='form-control' />
-		</form>
-		No account? <a href="/User/register">Register here.</a> <br>
-					
-			
-		</div>
-	</body>
+
+	
+
+            <div style = 'text-align:center;'>
+                <h1>Acceptance Tester's Profile</h1>
+                <form method='post' action='' enctype = 'multipart/form-data'>
+                    <label class = 'form-label'>Profile picture: <br>
+                    <img alt = '' src = '\pictures\' style = 'max-width:200px;max-height:200px;display:block;margin-left:auto;margin-right:auto;'> <br>                    <label class='form-label'>First name:<input disabled type='text' name='first_name' class='form-control' value = 'Acceptance' /></label>
+                    <label class='form-label'>Middle name:<input disabled type='text' name='middle_name' class='form-control' value = 'Test' /></label>
+                    <label class='form-label'>Last name:<input disabled type='text' name='last_name' class='form-control'value = 'Tester'  /></label> <br>
+                    <label class='form-label'>Email:<input disabled type='email' name='email' class='form-control' value = 'tester@gmail.com' /></label><br>
+                    <label class='form-label'>Phone number:<input disabled type='text' name='phone' class='form-control' value = '' /></label><br> <br>
+                    
+                </form>
+                <a class="btn btn-primary" href='/User/update/21' class='m-2' >Update</a>
+                        &ensp;<a class="btn btn-primary" href='/User/delete/21' class='m-2' >Delete</a>&ensp;<a class="btn btn-primary" href ='/Store/create/21' class='m-2'>Create a Store</a> <br>            </div>
+        </div>
+    </body>
 </html>

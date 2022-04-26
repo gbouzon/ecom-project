@@ -25,9 +25,9 @@
                         $product->product_description = trim($_POST['product_description']);
 
                         if (isset($_POST['product_availability']))
-                            $product->isAvailable(true);
+                            $product->product_availability = 1;
                         else
-                            $product->isAvailable(false);
+                            $product->product_availability = 0;
 
                         $product->insert();
                         header("location:/Store/index/". $_SESSION['store_id']);

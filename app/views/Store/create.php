@@ -7,7 +7,7 @@
 		<title>Create Store</title>
 	</head>
 	<body>
-		<div class='container'>
+		<div class='container' style='text-align:center;'>
 			<?php
 				$this->view('subviews/navigation');
 			?>
@@ -19,7 +19,7 @@
 				<label class='form-label'>Store address:<input type='text' name='store_address' class='form-control' required/></label> <br>
                 <label class='form-label'>Store description:<textarea name='description' cols="80" class='form-control' required></textarea></label><br>
                 
-				<input type="submit" name='action' value='Create!' class='form-control' />
+				<input class = 'btn btn-primary' type="submit" name='action' value='Create!' class='form-control' />
 			</form>
 			<?php
 				if ($data)
