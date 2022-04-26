@@ -4,6 +4,6 @@ Feature: modify a product
     I need to be able to modify products
 
     Scenario: try modifying product information
-    Given I am logged into my account and change the product information
-    When I click on "Save"
-    Then I see "Product is updated"
+    Given I am logged in with "candy@gmail.com" and "1234" and click "Update Product"
+    When I enter "Test update" in "product_name" and click "Update!"
+    Then I see "Test update"

@@ -1,10 +1,77 @@
-<br />
-<b>Fatal error</b>:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '24' for key 'user_id' in C:\xampp\htdocs\app\models\Store.php:47
-Stack trace:
-#0 C:\xampp\htdocs\app\models\Store.php(47): PDOStatement-&gt;execute(Array)
-#1 C:\xampp\htdocs\app\controllers\Store.php(25): app\models\Store-&gt;insert('24')
-#2 [internal function]: app\controllers\Store-&gt;create('24')
-#3 C:\xampp\htdocs\app\core\App.php(46): call_user_func_array(Array, Array)
-#4 C:\xampp\htdocs\index.php(3): app\core\App-&gt;__construct()
-#5 {main}
-  thrown in <b>C:\xampp\htdocs\app\models\Store.php</b> on line <b>47</b><br />
+<html>
+    <head>
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+            <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <title>Store Test</title>
+    </head>
+    <body>
+        
+        <div class='container'>
+        <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+	<div class="collapse navbar-collapse" >
+		<ul class="navbar-nav">
+			<li class="nav-item active"><a class="nav-link" href='/Main/index'>Home</a></li>
+
+			<li class="nav-item active"><a class= "nav-link" href='/User/index/24'>My Profile</a></li><li class="nav-item active"><a class= "nav-link" href='/Order/storeOrderList'>Order List</a></li><li class="nav-item active"><a class= "nav-link" href='/Order/storeOrderHistory'>Order History</a></li><li class="nav-item active"><a class= "nav-link" href='/User/logout'>Log out</a></li><html>
+	<head>
+		<title>Search</title>
+	</head>
+	<body>
+		<form method="post" action = "" style = "position:absolute;top:10px;right:100px;">
+			<input type="text" name="search">
+			<select name = "search_type">
+				<option value = "store">Search By Store</option>
+				<option value = "product">Search By Product</option>
+			</select>
+			<button type="submit" name="action">Search</button>
+		</form>
+	</body>
+</html>			
+		</ul>
+	</div>
+</nav>
+
+	
+
+            <div style = 'text-align:center;'>
+                <h1>Store  Test's Profile</h1>
+                <form method='post' action='' enctype = 'multipart/form-data'>
+                    <label class = 'form-label'>Profile picture: <br>
+                    <img alt = '' src = '\pictures\' style = 'max-width:200px;max-height:200px;display:block;margin-left:auto;margin-right:auto;'> <br>                    <label class='form-label'>First name:<input disabled type='text' name='first_name' class='form-control' value = 'Store' /></label>
+                    <label class='form-label'>Middle name:<input disabled type='text' name='middle_name' class='form-control' value = '' /></label>
+                    <label class='form-label'>Last name:<input disabled type='text' name='last_name' class='form-control'value = 'Test'  /></label> <br>
+                    <label class='form-label'>Email:<input disabled type='email' name='email' class='form-control' value = 'teststore@gmail.com' /></label><br>
+                    <label class='form-label'>Phone number:<input disabled type='text' name='phone' class='form-control' value = '' /></label><br> <br>
+                    
+                </form>
+                <a class="btn btn-primary" href='/User/update/24' class='m-2' >Update User</a>
+                        &ensp;<a class="btn btn-primary" href='/User/delete/24' class='m-2' >Delete User</a><br> <br><html>
+    <head>
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <title>Test Store</title>
+    </head>
+    <body>
+        <br><h1 class = text-center>Test Store</h1> <br>
+        <form method='post' action=''>
+            <label class='form-label'>Store address:<input disabled type='text' name='store_address' class='form-control' value='249 street' /></label><br> <br>
+            <label class='form-label'>Store description:<textarea disabled type='text' name='description'  cols="80" class='form-control' > a test store</textarea></label><br>
+        </form>
+            <a class="btn btn-primary " href='/Product/create/48' class='m-2'>Add a product</a>  
+                     <a class="btn btn-primary " href='/Store/update/48' class='m-2'>Update Store Page</a> 
+                      <a class="btn btn-primary " href='/Store/delete/48' class='m-2'>Delete Store</a> <br> <br><h2 class = "text-center">Products:</h2>
+<div style='text-align:center;'>
+    </div>
+ 
+        </body>
+</html>
+
+    
+            </div>
+        </div>
+    </body>
+</html>

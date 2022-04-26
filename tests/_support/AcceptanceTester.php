@@ -253,39 +253,4 @@ class AcceptanceTester extends \Codeception\Actor
         $this->fillField($field2, $value2);
         $this->click($button);
     }
-    
-    /**
-     * @When I enter the name of the product on the search bar and press :arg1
-     */
-    public function iEnterTheNameOfTheProductOnTheSearchBarAndPress($arg1) {
-        throw new \PHPUnit\Framework\IncompleteTestError("Step `I enter the name of the product on the search bar and press :arg1` is not defined");
-    }
-    
-    /** 
-     * @Then I see the product name and its description
-     */
-    public function iSeeTheProductNameAndItsDescription() {
-        throw new \PHPUnit\Framework\IncompleteTestError("Step `I see the product name and its description` is not defined");
-    }
-    
-    /**
-     * @Then I see a list of stores :stores
-     */
-    public function iSeeAListOfStores($stores) {
-        $this->see($stores);
-    }            
-    
-    /**
-     * @Given I am on a store's page :url
-     */
-    public function iAmOnAStoresPage($url) {
-        $this->amOnPage($url);
-    }                                                           
-    
-    /**
-     * @Then I see the store's menu :menu
-     */
-    public function iSeeTheStoresMenu($menu) {
-        $this->see($menu);
-    }
 }

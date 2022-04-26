@@ -5,5 +5,5 @@ Feature: delete my store profile
 
     Scenario: try to delete store profile
     Given I am logged in with "teststore@gmail.com" and "1234"
-    When I click "delete store"
-    Then I see "Store deleted successfully"
+    When I click "Delete Store"
+    Then I see "Create a Store"

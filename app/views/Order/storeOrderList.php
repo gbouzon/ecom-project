@@ -61,6 +61,9 @@
                         </div>";
                     }  
                 }
+                else {
+                    echo "<h3>No pending orders.</h3>";
+                }
             ?>
 		</div>
 	</body>
