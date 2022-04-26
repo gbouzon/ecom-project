@@ -21,7 +21,7 @@
                 foreach($orders as $order){
                     array_push($productArray, $products->getAllProducts($order->order_id));
                 }
-               $this->view('Order/storeOrderList', array($orders, $productArray));
+                $this->view('Order/storeOrderList', array($orders, $productArray));
             }
 
             #[\app\filters\LoginAsStore]
@@ -125,8 +125,11 @@
             public function updateStatus($order_id, $newStatus) {
                 $order = new \app\models\Order();
                 $order = $order->get($order_id);
-
                 $order->updateStatus($newStatus);
-                header('Location:/Order/storeOrderHistory');
+
+                if ($newStatus != 4)
+                    header('Location:/Order/storeOrderList');
+                else
+                    header('Location:/Order/storeOrderHistory');
             }       
         }

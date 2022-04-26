@@ -80,7 +80,7 @@ class AcceptanceTester extends \Codeception\Actor
      * @Given I am logged in with :email and :password and click :link
      */
     public function iAmLoggedInWith($email, $password, $link) {
-        $this->amOnPage("User/login");
+        $this->amOnPage("/User/login");
         $this->fillField('email', $email);
         $this->fillField('password', $password);
         $this->click("Login!");
@@ -92,7 +92,7 @@ class AcceptanceTester extends \Codeception\Actor
      * @Given I am logged in with :email and :password and am on page :url
      */
     public function iAmLoggedInWithAndAndAmOnPage($email, $password, $url) {
-        $this->amOnPage("User/login");
+        $this->amOnPage("/User/login");
         $this->fillField('email', $email);
         $this->fillField('password', $password);
         $this->click("Login!");
@@ -112,24 +112,49 @@ class AcceptanceTester extends \Codeception\Actor
      * @Given I am logged in with :email and :password and have placed an order and click :link 
      */
     public function iAmLoggedInWithAndAndClickAndHavePlaced($email, $password, $link) {
-        $this->amOnPage("User/login");
+        $this->amOnPage("/User/login");
         $this->fillField('email', $email);
         $this->fillField('password', $password);
         $this->click("Login!");
         $this->click("Skip 2FA");
-        $this->amOnPage("/Store/index/1");
+        $this->placeOrder();
+        $this->click($link);
+    }
+
+    public function placeOrder() {
+        $this->amOnPage("/Store/index/6");
         $this->click('Add to Cart');
         $this->click("Cart");
         $this->click("Place Order");
         $this->click('Confirm');
+    }
+
+    /**
+     * @Given I am logged in with :email and :password and click :link and see a pending order
+     */
+    public function iAmLoggedInWithAndAndClickAndSeeAPendingOrder($email, $password, $link) {
+        $this->amOnPage("/User/login");
+        $this->fillField('email', 'test2@gmail.com');
+        $this->fillField('password', '1234');
+        $this->click("Login!");
+        $this->click("Skip 2FA");
+        $this->placeOrder();
+        $this->click('Log out');
+
+        $this->amOnPage("/User/login");
+        $this->fillField('email', $email);
+        $this->fillField('password', $password);
+        $this->click("Login!");
+        $this->click("Skip 2FA");
         $this->click($link);
     }
+
 
     /**
      * @Given I am logged in with :email and :password and have added an item to cart and click :link
      */
     public function iAmLoggedInWithAndAndHaveAddedAnItemToCartAndClick($email, $password, $link) {
-        $this->amOnPage("User/login");
+        $this->amOnPage("/User/login");
         $this->fillField('email', $email);
         $this->fillField('password', $password);
         $this->click("Login!");
@@ -143,7 +168,7 @@ class AcceptanceTester extends \Codeception\Actor
      * @Given I am logged in with :email and :password
      */
     public function iAmLoggedInWithAnd($email, $password) {
-        $this->amOnPage("User/login");
+        $this->amOnPage("/User/login");
         $this->fillField('email', $email);
         $this->fillField('password', $password);
         $this->click("Login!");
@@ -154,7 +179,7 @@ class AcceptanceTester extends \Codeception\Actor
      * @Given I am logged in with :email and :password and click :button
      */
     public function iAmLoggedInWithAndAndClick($email, $password, $button) {
-        $this->amOnPage("User/login");
+        $this->amOnPage("/User/login");
         $this->fillField('email', $email);
         $this->fillField('password', $password);
         $this->click("Login!");

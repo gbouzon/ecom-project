@@ -52,6 +52,9 @@
                 else { 
                     $filename = Main::imageUpload("picture");
 
+                    if (!$filename)
+                        $filename = 'blank.jpg';
+
                     $newUser = new \app\models\User();
                     $newUser->email = trim($_POST['email']);
                     $newUser->first_name = trim($_POST['first_name']);

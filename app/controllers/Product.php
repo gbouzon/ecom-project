@@ -17,6 +17,10 @@
                     }
                     else { 
                         $filename = Main::imageUpload("product_image");
+
+                        if (!$filename)
+                            $filename = 'blank.jpg';
+                            
                         $product = new \app\models\Product();
                         $product->store_id = $store_id;
                         $product->product_name = trim($_POST['product_name']);

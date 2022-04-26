@@ -6,4 +6,4 @@ Feature: track my order status
     Scenario: try viewing order status 
     Given I am logged in with "test2@gmail.com" and "1234"
     When I click "Order History"
-    Then I see "Pending Order..."
+    Then I see "The store is preparing your order..."

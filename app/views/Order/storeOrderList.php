@@ -12,7 +12,7 @@
 				$this->view('subviews/navigation');
 			?>
 
-			<h1 style='text-align:center;'>Order Lists</h1>
+			<h1 style='text-align:center;'>Order List</h1>
 			<?php
                 if($data != null){
                     foreach ($data[0] as $order){
@@ -31,7 +31,7 @@
 							echo "<a href='/Order/updateStatus/$order->order_id/3' class='btn btn-outline-secondary'>Order is ready for pick-up</a>";
 						} else if ($order->order_status == 3){
                             // client can come and pick up
-							echo "<a href='/Order/updateStatus/$order->order_id/4' class='btn btn-outline-secondary'>Order was pick-up</a>";
+							echo "<a href='/Order/updateStatus/$order->order_id/4' class='btn btn-outline-secondary'>Order was picked-up</a>";
 						} else if ($order->order_status == 4){
                             // when the client pick up the order
 							echo "<h6> Closed </h6>";

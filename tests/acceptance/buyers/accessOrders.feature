@@ -6,4 +6,4 @@ Feature: access previous orders
     Scenario: try viewing a past order
     Given I am logged in with "test2@gmail.com" and "1234"
     When I click "Order History"
-    Then I see "Pending Order..." and "Order at:"
+    Then I see "Order at:"
