@@ -12,7 +12,7 @@
 				$this->view('subviews/navigation');
 			?>
 
-			<h1 style='text-align:center;'><?= _("Store History") ?>History</h1>
+			<h1 style='text-align:center;'><?= _("Store History") ?></h1>
 			<?php
                 if($data != null){
                     foreach ($data[0] as $order){
