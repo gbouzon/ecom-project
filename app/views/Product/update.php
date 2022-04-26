@@ -27,9 +27,9 @@
                 <label class='form-label'><?= _("Product description:") ?><textarea name='product_description' cols="80" class='form-control'><?= $data->product_description?></textarea></label><br>
 
 				<label class = 'form-label'><?= _("Product picture (if you want to change it):") ?> 
-                    <input type = 'file' name = 'product_image' class = 'form-control'></label><br>
+                    <input type = 'file' name = 'product_image' class = 'form-control'></label><br> <br>
 					
-				<input type="submit" name='action' value='<?= _("Update!") ?>' class='form-control' />
+				<input class = 'btn btn-primary' type="submit" name='action' value='<?= _("Update!") ?>' class='form-control' />
 			</form>
         </div>
     </body>

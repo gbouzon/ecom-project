@@ -6,4 +6,4 @@ Feature: view the product catalog for a store
     Scenario: try viewing the product catalog
     Given I am on page "/Main/index"
     When I click "The Jane Store"
-    Then I see "Vanilla Cupcake"
+    Then I see "Strawberry cupcake"

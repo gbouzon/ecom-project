@@ -17,6 +17,10 @@
                     }
                     else { 
                         $filename = Main::imageUpload("product_image");
+
+                        if (!$filename)
+                            $filename = 'blank.jpg';
+                            
                         $product = new \app\models\Product();
                         $product->store_id = $store_id;
                         $product->product_name = trim($_POST['product_name']);
@@ -26,9 +30,9 @@
                         var_dump(isset($_POST['product_availability']));
 
                         if (isset($_POST['product_availability']))
-                            $product->product_availability = true;
+                            $product->product_availability = 1;
                         else
-                        $product->product_availability = false;
+                            $product->product_availability = 0;
 
                         $product->insert();
                         header("location:/Store/index/". $_SESSION['store_id']);

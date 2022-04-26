@@ -3,12 +3,7 @@ Feature: modify my profile
     As a buyer
     I need to be able to modify my profile
 
-    Scenario: try adding a card to my payment information
-    Given I am logged into my account and have filled out the information for my card
-    When I click on "Save"
-    Then I see "Payment information successfully updated"
-
-    Scenario: try adding invalid information to my payment methods
-    Given I am logged into my account and have filled out the information to add a new payment method
-    When I click on "Save"
-    Then I see "Invalid credentials. Please double check"
+Scenario: try modifying my last name
+    Given I am logged in with "test2@gmail.com" and "1234" and click "Update"
+    When I enter "Hat" in "last_name" and click "Update!"
+    Then I see "Test Hat"

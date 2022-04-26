@@ -30,17 +30,13 @@
                             if ($user->user_type == 1) {
                                 if ($store) {
                                     $_SESSION['store_id'] = $store->store_id;
-                                    header('location:/Store/index/' . $_SESSION['store_id']); 
                                 }    
-                                else 
-                                    header('location:/Store/create/' . $_SESSION['user_id']);
                             }
-                            else {
-                                if ($user->secret_key != null)
-                                    header('location:/User/validate2fa');
-                                else
-                                    header('location:/User/setup2fa');
-                            }
+                            
+                            if ($user->secret_key != null)
+                                header('location:/User/validate2fa');
+                            else
+                                header('location:/User/setup2fa');
                         }
                         else 
                             $this->view('User/login', _("Incorrect email/password combination."));
@@ -55,6 +51,9 @@
                     $this->view('User/register');
                 else { 
                     $filename = Main::imageUpload("picture");
+
+                    if (!$filename)
+                        $filename = 'blank.jpg';
 
                     $newUser = new \app\models\User();
                     $newUser->email = trim($_POST['email']);

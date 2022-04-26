@@ -14,7 +14,7 @@
             ?>
             <br> <h1 class="text-center"><?= _("Your Cart") ?></h1> <br>
 
-            <table class="table table-striped">
+            <table class="table table-striped" style='text-align:center;'>
                 <tr><th></th><th><?= _("Name") ?></th><th><?= _("Quantity") ?></th><th><?= _("Price") ?></th><th><?= _("Action") ?></th></tr>
                 <?php
                     $sum = 0; 
@@ -29,7 +29,9 @@
                             $sum += $order_detail->price;     
                         }
                         echo " <tr><th>"._("Subtotal")."</th><th></th><th></th><th></th><th>$ $sum</th></tr>";
-                    }     
+                    }else {
+                        echo "<tr><td colspan = '5'>"._("Your cart is empty!")."</td></tr>";
+                    }      
                 ?>
                  
             </table>

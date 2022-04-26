@@ -18,7 +18,7 @@
 				<label class='form-label'><?= _("Store address:") ?><input type='text' name='store_address' class='form-control' required/></label> <br>
                 <label class='form-label'><?= _("Store description:") ?><textarea name='description' cols="80" class='form-control' required></textarea></label><br>
                 
-				<input type="submit" name='action' value='<?= _("Create!") ?>' class='form-control' />
+				<input class = 'btn btn-primary' type="submit" name='action' value='<?= _("Create!") ?>' class='form-control' />
 			</form>
 			<?php
 				if ($data)

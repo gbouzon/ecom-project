@@ -4,11 +4,6 @@ Feature: add an item to the cart
     I need to be able to add items to cart
 
     Scenario: try adding a product to the cart
-    Given I am logged into my account
-    When I click on "Add to cart"
-    Then I see "Item added to cart"
-
-    Scenario: try adding a product to the cart incorrectly
-    Given I am not logged into the application
-    When I click on "Add to cart"
-    Then I see "Please log in"
+    Given I am logged in with "tester@gmail.com" and "1234" and am on page "/Store/index/1"
+    When I click "Add to Cart" and click "Cart"
+    Then I see "Place Order"

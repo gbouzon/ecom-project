@@ -17,14 +17,14 @@
 			<form method='post' action='' enctype = 'multipart/form-data'>
 				<label class='form-label'><?= _("Product name:") ?><input type='text' name='product_name' class='form-control' required/></label> <br>
 				<label class='form-label'><?= _("Product price:") ?><input type='double' name='product_price' class='form-control' required/></label> <br>
-				<label class='form-label'><?= _("Product available:") ?>&ensp;<input type='checkbox' name='product_availability' class='form-check-input'/></label> <br>
+				<label class='form-label'><?= _("Product available:") ?>&ensp;<input id = 'checkboxproduct' type='checkbox' name='product_availability' class='form-check-input'/></label> <br>
 				<label class='form-label'><?= _("Product description:") ?><textarea name='product_description' cols="80" class='form-control' ></textarea></label><br>
 
 				<label class = 'form-label'><?= _("Product picture:") ?> 
-                    <input type = 'file' name = 'product_image' class = 'form-control'></label><br>
+                    <input type = 'file' name = 'product_image' class = 'form-control'></label><br><br>
 				
 				
-				<input type="submit" name='action' value='<?= _("Add!") ?>' class='form-control' />
+				<input class = 'btn btn-primary' type="submit" name='action' value='<?= _("Add!") ?>' class='form-control' />
 			</form>
 			<?php
 				if ($data)

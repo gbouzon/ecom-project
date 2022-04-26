@@ -28,8 +28,8 @@
                 <?php
 
                     if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $data->user_id) {
-                        echo "<a class=\"btn btn-primary\" href='/User/update/$data->user_id' class='m-2' >". _("Update") ." </a>
-                        &ensp;<a class=\"btn btn-primary\" href='/User/delete/$data->user_id' class='m-2' >". _("Delete") ."</a>";
+                        echo "<a class=\"btn btn-primary\" href='/User/update/$data->user_id' class='m-2' >". _("Update User") ." </a>
+                        &ensp;<a class=\"btn btn-primary\" href='/User/delete/$data->user_id' class='m-2' >". _("Delete User") ."</a>";
                         if (!isset($_SESSION['store_id']))
                             echo "&ensp;<a class=\"btn btn-primary\" href ='/Store/create/$data->user_id' class='m-2'>". _("Create a Store") ."</a><br>";
                     }

@@ -4,6 +4,6 @@ Feature: confirm an order
     I need to be able to confirm the order 
 
     Scenario: try to accept an order
-    Given I am logged into my account
-    When I click on "Confirm order"
-    Then I see "Order Accepted"
+    Given I am logged in with "candy@gmail.com" and "1234" and click "Order List" and see a pending order
+    When I click "Accept order"
+    Then I see "Order is ready for pick-up"

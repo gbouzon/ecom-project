@@ -4,11 +4,6 @@ Feature: access previous orders
     I need to be able to access my order record
 
     Scenario: try viewing a past order
-    Given I am logged in to my account
-    When I click on "View Past Orders"
-    Then I see a list of orders I have previously placed
-
-    Scenario: try viewing a past order
-    Given I am not logged in
-    When I click on "View Past Orders"
-    Then I see "Please log in before continuing"
+    Given I am logged in with "test2@gmail.com" and "1234"
+    When I click "Order History"
+    Then I see "Order at:"

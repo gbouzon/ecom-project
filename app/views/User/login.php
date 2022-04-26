@@ -14,8 +14,8 @@
 			<h1><?=_("Log into your user account")?></h1>
 			<form method='post' action=''>
 				<label class='form-label'><?=_("Email:")?><input type='text' name='email' class='form-control' /></label><br>
-				<label class='form-label'><?=_("Password:")?><input type='password' name='password' class='form-control' /></label><br>
-				<input type="submit" name='action' value='Login!' class='form-control' />
+				<label class='form-label'><?=_("Password:")?><input type='password' name='password' class='form-control' /></label><br><br>
+				<input class = 'btn btn-primary' type="submit" name='action' value='Login!' class='form-control' /><br> <br>
 			</form>
 			<?=_("No account?")?> <a href="/User/register"><?=_("Register here.")?></a> <br>
 

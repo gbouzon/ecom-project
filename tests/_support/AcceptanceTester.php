@@ -80,11 +80,106 @@ class AcceptanceTester extends \Codeception\Actor
      * @Given I am logged in with :email and :password and click :link
      */
     public function iAmLoggedInWith($email, $password, $link) {
-        $this->amOnPage("User/login");
+        $this->amOnPage("/User/login");
         $this->fillField('email', $email);
         $this->fillField('password', $password);
         $this->click("Login!");
+        $this->click("Skip 2FA");
         $this->click('My Profile');
+        $this->click($link);
+    }
+    /**
+     * @Given I am logged in with :email and :password and am on page :url
+     */
+    public function iAmLoggedInWithAndAndAmOnPage($email, $password, $url) {
+        $this->amOnPage("/User/login");
+        $this->fillField('email', $email);
+        $this->fillField('password', $password);
+        $this->click("Login!");
+        $this->click("Skip 2FA");
+        $this->amOnPage($url);
+    }
+
+    /**
+     * @When I click :link and click :button
+     */
+    public function iClickAndClick($link, $button) {
+        $this->click($link);
+        $this->click($button);
+    }
+
+    /**
+     * @Given I am logged in with :email and :password and have placed an order and click :link 
+     */
+    public function iAmLoggedInWithAndAndClickAndHavePlaced($email, $password, $link) {
+        $this->amOnPage("/User/login");
+        $this->fillField('email', $email);
+        $this->fillField('password', $password);
+        $this->click("Login!");
+        $this->click("Skip 2FA");
+        $this->placeOrder();
+        $this->click($link);
+    }
+
+    public function placeOrder() {
+        $this->amOnPage("/Store/index/6");
+        $this->click('Add to Cart');
+        $this->click("Cart");
+        $this->click("Place Order");
+        $this->click('Confirm');
+    }
+
+    /**
+     * @Given I am logged in with :email and :password and click :link and see a pending order
+     */
+    public function iAmLoggedInWithAndAndClickAndSeeAPendingOrder($email, $password, $link) {
+        $this->amOnPage("/User/login");
+        $this->fillField('email', 'test2@gmail.com');
+        $this->fillField('password', '1234');
+        $this->click("Login!");
+        $this->click("Skip 2FA");
+        $this->placeOrder();
+        $this->click('Log out');
+
+        $this->amOnPage("/User/login");
+        $this->fillField('email', $email);
+        $this->fillField('password', $password);
+        $this->click("Login!");
+        $this->click("Skip 2FA");
+        $this->click($link);
+    }
+
+    /**
+     * @Given I am logged in with :email and :password and click :link and see an order in progress
+     */
+    public function iAmLoggedInWithAndAndClickAndSeeAnOrderInProgress($email, $password, $link) {
+        $this->amOnPage("/User/login");
+        $this->fillField('email', $email);
+        $this->fillField('password', $password);
+        $this->click("Login!");
+        $this->click("Skip 2FA");
+        $this->click($link);
+    }
+
+    /**
+     * @When I click :button1 then I click :button2
+     */
+    public function iClickThenIClick($button1, $button2) {
+        $this->click($button1);
+        $this->click($button2);
+    }
+
+    /**
+     * @Given I am logged in with :email and :password and have added an item to cart and click :link
+     */
+    public function iAmLoggedInWithAndAndHaveAddedAnItemToCartAndClick($email, $password, $link) {
+        $this->amOnPage("/User/login");
+        $this->fillField('email', $email);
+        $this->fillField('password', $password);
+        $this->click("Login!");
+        $this->click("Skip 2FA");
+        $this->amOnPage("/Store/index/1");
+        $this->click('Add to Cart');
         $this->click($link);
     }
 
@@ -92,10 +187,23 @@ class AcceptanceTester extends \Codeception\Actor
      * @Given I am logged in with :email and :password
      */
     public function iAmLoggedInWithAnd($email, $password) {
-        $this->amOnPage("User/login");
+        $this->amOnPage("/User/login");
         $this->fillField('email', $email);
         $this->fillField('password', $password);
         $this->click("Login!");
+        $this->click("Skip 2FA");
+    }
+
+    /**
+     * @Given I am logged in with :email and :password and click :button
+     */
+    public function iAmLoggedInWithAndAndClick($email, $password, $button) {
+        $this->amOnPage("/User/login");
+        $this->fillField('email', $email);
+        $this->fillField('password', $password);
+        $this->click("Login!");
+        $this->click("Skip 2FA");
+        $this->click($button);
     }
 
     /**
@@ -105,6 +213,16 @@ class AcceptanceTester extends \Codeception\Actor
         $this->fillField($field1, $value1);
         $this->fillField($field2, $value2);
         $this->fillField($field3, $value3);
+        $this->click($button);
+    }
+
+    /**
+     * @When I enter :value1 in :field1 and check :box and :value2 in :field2 and click :button
+     */
+    public function iEnterInAndCheckandInAndClick($value1, $field1, $box, $value2, $field2, $button) {
+        $this->fillField($field1, $value1);
+        $this->fillField($field2, $value2);
+        $this->checkOption($box);
         $this->click($button);
     }
 
@@ -134,14 +252,6 @@ class AcceptanceTester extends \Codeception\Actor
         $this->fillField($field1, $value1);
         $this->fillField($field2, $value2);
         $this->click($button);
-    }
-
-    
-    /**
-     * @Given I am on the store's page
-     */
-    public function iAmOnTheStoresPage() {
-        throw new \PHPUnit\Framework\IncompleteTestError("Step `I am on the store's page` is not defined");
     }
     
     /**

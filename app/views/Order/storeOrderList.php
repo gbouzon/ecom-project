@@ -31,7 +31,7 @@
 							echo "<a href='/Order/updateStatus/$order->order_id/3' class='btn btn-outline-secondary'>"._("Order is ready for pick-up")."</a>";
 						} else if ($order->order_status == 3){
                             // client can come and pick up
-							echo "<a href='/Order/updateStatus/$order->order_id/4' class='btn btn-outline-secondary'>"._("Order was pick-up")."</a>";
+							echo "<a href='/Order/updateStatus/$order->order_id/4' class='btn btn-outline-secondary'>"._("Order was picked-up")."</a>";
 						} else if ($order->order_status == 4){
                             // when the client pick up the order
 							echo "<h6> "._("Closed")." </h6>";
