@@ -23,11 +23,12 @@
                         $product->product_image = $filename; 
                         $product->product_price = trim($_POST['product_price']);
                         $product->product_description = trim($_POST['product_description']);
+                        var_dump(isset($_POST['product_availability']));
 
                         if (isset($_POST['product_availability']))
-                            $product->isAvailable(true);
+                            $product->product_availability = true;
                         else
-                            $product->isAvailable(false);
+                        $product->product_availability = false;
 
                         $product->insert();
                         header("location:/Store/index/". $_SESSION['store_id']);

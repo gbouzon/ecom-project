@@ -24,6 +24,7 @@
             }
         
             function insert() {
+                var_dump($this->product_availability);
                 $SQL = 'INSERT INTO product(store_id, product_name, product_image, product_availability, product_price, product_description) 
                 VALUES(:store_id, :product_name, :product_image, :product_availability, :product_price, :product_description)';
                 $STMT = self::$_connection->prepare($SQL);

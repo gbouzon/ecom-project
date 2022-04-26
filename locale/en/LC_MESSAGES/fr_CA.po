@@ -1,0 +1,538 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-26 03:25-0400\n"
+"PO-Revision-Date: 2022-04-26 04:33-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr_CA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: app/views/Cart/index.php:8 app/views/subviews/navigation.php:15
+msgid "Cart"
+msgstr "Panier"
+
+#: app/views/Cart/index.php:15
+msgid "Your Cart"
+msgstr "Panier"
+
+#: app/views/Cart/index.php:18 app/views/Order/storeOrderDetails.php:36
+#: app/views/subviews/orderDetail.php:31
+msgid "Name"
+msgstr "Nom"
+
+#: app/views/Cart/index.php:18 app/views/Order/storeOrderDetails.php:36
+#: app/views/subviews/orderDetail.php:31
+msgid "Quantity"
+msgstr "Quantité"
+
+#: app/views/Cart/index.php:18 app/views/Order/storeOrderDetails.php:36
+#: app/views/subviews/orderDetail.php:31 app/views/subviews/products.php:10
+msgid "Price"
+msgstr "Prix"
+
+#: app/views/Cart/index.php:18
+msgid "Action"
+msgstr "Action"
+
+#: app/views/Cart/index.php:27
+msgid "Are you sure?"
+msgstr "Êtes-vous certain?"
+
+#: app/views/Cart/index.php:27 app/views/subviews/products.php:15
+#: app/views/User/index.php:32
+msgid "Delete"
+msgstr "Supprimer"
+
+#: app/views/Cart/index.php:31 app/views/Order/storeOrderDetails.php:47
+msgid "Subtotal"
+msgstr "Sous-total"
+
+#: app/views/Cart/index.php:39
+msgid "Clear Cart"
+msgstr "Vider le panier"
+
+#: app/views/Cart/index.php:40
+msgid "Place Order"
+msgstr "Passer la commande"
+
+#: app/views/Main/index.php:8 app/views/subviews/search.php:7
+msgid "Home page"
+msgstr "Page d'accueil"
+
+#: app/views/Main/index.php:15
+msgid "Welcome to Meal Times!"
+msgstr "Bienvenue a Meal Times!"
+
+#: app/views/Main/search.php:3 app/views/Main/search.php:8
+#: app/views/Search/index.php:3 app/views/Search/index.php:12
+#: app/views/subviews/search.php:11
+msgid "Search"
+msgstr "Chercher"
+
+#: app/views/Order/confirmation.php:7 app/views/Order/confirmation.php:15
+msgid "Order Confirmation"
+msgstr "Confirmation de la commande"
+
+#: app/views/Order/orderDetails.php:7 app/views/Order/orderDetails.php:14
+#: app/views/Order/storeOrderDetails.php:7
+#: app/views/Order/storeOrderDetails.php:15
+msgid "Order detail"
+msgstr "Détails de la commande"
+
+#: app/views/Order/storeOrderDetails.php:22
+msgid "Client information"
+msgstr "Informations du client"
+
+#: app/views/Order/storeOrderDetails.php:25
+#: app/views/subviews/orderDetail.php:9
+msgid "Name:"
+msgstr "Nom:"
+
+#: app/views/Order/storeOrderDetails.php:26
+#: app/views/subviews/orderDetail.php:10 app/views/User/index.php:24
+#: app/views/User/login.php:16 app/views/User/register.php:21
+#: app/views/User/update.php:20
+msgid "Email:"
+msgstr "E-mail:"
+
+#: app/views/Order/storeOrderDetails.php:27
+#: app/views/subviews/orderDetail.php:11 app/views/User/index.php:25
+#: app/views/User/update.php:21
+msgid "Phone number:"
+msgstr "Numéro de téléphone:"
+
+#: app/views/Order/storeOrderDetails.php:34
+msgid "Purchased Items"
+msgstr "Articles achetés"
+
+#: app/views/Order/storeOrderDetails.php:50
+msgid "Total"
+msgstr "Total"
+
+#: app/views/Order/storeOrderHistory.php:7
+#: app/views/Order/storeOrderHistory.php:15
+#: app/views/Order/storeOrderList.php:7 app/views/Order/storeOrderList.php:15
+msgid "Order Lists"
+msgstr "Listes des commandes"
+
+#: app/views/Order/storeOrderHistory.php:21
+#: app/views/Order/storeOrderList.php:21
+msgid "#Order"
+msgstr "#Commande"
+
+#: app/views/Order/storeOrderHistory.php:22
+#: app/views/Order/storeOrderList.php:22
+#: app/views/Order/userOrderHistory.php:38
+msgid "Order at:"
+msgstr "Commandez à:"
+
+#: app/views/Order/storeOrderHistory.php:23
+#: app/views/Order/storeOrderList.php:37
+msgid "Closed"
+msgstr "Fermé"
+
+#: app/views/Order/storeOrderHistory.php:29
+#: app/views/Order/storeOrderList.php:42
+msgid "Client name:"
+msgstr "Nom du client:"
+
+#: app/views/Order/storeOrderHistory.php:45
+#: app/views/Order/storeOrderList.php:58
+#: app/views/Order/userOrderHistory.php:39
+msgid "Total:"
+msgstr "Total:"
+
+#: app/views/Order/storeOrderHistory.php:46
+#: app/views/Order/storeOrderList.php:59
+#: app/views/Order/userOrderHistory.php:33
+msgid "Detail"
+msgstr "Détails"
+
+#: app/views/Order/storeOrderList.php:27
+msgid "Accept order"
+msgstr "Accepter la commande"
+
+#: app/views/Order/storeOrderList.php:28
+msgid "Decline order"
+msgstr "Refuser la commande"
+
+#: app/views/Order/storeOrderList.php:31
+msgid "Order is ready for pick-up"
+msgstr "La commande est prête à être ramassée"
+
+#: app/views/Order/storeOrderList.php:34
+msgid "Order was pick-up"
+msgstr "La commande a été ramassée"
+
+#: app/views/Order/userOrderHistory.php:7
+#: app/views/Order/userOrderHistory.php:15 app/views/subviews/navigation.php:20
+msgid "Order History"
+msgstr "Historique des commandes"
+
+#: app/views/Order/userOrderHistory.php:23
+msgid "Pending Order..."
+msgstr "Commande en cours..."
+
+#: app/views/Order/userOrderHistory.php:24
+msgid "Cancel order"
+msgstr "Annuler la commande"
+
+#: app/views/Order/userOrderHistory.php:26
+msgid "The store is preparing your order..."
+msgstr "Le magasin prépare votre commande.."
+
+#: app/views/Order/userOrderHistory.php:28
+msgid "Your order is ready to pick-up"
+msgstr "Votre commande est prête à être ramassée"
+
+#: app/views/Order/userOrderHistory.php:30
+msgid "Completed Order"
+msgstr "Commande terminée"
+
+#: app/views/Product/create.php:7 app/views/Product/create.php:15
+msgid "Add Product"
+msgstr "Ajouter un produit"
+
+#: app/views/Product/create.php:18 app/views/Product/update.php:17
+msgid "Product name:"
+msgstr "Nom du produit:"
+
+#: app/views/Product/create.php:19 app/views/Product/index.php:19
+#: app/views/Product/update.php:18
+msgid "Product price:"
+msgstr "Prix ​​du produit:"
+
+#: app/views/Product/create.php:20 app/views/Product/update.php:19
+msgid "Product available:"
+msgstr "Produit disponible:"
+
+#: app/views/Product/create.php:21 app/views/Product/index.php:20
+#: app/views/Product/update.php:27
+msgid "Product description:"
+msgstr "Description du produit:"
+
+#: app/views/Product/create.php:23
+msgid "Product picture:"
+msgstr "Image du produit:"
+
+#: app/views/Product/create.php:27
+msgid "Add!"
+msgstr "Ajouter!"
+
+#: app/views/Product/update.php:15
+msgid "Update Product"
+msgstr "Mettre à jour le produit"
+
+#: app/views/Product/update.php:29
+msgid "Product picture (if you want to change it):"
+msgstr "Photo du produit (si vous souhaitez la modifier):"
+
+#: app/views/Product/update.php:32
+msgid "Update!"
+msgstr "Mettre à jour!"
+
+#: app/views/Search/index.php:9
+msgid "Search By Store"
+msgstr "Chercher par magazin"
+
+#: app/views/Search/index.php:10
+msgid "Search By Product"
+msgstr "Chercher par produit"
+
+#: app/views/Store/create.php:7
+msgid "Create Store"
+msgstr "Créer un magasin"
+
+#: app/views/Store/create.php:14
+msgid "Create your store profile"
+msgstr "Créez votre profil de magasin"
+
+#: app/views/Store/create.php:17 app/views/Store/update.php:16
+#: app/views/subviews/orderDetail.php:21
+msgid "Store name:"
+msgstr "Nom du magasin:"
+
+#: app/views/Store/create.php:18 app/views/Store/details_subview.php:13
+#: app/views/Store/update.php:17 app/views/subviews/orderDetail.php:22
+msgid "Store address:"
+msgstr "Adresse du magasin:"
+
+#: app/views/Store/create.php:19 app/views/Store/details_subview.php:14
+#: app/views/Store/update.php:18 app/views/subviews/orderDetail.php:23
+msgid "Store description:"
+msgstr "Description du magasin:"
+
+#: app/views/Store/create.php:21
+msgid "Create!"
+msgstr "Créer!"
+
+#: app/views/Store/details_subview.php:19
+msgid "Add a product"
+msgstr "Ajouter un produit"
+
+#: app/views/Store/details_subview.php:20
+msgid "Update Store Page"
+msgstr "Mettre à jour la page du magasin"
+
+#: app/views/Store/details_subview.php:21
+msgid "Delete Store"
+msgstr "Supprimer le magasin"
+
+#: app/views/Store/update.php:14
+msgid "Store details"
+msgstr "Détails du magasin"
+
+#: app/views/Store/update.php:19 app/views/subviews/products.php:14
+#: app/views/User/index.php:31 app/views/User/update.php:24
+msgid "Update"
+msgstr "Mettre à jour"
+
+#: app/views/subviews/navigation.php:4
+msgid "Home"
+msgstr "Page d'accueil"
+
+#: app/views/subviews/navigation.php:8
+msgid "Register"
+msgstr "S'inscrire"
+
+#: app/views/subviews/navigation.php:10
+msgid "Log in"
+msgstr "Se connecter"
+
+#: app/views/subviews/navigation.php:13 app/views/subviews/navigation.php:18
+msgid "My Profile"
+msgstr "Mon profil"
+
+#: app/views/subviews/navigation.php:14
+msgid "History"
+msgstr "Histoire"
+
+#: app/views/subviews/navigation.php:16 app/views/subviews/navigation.php:21
+msgid "Log out"
+msgstr "Se déconnecter"
+
+#: app/views/subviews/navigation.php:19
+msgid "Order List"
+msgstr "Listes des commandes"
+
+#: app/views/subviews/orderDetail.php:6
+msgid "Your personal information"
+msgstr "Vos informations personnels"
+
+#: app/views/subviews/orderDetail.php:18
+msgid "Store information"
+msgstr "Informations sur le magasin"
+
+#: app/views/subviews/products.php:11
+msgid "Description:"
+msgstr "La description:"
+
+#: app/views/subviews/products.php:15
+msgid "Product successfully deleted"
+msgstr "Produit supprimé avec succès"
+
+#: app/views/subviews/products.php:20
+msgid "Your current cart will be cleared if you proceed. Are you sure?"
+msgstr "Votre panier actuel sera effacé si vous continuez. êtes-vous sûr?"
+
+#: app/views/subviews/products.php:20 app/views/subviews/products.php:23
+#: app/views/subviews/products.php:26
+msgid "Add to Cart"
+msgstr "Ajouter au Panier"
+
+#: app/views/subviews/products.php:23
+msgid "Product is not available at the moment."
+msgstr "Le produit n'est pas disponible pour le moment."
+
+#: app/views/subviews/products.php:26
+msgid "Product successfully added to cart!"
+msgstr "Produit ajouté au panier avec succès !"
+
+#: app/views/subviews/search.php:21
+msgid "The search returned no results."
+msgstr "La recherche n'a donné aucun résultat."
+
+#: app/views/User/index.php:15
+msgid "Profile"
+msgstr "Profil"
+
+#: app/views/User/index.php:17
+msgid "Profile picture:"
+msgstr "Image de profil:"
+
+#: app/views/User/index.php:21 app/views/User/register.php:18
+#: app/views/User/update.php:17
+msgid "First name:"
+msgstr "Prénom:"
+
+#: app/views/User/index.php:22 app/views/User/register.php:19
+#: app/views/User/update.php:18
+msgid "Middle name:"
+msgstr "Deuxième nom:"
+
+#: app/views/User/index.php:23 app/views/User/register.php:20
+#: app/views/User/update.php:19
+msgid "Last name:"
+msgstr "Nom de famille:"
+
+#: app/views/User/index.php:34
+msgid "Create a Store"
+msgstr "Créer un magasin"
+
+#: app/views/User/login.php:7
+msgid "login"
+msgstr "Se connecter"
+
+#: app/views/User/login.php:14
+msgid "Log into your user account"
+msgstr "Connectez-vous à votre compte utilisateur"
+
+#: app/views/User/login.php:17 app/views/User/register.php:23
+msgid "Password:"
+msgstr "Mot de passe:"
+
+#: app/views/User/login.php:20
+msgid "No account?"
+msgstr "Pas de compte?"
+
+#: app/views/User/login.php:20
+msgid "Register here."
+msgstr "Inscrivez-vous ici."
+
+#: app/views/User/register.php:7
+msgid "User registration"
+msgstr "Enregistrement de l'utilisateur"
+
+#: app/views/User/register.php:15
+msgid "Register your user account"
+msgstr "Register your user account"
+
+#: app/views/User/register.php:22
+msgid "Phone Number:"
+msgstr "Numéro de téléphone:"
+
+#: app/views/User/register.php:24
+msgid "Password confirmation:"
+msgstr "Confirmation mot de passe:"
+
+#: app/views/User/register.php:26
+msgid "Customer"
+msgstr "Client"
+
+#: app/views/User/register.php:28
+msgid "Store"
+msgstr "Magasin"
+
+#: app/views/User/register.php:30
+msgid "Profile picture"
+msgstr "Image de profil"
+
+#: app/views/User/register.php:33
+msgid "Register!"
+msgstr "S'inscrire!"
+
+#: app/views/User/twofasetup.php:7
+msgid "2fa Set Up"
+msgstr "Configuration 2fa"
+
+#: app/views/User/twofasetup.php:11
+msgid "2 Factor Authentication Setup"
+msgstr "Configuration de l'authentification à 2 facteurs"
+
+#: app/views/User/twofasetup.php:13
+msgid ""
+"Please scan the QR-code on the screen with your favorite\n"
+"                Authenticator software, such as Google Authenticator. The\n"
+"                authenticator software will generate codes that are valid "
+"for 30\n"
+"                seconds only. Enter such a code while and submit it while it "
+"is\n"
+"                still valid to confirm that the 2-factor authentication can "
+"be\n"
+"                applied to your account. "
+msgstr ""
+"Veuillez scanner le code QR à l'écran avec votre logiciel Authenticator "
+"préféré\n"
+"                , tel que Google Authenticator. Le logiciel "
+"d'authentification générera\n"
+"                des codes valides pendant 30 secondes seulement. Entrez un "
+"tel code \n"
+"                et soumettez-le pendant qu'il est valide pour confirmer que "
+"l'authentification \n"
+"                à 2 facteurs peut être appliquée à votre compte. "
+
+#: app/views/User/twofasetup.php:21
+msgid "Current code:"
+msgstr "Code actuel:"
+
+#: app/views/User/twofasetup.php:23
+msgid "Verify code"
+msgstr "Vérifier le code"
+
+#: app/views/User/twofasetup.php:24
+msgid "Skip 2FA"
+msgstr "Ignorer 2FA"
+
+#: app/views/User/update.php:7
+msgid "Profile update"
+msgstr "Mise à jour du profil"
+
+#: app/views/User/update.php:15
+msgid "Update your profile"
+msgstr "Mettre à jour votre profil"
+
+#: app/views/User/update.php:22
+msgid "Profile picture (if you want to change it): "
+msgstr "Photo de profil (si vous souhaitez la modifier): ​​:"
+
+#: app/views/User/validate2fa.php:7
+msgid "2FA Validation"
+msgstr "Validation 2FA"
+
+#: app/views/User/validate2fa.php:11
+msgid "2 Factor Authentication Validation"
+msgstr "Validation de l'authentification à 2 facteurs"
+
+#: app/views/User/validate2fa.php:17
+msgid "Please enter your secret key to log into this application:"
+msgstr ""
+"Veuillez saisir votre clé secrète pour vous connecter à cette application :"
+
+#: app/views/User/validate2fa.php:18
+msgid "Verify key"
+msgstr "Vérifier la clé"
+
+#: app/controllers/User.php:46 app/controllers/User.php:49
+msgid "Incorrect email/password combination."
+msgstr "Incorrect E-mail / Mot de passe."
+
+#: app/controllers/User.php:74
+msgid "The user account with that email already exists."
+msgstr "Le compte d'utilisateur avec cette adresse e-mail existe déjà."
+
+#: app/controllers/User.php:177
+msgid "Invalid code. Please re-enter."
+msgstr "Code invalide. Veuillez saisir à nouveau."
+
+#: app/views/Order/storeOrderHistory.php:22
+#: app/views/Order/storeOrderList.php:22
+#: app/views/Order/userOrderHistory.php:38
+msgid "%d/%m/%g, %r "
+msgstr "%/%m/%g, %r "
+
+#: app/views/User/index.php:15
+#, fuzzy
+#| msgid "Profile"
+msgid "'Profile"
+msgstr "Profil"

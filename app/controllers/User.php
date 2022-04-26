@@ -43,10 +43,10 @@
                             }
                         }
                         else 
-                            $this->view('User/login', 'Incorrect email/password combination.');
+                            $this->view('User/login', _("Incorrect email/password combination."));
                     }    
                     else 
-                        $this->view('User/login', 'Incorrect email/password combination.');
+                        $this->view('User/login', _("Incorrect email/password combination."));
                 }
             }
         
@@ -71,7 +71,7 @@
                         $newUser->insert();
                         header('location:/User/login' ); 
                     } else {
-                        $this->view('User/register','The user account with that email already exists.');
+                        $this->view('User/register',_("The user account with that email already exists."));
                     }
                 }
             }
@@ -174,7 +174,7 @@
                             header('location:/User/index/' . $_SESSION['user_id']);
                         }
                         else
-                            $this->view('User/validate2fa','Invalid code. Please re-enter.');
+                            $this->view('User/validate2fa', _("Invalid code. Please re-enter."));
                     }
                     else
                         $this->view('User/validate2fa');
