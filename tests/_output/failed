@@ -1,6 +1,0 @@
-tests\acceptance\buyers\TrackOrderStatus.feature:try viewing order status
-tests\acceptance\buyers\accessOrders.feature:try viewing a past order
-tests\acceptance\buyers\cancelOrder.feature:try cancelling an order while it's pending
-tests\acceptance\buyers\deleteFromCart.feature:try deleting item from cart
-tests\acceptance\sellers\removeProduct.feature:trying to remove a product from the catalog
-tests\acceptance\users\accessProfile.feature:try modifying my middle name

@@ -12,7 +12,7 @@
                 $this->view('subviews/navigation');
             ?>
             <div style = 'text-align:center;'>
-                <h1><?=_("Profile")?></h1>
+                <h1><?= _("Profile of ") . $data->first_name . " " . $data->middle_name . " " . $data->last_name?></h1>
                 <form method='post' action='' enctype = 'multipart/form-data'>
                     <label class = 'form-label'><?=_("Profile picture:")?> <br>
                     <?php

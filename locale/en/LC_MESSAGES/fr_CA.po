@@ -244,7 +244,7 @@ msgstr "Mettre à jour!"
 
 #: app/views/Search/index.php:9
 msgid "Search By Store"
-msgstr "Chercher par magazin"
+msgstr "Chercher par magasin"
 
 #: app/views/Search/index.php:10
 msgid "Search By Product"
@@ -364,8 +364,8 @@ msgid "The search returned no results."
 msgstr "La recherche n'a donné aucun résultat."
 
 #: app/views/User/index.php:15
-msgid "Profile"
-msgstr "Profil"
+msgid "Profile of"
+msgstr "Profil de"
 
 #: app/views/User/index.php:17
 msgid "Profile picture:"
