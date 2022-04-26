@@ -531,8 +531,27 @@ msgstr "Code invalide. Veuillez saisir à nouveau."
 msgid "%d/%m/%g, %r "
 msgstr "%/%m/%g, %r "
 
-#: app/views/User/index.php:15
-#, fuzzy
-#| msgid "Profile"
-msgid "'Profile"
-msgstr "Profil"
+#: app/views/Cart/index.php:33
+msgid "Your cart is empty!"
+msgstr "Votre panier est vide!"
+
+#: app/views/Order/storeOrderHistory.php:7
+#: app/views/Order/storeOrderHistory.php:15
+msgid "Store History"
+msgstr "Historique du magasin"
+
+#: app/views/Order/storeOrderList.php:34
+msgid "Order was picked-up"
+msgstr "La commande a été ramassée"
+
+#: app/views/subviews/products.php:16
+msgid "Delete Product"
+msgstr "Supprimer le produit"
+
+#: app/views/User/index.php:31
+msgid "Update User"
+msgstr "Client mettre à jour"
+
+#: app/views/User/index.php:32
+msgid "Delete User"
+msgstr "Client  Supprimer"

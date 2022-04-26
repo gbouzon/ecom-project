@@ -520,6 +520,27 @@ msgstr ""
 msgid "%d/%m/%g, %r "
 msgstr ""
 
-#: app/views/User/index.php:15
-msgid "'Profile"
+#: app/views/Cart/index.php:33
+msgid "Your cart is empty!"
+msgstr ""
+
+#: app/views/Order/storeOrderHistory.php:7
+#: app/views/Order/storeOrderHistory.php:15
+msgid "Store History"
+msgstr ""
+
+#: app/views/Order/storeOrderList.php:34
+msgid "Order was picked-up"
+msgstr ""
+
+#: app/views/subviews/products.php:16
+msgid "Delete Product"
+msgstr ""
+
+#: app/views/User/index.php:31
+msgid "Update User"
+msgstr ""
+
+#: app/views/User/index.php:32
+msgid "Delete User"
 msgstr ""
