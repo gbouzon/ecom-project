@@ -27,6 +27,7 @@
                         $product->product_image = $filename; 
                         $product->product_price = trim($_POST['product_price']);
                         $product->product_description = trim($_POST['product_description']);
+                        var_dump(isset($_POST['product_availability']));
 
                         if (isset($_POST['product_availability']))
                             $product->product_availability = 1;

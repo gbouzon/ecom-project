@@ -7,14 +7,11 @@
         <title><?= $data->store_name ?></title>
     </head>
     <body>
-    <div class='container' style='text-align:center;'>
-        <?php
-            $this->view('subviews/navigation', $data->store_id);
-        ?>  
-        <div class='container'>
+        <div class='container'  style='text-align:center;'>
             <?php
+                $this->view('subviews/navigation', $data->store_id);
                 $this->view('Store/details_subview', $data);
-            ?>
+            ?>     
         </div>
     </body>
 </html>

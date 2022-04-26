@@ -13,8 +13,7 @@
 	<div class="collapse navbar-collapse" >
 		<ul class="navbar-nav">
 			<li class="nav-item active"><a class="nav-link" href='/Main/index'>Home</a></li>
-
-			<li class="nav-item active"><a class= "nav-link" href='/User/index/21'>My Profile</a></li><li class="nav-item active"><a class= "nav-link" href='/Order/userOrderHistory'>Order History</a></li><li class="nav-item active"><a class= "nav-link" href='/Cart/index'>Cart</a></li><li class="nav-item active"><a class= "nav-link" href='/User/logout'>Log out</a></li><html>
+			<li class="nav-item active"><a class= "nav-link" href='/User/index/21'>My Profile</a></li><li class="nav-item active"><a class= "nav-link" href='/Order/userOrderHistory'>History </a></li><li class="nav-item active"><a class= "nav-link" href='/Cart/index'>Cart</a></li><li class="nav-item active"><a class= "nav-link" href='/User/logout'>Log out</a></li><li class="nav-item active"><a class= "nav-link" href='?lang=en'>English </a></li><br><li class="nav-item active"><a class= "nav-link" href='?lang=fr_CA'>français (Canada) </a></li><br><html>
 	<head>
 		<title>Search</title>
 	</head>
@@ -28,20 +27,19 @@
 			<button type="submit" name="action">Search</button>
 		</form>
 	</body>
-</html>			
-		</ul>
+</html>		</ul>
 	</div>
 </nav>
 
-	
+
 
             <br> <h1 class="text-center">Your Cart</h1> <br>
 
-            <table class="table table-striped" style = 'text-align:center;'>
+            <table class="table table-striped" style='text-align:center;'>
                 <tr><th></th><th>Name</th><th>Quantity</th><th>Price</th><th>Action</th></tr>
                  <tr><td><img alt = '' src = '\pictures\62370d6f27ce7.jpg' style = 'max-width:200px;max-height:200px;' ></td>
                                 <td>Strawberry cupcake</td><td>1</td><td>$3.5</td>
-                                <td><a class = 'btn btn-success' href='/Cart/deleteFromCart/259' onclick='return confirm("Are you sure?");' class='m-2'>Delete</a></td></tr> <tr><th>Subtotal</th><th></th><th></th><th></th><th>$ 3.5</th></tr>                 
+                                <td><a href='/Cart/deleteFromCart/282' onclick='return confirm("Are you sure?");' class='m-2'>Delete</a></td></tr> <tr><th>Subtotal</th><th></th><th></th><th></th><th>$ 3.5</th></tr>                 
             </table>
 
             <a href='/Cart/clearCart/39' class='btn btn-success'> Clear Cart</a>
