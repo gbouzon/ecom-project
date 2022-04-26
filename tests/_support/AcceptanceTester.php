@@ -149,6 +149,25 @@ class AcceptanceTester extends \Codeception\Actor
         $this->click($link);
     }
 
+    /**
+     * @Given I am logged in with :email and :password and click :link and see an order in progress
+     */
+    public function iAmLoggedInWithAndAndClickAndSeeAnOrderInProgress($email, $password, $link) {
+        $this->amOnPage("/User/login");
+        $this->fillField('email', $email);
+        $this->fillField('password', $password);
+        $this->click("Login!");
+        $this->click("Skip 2FA");
+        $this->click($link);
+    }
+
+    /**
+     * @When I click :button1 then I click :button2
+     */
+    public function iClickThenIClick($button1, $button2) {
+        $this->click($button1);
+        $this->click($button2);
+    }
 
     /**
      * @Given I am logged in with :email and :password and have added an item to cart and click :link

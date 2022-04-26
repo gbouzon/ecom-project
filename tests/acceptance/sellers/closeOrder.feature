@@ -4,11 +4,6 @@ Feature: close an order
     I need to be able to close the order 
 
     Scenario: try to put an end to an order that's been completed
-    Given I am logged into my account 
-    When I click on "close order"
-    Then I see "The order is closed"
-
-    Scenario: try to put an end to an order that is "in progress"
-    Given I am logged into my account 
-    When I click on "Close order"
-    Then I see "The order is already in progress. Are you sure you would like to cancel it?"
+    Given I am logged in with "candy@gmail.com" and "1234" and click "Order List" and see an order in progress
+    When I click "Order is ready for pick-up" then I click "Order was picked-up"
+    Then I see "Order History" and "Closed"

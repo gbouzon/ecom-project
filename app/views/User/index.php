@@ -29,8 +29,8 @@
                 <?php
 
                     if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $data->user_id) {
-                        echo "<a class=\"btn btn-primary\" href='/User/update/$data->user_id' class='m-2' >Update</a>
-                        &ensp;<a class=\"btn btn-primary\" href='/User/delete/$data->user_id' class='m-2' >Delete</a>";
+                        echo "<a class=\"btn btn-primary\" href='/User/update/$data->user_id' class='m-2' >Update User</a>
+                        &ensp;<a class=\"btn btn-primary\" href='/User/delete/$data->user_id' class='m-2' >Delete User</a>";
                         if (!isset($_SESSION['store_id']))
                             echo "&ensp;<a class=\"btn btn-primary\" href ='/Store/create/$data->user_id' class='m-2'>Create a Store</a> <br>";
                     }

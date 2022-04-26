@@ -11,8 +11,8 @@
                    <p class=\"card-text\"> Description: $product->product_description</p>";
 
             if (isset($_SESSION['store_id']) && $_SESSION['store_id'] == $product->store_id) {
-                echo "<a class=\"btn btn-primary\" href='/Product/update/$product->product_id' class='m-2'>Update</a>
-                    <a class=\"btn btn-primary\" href='/Product/delete/$product->product_id' onclick='return confirm(\"Product successfully deleted\")' class='m-2'>Delete</a></div>
+                echo "<a class=\"btn btn-primary\" href='/Product/update/$product->product_id' class='m-2'>Update Product</a>
+                    <a class=\"btn btn-primary\" href='/Product/delete/$product->product_id' onclick='return confirm(\"Product successfully deleted\")' class='m-2'>Delete Product</a></div>
                     </div>";
 
             } else if ($product->product_availability == 1 && isset($_SESSION['order->store_id']) && $_SESSION['order->store_id'] != $product->store_id) {

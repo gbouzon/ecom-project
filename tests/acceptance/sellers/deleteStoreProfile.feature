@@ -4,6 +4,6 @@ Feature: delete my store profile
     I need to be able to delete my store profile
 
     Scenario: try to delete store profile
-    Given I am logged into my account
+    Given I am logged in with "teststore@gmail.com" and "1234"
     When I click "delete store"
     Then I see "Store deleted successfully"

@@ -24,6 +24,11 @@
 
                         $newStore->insert($user_id);
 
+                        $user = new \app\models\User();
+                        $user = $user->getById($user_id);
+                        $user->user_type = 1;
+                        $user->updateUserType();
+
                         $store_id = $newStore->getLast()->store_id; 
                         $_SESSION['store_id'] = $store_id;
                         header('location:/Store/index/' . $_SESSION['store_id']);
