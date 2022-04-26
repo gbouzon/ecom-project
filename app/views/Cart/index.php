@@ -14,7 +14,7 @@
             ?>
             <br> <h1 class="text-center">Your Cart</h1> <br>
 
-            <table class="table table-striped">
+            <table class="table table-striped" style = 'text-align:center;'>
                 <tr><th></th><th>Name</th><th>Quantity</th><th>Price</th><th>Action</th></tr>
                 <?php
                     $sum = 0; 
@@ -24,12 +24,15 @@
                             $product = $product->get($order_detail->product_id);
                             echo " <tr><td><img alt = '' src = '\\pictures\\$product->product_image' style = 'max-width:200px;max-height:200px;' ></td>
                                 <td>$product->product_name</td><td>$order_detail->quantity</td><td>$$order_detail->price</td>
-                                <td><a href='/Cart/deleteFromCart/$order_detail->order_detail_id' onclick='return confirm(\"Are you sure?\");' class='m-2'>Delete</a></td></tr>";
+                                <td><a class = 'btn btn-success' href='/Cart/deleteFromCart/$order_detail->order_detail_id' onclick='return confirm(\"Are you sure?\");' class='m-2'>Delete</a></td></tr>";
                             
                             $sum += $order_detail->price;     
                         }
                         echo " <tr><th>Subtotal</th><th></th><th></th><th></th><th>$ $sum</th></tr>";
-                    }     
+                    }   
+                    else {
+                        echo "<tr><td colspan = '5'>Your cart is empty!</td></tr>";
+                    }  
                 ?>
                  
             </table>

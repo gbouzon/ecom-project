@@ -27,8 +27,8 @@
     </div>        
 
 <br>
-    <h3>Purchase Items</h3>
-    <table class="table table-striped">
+    <h3>Purchased Items</h3>
+    <table class="table table-striped" style = 'text-align:center;'>
         <tr><th></th><th>Name</th><th>Quantity</th><th>Price</th></tr>
         <?php
             foreach ($data[2] as $order_detail) {

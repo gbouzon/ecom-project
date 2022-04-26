@@ -7,17 +7,17 @@
         <title>Confirmation Page</title>
     </head>
     <body>
-        <div class='container'>
+        <div class='container' style = 'text-align:center;'>
         <?php
             $this->view('subviews/navigation');
         ?>
 
-        <h1>Order Confirmation </h1>
+        <br><h1>Order Confirmation </h1>
         <form method='post' action='' enctype = 'multipart/form-data'>
             <?php
                  $this->view('subviews/orderDetail', $data);
             ?>
-            <input type="submit" name='action' value='Confirm' class='form-control' />
+            <input class = 'btn btn-success' type="submit" name='action' value='Confirm' class='form-control' />
         </form>
         </div>
     </body>

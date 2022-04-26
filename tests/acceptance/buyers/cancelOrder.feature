@@ -3,17 +3,7 @@ Feature: cancel an order
     As a buyer
     I need to be able to cancel my order
 
-    Scenario: try cancelling an order before it's in progress
-    Given I am logged into my account and have placed an order
-    When I click on "Cancel Order"
-    Then I see "Order successfully canceled"
-
-    Scenario: try cancelling an order that is "in progress"
-    Given I am logged into my account and have placed an order
-    When I click on "Cancel Order"
-    Then I see "Order is already in progress. Cancellations are no longer accepted"
-
-    Scenario: try cancelling an order that has been completed
-    Given I am logged into my account and have placed an order
-    When I click on "Cancel Order"
-    Then I see "Not possible to canceled fulfiled orders."
+    Scenario: try cancelling an order while it's pending
+    Given I am logged in with "tester@gmail.com" and "1234" and have placed an order and click "Order History"
+    When I click "Cancel order"
+    Then I see "You have no orders"

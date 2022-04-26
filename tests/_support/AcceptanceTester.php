@@ -88,6 +88,56 @@ class AcceptanceTester extends \Codeception\Actor
         $this->click('My Profile');
         $this->click($link);
     }
+    /**
+     * @Given I am logged in with :email and :password and am on page :url
+     */
+    public function iAmLoggedInWithAndAndAmOnPage($email, $password, $url) {
+        $this->amOnPage("User/login");
+        $this->fillField('email', $email);
+        $this->fillField('password', $password);
+        $this->click("Login!");
+        $this->click("Skip 2FA");
+        $this->amOnPage($url);
+    }
+
+    /**
+     * @When I click :link and click :button
+     */
+    public function iClickAndClick($link, $button) {
+        $this->click($link);
+        $this->click($button);
+    }
+
+    /**
+     * @Given I am logged in with :email and :password and have placed an order and click :link 
+     */
+    public function iAmLoggedInWithAndAndClickAndHavePlaced($email, $password, $link) {
+        $this->amOnPage("User/login");
+        $this->fillField('email', $email);
+        $this->fillField('password', $password);
+        $this->click("Login!");
+        $this->click("Skip 2FA");
+        $this->amOnPage("/Store/index/1");
+        $this->click('Add to Cart');
+        $this->click("Cart");
+        $this->click("Place Order");
+        $this->click('Confirm');
+        $this->click($link);
+    }
+
+    /**
+     * @Given I am logged in with :email and :password and have added an item to cart and click :link
+     */
+    public function iAmLoggedInWithAndAndHaveAddedAnItemToCartAndClick($email, $password, $link) {
+        $this->amOnPage("User/login");
+        $this->fillField('email', $email);
+        $this->fillField('password', $password);
+        $this->click("Login!");
+        $this->click("Skip 2FA");
+        $this->amOnPage("/Store/index/1");
+        $this->click('Add to Cart');
+        $this->click($link);
+    }
 
     /**
      * @Given I am logged in with :email and :password
@@ -98,6 +148,18 @@ class AcceptanceTester extends \Codeception\Actor
         $this->fillField('password', $password);
         $this->click("Login!");
         $this->click("Skip 2FA");
+    }
+
+    /**
+     * @Given I am logged in with :email and :password and click :button
+     */
+    public function iAmLoggedInWithAndAndClick($email, $password, $button) {
+        $this->amOnPage("User/login");
+        $this->fillField('email', $email);
+        $this->fillField('password', $password);
+        $this->click("Login!");
+        $this->click("Skip 2FA");
+        $this->click($button);
     }
 
     /**

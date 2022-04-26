@@ -7,7 +7,7 @@
 		<title>Order History</title>
 	</head>
 	<body>
-		<div class='container'>
+		<div class='container' style = 'text-align:center;'>
 			<?php
 				$this->view('subviews/navigation');
 			?>
@@ -41,6 +41,9 @@
                         </div>";
                     }
                 }
+				else {
+					echo "<h3>You have no orders</h3>";
+				}
             ?>
 		</div>
 	</body>
