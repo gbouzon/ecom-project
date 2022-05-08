@@ -11,7 +11,7 @@
             <h1><?= _("2 Factor Authentication Validation") ?></h1> <br>
             <?php
                 if ($data)
-                echo "<div class='alert alert-danger' role='alert'> $data</div> <br>";
+                    echo "<div class='alert alert-danger' role='alert'> $data</div> <br>";
             ?>
             <form method="post" action="">
                 <label class = 'form-label'><?= _("Please enter your secret key to log into this application:") ?> <input class = 'form-control'type="text" name="code"/></label> <br>

@@ -14,21 +14,21 @@
 
 			<h1><?= _("Order History") ?></h1>
 			<?php
-                if($data != null){
-                    foreach ($data as $order){
+                if ($data != null) {
+                    foreach ($data as $order) {
                         echo "<br><div class='card'>
 							  <div class='card-header'>";
 
-						if($order->order_status == 1){
+						if ($order->order_status == 1) {
 							echo "<h3><b>"._("Pending Order...")."</b></h3>";
 							echo "<a href='/Order/userCancelOrder/$order->order_id' class='btn btn-outline-secondary'>"._("Cancel order")."</a>";
-						}else if($order->order_status == 2){
+						} 
+						else if($order->order_status == 2) 
 							echo "<h3><b>"._("The store is preparing your order...")."</b></h3>";
-						}else if($order->order_status == 3){
+						else if($order->order_status == 3) 
 							echo "<h3><b>"._("Your order is ready to pick-up")."</b></h3>";
-						}else if($order->order_status == 4){
+						else if($order->order_status == 4) 
 							echo "<h3><b>"._("Completed Order")."</b></h3>";
-						}
 						
                         echo "&ensp;<a href='/Order/viewOrderDetails/$order->store_id/$order->order_id/0' class='btn btn-outline-secondary'>"._("Detail")."</a>
 							</div>
@@ -41,9 +41,8 @@
                         </div>";
                     }
                 }
-				else {
+				else 
 					echo "<h3>You have no orders</h3>";
-				}
             ?>
 		</div>
 	</body>

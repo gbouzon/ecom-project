@@ -24,8 +24,8 @@
                 $products = $data->getProducts($data->store_id);
                 $this->view('subviews/products', $products); 
             ?>
-        
-        </body>
+        </div>
+    </body>
 </html>
 
     

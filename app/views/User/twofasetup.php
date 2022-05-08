@@ -7,7 +7,7 @@
         <title><?=_("2fa Set Up")?></title>
     </head>
     <body style = 'text-align:center;'>
-        <div class="container">>
+        <div class="container">
             <h1><?=_("2 Factor Authentication Setup")?></h1> <br>
             <img src= "http://localhost/User/makeQRCode?data=<?= $data ?>" alt = "problem" style = 'max-width:200px;max-height:200px;display:block;margin-left:auto;margin-right:auto;'/> <br>
                 <?=_("Please scan the QR-code on the screen with your favorite
@@ -18,8 +18,7 @@
                 applied to your account. ")?><br> <br>
 
             <form method="post" action="">
-                <label class = 'form-label'><?=_("Current code:")?><input class = 'form-control' type="text" name="currentCode"
-            /></label> <br>
+                <label class = 'form-label'><?=_("Current code:")?><input class = 'form-control' type="text" name="currentCode"/></label> <br>
                 <input class = 'btn btn-primary' type="submit" name="2fa" value="<?=_("Verify code")?>" />
                 <input class = 'btn btn-primary' type="submit" name="no_2fa" value="<?=_("Skip 2FA")?>" />
             </form>

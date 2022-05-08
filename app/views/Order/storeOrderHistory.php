@@ -14,42 +14,37 @@
 
 			<h1 style='text-align:center;'><?= _("Store History") ?></h1>
 			<?php
-                if($data != null){
-                    foreach ($data[0] as $order){
+                if ($data != null) {
+                    foreach ($data[0] as $order) {
                         echo "<br><div class='card'>
 							  <div class='card-header'>
                                 <h3><b>"._("#Order")." $order->order_id</b></h3>
                                 <h6> "._("Order at:") ." ". strftime("%d/%m/%g, %r ", strtotime($order->createAt))." $order->createAt</h6>
-                                <h6> "._("Closed")." </h6>
-                                ";
+                                <h6> "._("Closed")." </h6>";
                         
                         echo "</div>
-                        <div class='card-body'>
-                        <h6>"._("Client name:")." $order->first_name $order->middle_name $order->last_name</h6>
-                        </div>
-                        ";
+                            <div class='card-body'>
+                            <h6>"._("Client name:")." $order->first_name $order->middle_name $order->last_name</h6>
+                            </div>";
                     
-                        echo" <ul class='list-group list-group-flush'>";
+                        echo " <ul class='list-group list-group-flush'>";
                             foreach($data[1] as $products){
                               
-                                foreach($products as $product){
-                                    if($product->order_id == $order->order_id){
+                                foreach($products as $product) {
+                                    if ($product->order_id == $order->order_id)
                                         echo "<li class='list-group-item'> $product->quantity  $product->product_name</li>";
-                                    }
                                 }
-                               }
+                            }
                         echo "</ul>
-                        
-                        <div class='card-body'>
-                        <p> <b>"._("Total:")."</b> $ " . round($order->total,2) . "<p/>
-                        <a href='/Order/viewOrderDetails/$order->user_id/$order->order_id/1' class='btn btn-outline-secondary'>"._("Detail")."</a>
-                        </div>
-                        </div>";
+                            <div class='card-body'>
+                            <p> <b>"._("Total:")."</b> $ " . round($order->total,2) . "<p/>
+                            <a href='/Order/viewOrderDetails/$order->user_id/$order->order_id/1' class='btn btn-outline-secondary'>"._("Detail")."</a>
+                            </div>
+                            </div>";
                     }  
                 }
-                else {
+                else 
                     echo "<h3>You have no orders.</h3>";
-                }
             ?>
 		</div>
 	</body>

@@ -12,9 +12,8 @@
             #[\app\filters\LoginAsStore]
             public function create($store_id) {
                 if ($store_id == $_SESSION['store_id']) {
-                    if (!isset($_POST['action'])) { 
+                    if (!isset($_POST['action'])) 
                         $this->view('Product/create');
-                    }
                     else { 
                         $filename = Main::imageUpload("product_image");
 
@@ -27,7 +26,6 @@
                         $product->product_image = $filename; 
                         $product->product_price = trim($_POST['product_price']);
                         $product->product_description = trim($_POST['product_description']);
-                        var_dump(isset($_POST['product_availability']));
 
                         if (isset($_POST['product_availability']))
                             $product->product_availability = 1;
@@ -47,9 +45,8 @@
                 $product = new \app\models\Product(); 
                 $product = $product->get($product_id);
                 if ($product->store_id == $_SESSION['store_id']) {
-                    if (!isset($_POST['action'])) {	
+                    if (!isset($_POST['action'])) 	
                         $this->view('Product/update', $product);
-                    }
                     else {
                         $filename = Main::imageUpload("product_image");
                         if ($filename) {

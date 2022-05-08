@@ -3,7 +3,7 @@
 
         class Store extends \app\core\Model {
 
-            function __construct(){
+            function __construct() {
                 parent::__construct();
             }
     
@@ -41,17 +41,20 @@
     
             function insert($user_id) { 
                 if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $user_id) {
-                    $SQL = 'INSERT INTO store(user_id, store_name, store_address, description) VALUES(:user_id, :store_name, :store_address, :description)';
+                    $SQL = 'INSERT INTO store(user_id, store_name, store_address, description) VALUES(:user_id, :store_name, 
+                        :store_address, :description)';
                     $STMT = self::$_connection->prepare($SQL);
                     $STMT->execute(['user_id'=>$user_id, 'store_name'=>$this->store_name, 'store_address'=>$this->store_address, 
-                    'description'=>$this->description]);
+                        'description'=>$this->description]);
                 }
             }
     
             function update() {
-                $SQL = 'UPDATE store SET store_name = :store_name, store_address = :store_address, description = :description WHERE store_id = :store_id';
+                $SQL = 'UPDATE store SET store_name = :store_name, store_address = :store_address, description = :description WHERE 
+                    store_id = :store_id';
                 $STMT = self::$_connection->prepare($SQL);
-                $STMT->execute(['store_name'=>$this->store_name, 'store_address'=>$this->store_address, 'description'=>$this->description, 'store_id'=>$this->store_id]);
+                $STMT->execute(['store_name'=>$this->store_name, 'store_address'=>$this->store_address, 'description'=>$this->description,
+                    'store_id'=>$this->store_id]);
             }
     
             function delete($store_id) { 

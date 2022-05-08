@@ -11,9 +11,8 @@
             }
 
             function login() { 
-                if (!isset($_POST['action'])) {
-                    $this->view('User/login'); 
-                }                 
+                if (!isset($_POST['action'])) 
+                    $this->view('User/login');               
                 else { 
                     $user = new \app\models\User();
                     $user = $user->get($_POST['email']);
@@ -28,9 +27,8 @@
                             $store = $user->getStore($_SESSION['user_id']); 
                             
                             if ($user->user_type == 1) {
-                                if ($store) {
-                                    $_SESSION['store_id'] = $store->store_id;
-                                }    
+                                if ($store) 
+                                    $_SESSION['store_id'] = $store->store_id;   
                             }
                             
                             if ($user->secret_key != null)
@@ -69,9 +67,9 @@
         
                         $newUser->insert();
                         header('location:/User/login' ); 
-                    } else {
+                    } 
+                    else
                         $this->view('User/register',_("The user account with that email already exists."));
-                    }
                 }
             }
 
@@ -80,9 +78,9 @@
                 $user = new \app\models\User();
                 $user = $user->getById($user_id);//get the specific user
                 if ($user_id == $_SESSION['user_id']) {
-                    if (!isset($_POST['action'])){
+                    if (!isset($_POST['action']))
                         $this->view('User/update', $user);
-                    } else {
+                    else {
                         $filename = Main::imageUpload("picture");
                         if ($filename) {
                             if ($user->picture != 'blank.jpg')
@@ -90,7 +88,6 @@
 
                             $user->picture = $filename;
                         }
-
                         $user->email = trim($_POST['email']);
                         $user->first_name = trim($_POST['first_name']);
                         $user->middle_name = trim($_POST['middle_name']);
@@ -111,7 +108,7 @@
                     $user = new \app\models\User();
                     $user = $user->getById($user_id);
 
-                    if($user->user_type == 1){
+                    if ($user->user_type == 1) {
                         $store = $user->getStore($user_id);
                         $store->delete($store->store_id);  
                     }
@@ -145,9 +142,8 @@
                         $user->update2fa();
                         header('location:/User/index/' . $_SESSION['user_id']);
                     }
-                    else {
+                    else
                         header('location:/User/setup2fa?error=tokennot verified!');//reload
-                    }
                 }
                 else if (isset($_POST['no_2fa'])) {
                     $_SESSION['secretkey'] = "nope";

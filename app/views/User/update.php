@@ -12,7 +12,7 @@
 				$this->view('subviews/navigation');
 			?>
 
-            <h1><?= _("Update your profile") ?></h1><br>
+            <br><h1><?= _("Update your profile") ?></h1><br>
             <form method='post' action='' enctype = 'multipart/form-data'>
                 <label class='form-label'><?= _("First name:") ?><input type='text' name='first_name' class='form-control' value='<?= $data->first_name ?>' /></label>
                 <label class='form-label'><?= _("Middle name:") ?><input type='text' name='middle_name' class='form-control' value='<?= $data->middle_name ?>' /></label>

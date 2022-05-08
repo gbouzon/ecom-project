@@ -41,17 +41,19 @@
                     VALUES(:first_name, :middle_name, :last_name,:user_type , :email, :phone, :password_hash, :picture)';
 		        $STMT = self::$_connection->prepare($SQL);
 		        $STMT->execute(['first_name'=>$this->first_name,'middle_name'=>$this->middle_name,'last_name'=>$this->last_name, 
-                    'user_type'=>$this->user_type,'email'=>$this->email,'phone'=>$this->phone, 'password_hash'=>$this->password_hash, 'picture'=>$this->picture]);
+                    'user_type'=>$this->user_type,'email'=>$this->email,'phone'=>$this->phone, 'password_hash'=>$this->password_hash, 
+                    'picture'=>$this->picture]);
             }
 
             //check inserts, updates and deletes later
             function update() {
                 $SQL = 'UPDATE user SET first_name = :first_name, middle_name = :middle_name, last_name = :last_name, 
-                user_type = :user_type, email = :email , phone = :phone, password_hash = :password_hash, picture = :picture WHERE user_id = :user_id';
+                    user_type = :user_type, email = :email , phone = :phone, password_hash = :password_hash, picture = :picture 
+                    WHERE user_id = :user_id';
                 $STMT = self::$_connection->prepare($SQL);
                 $STMT->execute(['first_name'=>$this->first_name,'middle_name'=>$this->middle_name,'last_name'=>$this->last_name, 
-                'user_type'=>$this->user_type,'email'=>$this->email,'phone'=>$this->phone, 'password_hash'=>$this->password_hash, 
-                'picture'=>$this->picture,'user_id'=>$this->user_id]);
+                    'user_type'=>$this->user_type,'email'=>$this->email,'phone'=>$this->phone, 'password_hash'=>$this->password_hash, 
+                    'picture'=>$this->picture,'user_id'=>$this->user_id]);
             }
 
             function updateUserType() {

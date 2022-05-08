@@ -8,14 +8,14 @@
     </head>
     <body>
         <div class='container'>
-        <?php
-            $this->view('subviews/navigation');
-        ?>
-        <h1 style='text-align:center;'><?= _("Order detail") ?></h1>
+            <?php
+                $this->view('subviews/navigation');
+            ?>
+            <h1 style='text-align:center;'><?= _("Order detail") ?></h1>
 
-        <?php
-            $this->view('subviews/orderDetail', $data);
-        ?>
+            <?php
+                $this->view('subviews/orderDetail', $data);
+            ?>
         </div>
     </body>
 </html>

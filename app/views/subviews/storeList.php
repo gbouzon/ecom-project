@@ -1,6 +1,6 @@
 <div>
     <?php
-        if($data != null){
+        if ($data != null) {
             foreach ($data as $store) {
                 echo "<div class='card'>
                         <div class='card-body'>

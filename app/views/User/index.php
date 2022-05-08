@@ -23,24 +23,21 @@
                     <label class='form-label'><?=_("Last name:")?><input disabled type='text' name='last_name' class='form-control'value = '<?= $data->last_name?>'  /></label> <br>
                     <label class='form-label'><?=_("Email:")?><input disabled type='email' name='email' class='form-control' value = '<?= $data->email?>' /></label><br>
                     <label class='form-label'><?=_("Phone number:")?><input disabled type='text' name='phone' class='form-control' value = '<?= $data->phone?>' /></label><br> <br>
-                    
                 </form> 
                 <?php
-
                     if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $data->user_id) {
                         echo "<a class=\"btn btn-primary\" href='/User/update/$data->user_id' class='m-2' >". _("Update User") ." </a>
                         &ensp;<a class=\"btn btn-primary\" href='/User/delete/$data->user_id' class='m-2' >". _("Delete User") ."</a>";
                         if (!isset($_SESSION['store_id']))
                             echo "&ensp;<a class=\"btn btn-primary\" href ='/Store/create/$data->user_id' class='m-2'>". _("Create a Store") ."</a><br>";
                     }
-            echo "</div>"; 
+                    echo "</div>"; 
 
                     if ($data->getStore($data->user_id)) {
                         echo "<br> <br>";
                         $this->view('Store/details_subview', $data->getStore($data->user_id));
                     }
                 ?>
-            
         </div>
     </body>
 </html>

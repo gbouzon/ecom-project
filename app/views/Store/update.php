@@ -12,11 +12,11 @@
 				$this->view('subviews/navigation');
 			?>
             <h1><?= _("Store details") ?></h1>
-                <form method='post' action=''>
-                    <label class='form-label'><?= _("Store name:") ?><input  type='text' name='store_name' class='form-control' value='<?= $data->store_name?>' /></label><br>
-                    <label class='form-label'><?= _("Store address:") ?><input type='text' name='store_address' class='form-control' value='<?= $data->store_address?>' /></label><br>
-                    <label class='form-label'><?= _("Store description:") ?><textarea name='description' cols="80" class='form-control'> <?= $data->description?></textarea></label><br>
-                    <input type="submit" name='action' value='<?= _("Update") ?>' class='form-control' />
+            <form method='post' action=''>
+                <label class='form-label'><?= _("Store name:") ?><input  type='text' name='store_name' class='form-control' value='<?= $data->store_name?>' /></label><br>
+                <label class='form-label'><?= _("Store address:") ?><input type='text' name='store_address' class='form-control' value='<?= $data->store_address?>' /></label><br>
+                <label class='form-label'><?= _("Store description:") ?><textarea name='description' cols="80" class='form-control'> <?= $data->description?></textarea></label><br>
+                <input type="submit" name='action' value='<?= _("Update") ?>' class='form-control' />
             </form>
         </div>
     </body>

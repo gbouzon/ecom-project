@@ -11,14 +11,13 @@
             <br> <h1 class="text-center"><?=_("Search")?></h1> <br>
             <?php
                 if ($data != null) {
-                    if (get_class($data[0]) == "app\models\Store") {
+                    if (get_class($data[0]) == "app\models\Store") 
                         $this->view('subviews/storeList', $data);
-                    }else if (get_class($data[0]) == "app\models\Product") {   
+                    else if (get_class($data[0]) == "app\models\Product")   
                         $this->view('subviews/products', $data);;
-                    }
                 }
                 else 
-                     echo _("The search returned no results.");
+                    echo _("The search returned no results.");
             ?>
         </div>    
     </body>

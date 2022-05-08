@@ -2,9 +2,8 @@
     namespace app\controllers;
 
         class Store extends \app\core\Controller { 
-
             
-            public function index($store_id) { //shows store profile?
+            public function index($store_id) { 
                 $myStore = new \app\models\Store();
                 $store = $myStore->get($store_id);
                 $this->view('Store/index', $store);
@@ -13,10 +12,9 @@
             #[\app\filters\Auth]
             public function create($user_id) {
                 if ($user_id == $_SESSION['user_id']) {
-                    if (!isset($_POST['action'])) {	//display the view if I don't submit the form
+                    if (!isset($_POST['action'])) 
                         $this->view('Store/create');
-                    }
-                    else {	//process the data when the form has been submitted, id, title, text
+                    else {	
                         $newStore = new \app\models\Store();
                         $newStore->store_name = trim($_POST['store_name']);
                         $newStore->store_address = trim($_POST['store_address']);
@@ -43,9 +41,8 @@
                 $store = new \app\models\Store(); 
                 if ($store_id == $_SESSION['store_id']) {
                     $store = $store->get($store_id);
-                    if (!isset($_POST['action'])) {	
+                    if (!isset($_POST['action'])) 
                         $this->view('Store/update', $store);
-                    }
                     else {
                         $store->store_name = trim($_POST['store_name']);
                         $store->store_address = trim($_POST['store_address']);
@@ -70,9 +67,8 @@
                     $product = new \app\models\Product(); 
                     $products = $product->getAllFromStore($store_id); 
 
-                    foreach ($products as $item) {
+                    foreach ($products as $item) 
                         $item->delete(); 
-                    }
 
                     $user->updateUserType();
                     $store->delete($store_id);

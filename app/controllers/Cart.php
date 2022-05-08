@@ -13,7 +13,6 @@
                 $this->view('Cart/index', $products);
             }
 
-
             public function createCart() {
                 $cart = new \app\models\Order();
                 $cart->user_id = $_SESSION['user_id'];
@@ -21,7 +20,7 @@
                 $cart->order_id = $cart->create();
             }
 
-            public function addToCart($product_id, $store_id){
+            public function addToCart($product_id, $store_id) {
                 $product = new \app\models\Product();
                 $product = $product->get($product_id);
 
@@ -30,12 +29,12 @@
                     $order = new \app\models\Order();
                     $order = $order->getUserCart($_SESSION['user_id']);
 
-                    if($order->store_id == null) {
+                    if ($order->store_id == null) {
                         $order->updateStore_id($store_id);
                         $_SESSION['order->store_id'] = $store_id;
                     }
 
-                    if($order->store_id != $product->store_id){
+                    if ($order->store_id != $product->store_id) {
                         $cart = new \app\controllers\Cart();
                         $order->updateStore_id($store_id);
                         $_SESSION['order->store_id'] = $store_id;
@@ -55,42 +54,39 @@
                     header('location:/Store/index/' . $store_id);
             }
 
-
-            public function deleteFromCart($order_detail_id){
+            public function deleteFromCart($order_detail_id) {
                 $product = new \app\models\Order_detail();
                 $product = $product->get($order_detail_id);
 
                 $order= new \app\models\Order();
                 $order = $order->get($product->order_id);
-                if($order->user_id == $_SESSION['user_id']){
-                    if($product->quantity != 1){
+                if ($order->user_id == $_SESSION['user_id']) {
+                    if ($product->quantity != 1) {
                         $product->quantity = $product->quantity - 1;
                         $product->price = $product->price - $product->unit_price;
                         $product->updatePriceAndQty();
                     }
-                    else {
+                    else 
                         $product->delete(); 
-                    } 
                     
                 }
                 header('location:/Cart/Index');   
             }
 
-            public function clearCart($order_id){
+            public function clearCart($order_id) {
                 $this::clear($order_id);
                 header('location:/Cart/Index');   
             }
 
-            public function clear($order_id){
+            public function clear($order_id) {
                 $cart_products = new \app\models\Order_detail();
                 $cart_products = $cart_products->getOrder($order_id);
                
                 $order= new \app\models\Order();
                 $order = $order->get($order_id);
-                if($order->user_id == $_SESSION['user_id']){
-                    foreach($cart_products as $product){
+                if ($order->user_id == $_SESSION['user_id']) {
+                    foreach ($cart_products as $product)
                         $product->delete();  
-                    }
                 }
             }
         }

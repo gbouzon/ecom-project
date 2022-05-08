@@ -15,39 +15,39 @@
                 return $STMT->fetch();
             }
 
-            function getStoreOrder($store_id){
+            function getStoreOrder($store_id) {
                 $SQL = 'SELECT `order`.*,user.first_name, user.middle_name, user.last_name
-                FROM `order`
-                INNER JOIN user
-                ON `order`.`user_id` = user.user_id
-                WHERE `order`.`store_id` = :store_id 
-                AND `order`.order_status != 0 AND `order`.order_status != 4
-                ORDER BY `order`.order_status' ; 
+                    FROM `order`
+                    INNER JOIN user
+                    ON `order`.`user_id` = user.user_id
+                    WHERE `order`.`store_id` = :store_id 
+                    AND `order`.order_status != 0 AND `order`.order_status != 4
+                    ORDER BY `order`.order_status' ; 
                 $STMT = self::$_connection->prepare($SQL);
                 $STMT->execute(['store_id'=>$store_id]);
                 $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Order");
                 return $STMT->fetchAll();
             }
 
-            function getStoreClosedOrder($store_id){
+            function getStoreClosedOrder($store_id) {
                 $SQL = 'SELECT `order`.*,user.first_name, user.middle_name, user.last_name
-                FROM `order`
-                INNER JOIN user
-                ON `order`.`user_id` = user.user_id
-                WHERE `order`.`store_id` = :store_id AND `order`.order_status = 4'; 
+                    FROM `order`
+                    INNER JOIN user
+                    ON `order`.`user_id` = user.user_id
+                    WHERE `order`.`store_id` = :store_id AND `order`.order_status = 4'; 
                 $STMT = self::$_connection->prepare($SQL);
                 $STMT->execute(['store_id'=>$store_id]);
                 $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Order");
                 return $STMT->fetchAll();
             }
 
-            function getUserOrder($user_id){
+            function getUserOrder($user_id) {
                 $SQL = 'SELECT `order`.*, store.store_name, store.store_address 
-                FROM `order` 
-                INNER JOIN store
-                ON `order`.`store_id` = store.store_id
-                WHERE `order`.user_id = :user_id AND `order`.order_status != :order_status
-                ORDER BY `order`.order_status'; 
+                    FROM `order` 
+                    INNER JOIN store
+                    ON `order`.`store_id` = store.store_id
+                    WHERE `order`.user_id = :user_id AND `order`.order_status != :order_status
+                    ORDER BY `order`.order_status'; 
                 $STMT = self::$_connection->prepare($SQL);
                 $STMT->execute(['user_id'=>$user_id, 'order_status'=> 0]);
                 $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Order");
@@ -83,7 +83,7 @@
                 $SQL = 'INSERT INTO `order`(store_id, user_id)VALUES(:store_id, :user_id)';
                 $STMT = self::$_connection->prepare($SQL);
                 $STMT->execute(['store_id'=>$this->store_id, 'user_id'=>$this->user_id]);
-                $this->order_id = self::$_connection->lastInsertId();
+                    $this->order_id = self::$_connection->lastInsertId();
             }
 
             function delete() {

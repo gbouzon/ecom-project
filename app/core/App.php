@@ -25,8 +25,6 @@
 					
 					unset($url[1]);
 				}
-
-				//TODO: ADD VALIDATION
 				
 				//access filtering
 				$reflection = new \ReflectionObject($this->controller);
@@ -35,7 +33,7 @@
 
 				$attributes = array_values(array_merge($classAttributes, $methodAttributes));
 
-				foreach($attributes as $attribute) {
+				foreach ($attributes as $attribute) {
 					$filter = $attribute->newInstance();
 					$filter->execute();
 					if ($filter->execute())

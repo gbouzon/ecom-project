@@ -15,23 +15,22 @@
                     echo "<a class=\"btn btn-primary\" href='/Product/update/$product->product_id' class='m-2'>". _("Update Product") ."</a><br><br>
                         <a class=\"btn btn-primary\" href='/Product/delete/$product->product_id' onclick='return confirm(\"". _("Product successfully deleted") ."\")' class='m-2'>". _("Delete Product") ."</a></div>
                         </div></div>";
-    
-                } else if ($product->product_availability == 1 && isset($_SESSION['order->store_id']) && $_SESSION['order->store_id'] != $product->store_id) {
-    
-                        echo "<a class='btn btn-primary' href='/Cart/addToCart/$product->product_id/$product->store_id' onclick='return confirm('". _("Your current cart will be cleared if you proceed. Are you sure?") ."')' class='m-2'> ". _("Add to Cart") ." </a>  </div></div>";
-                } else {
-                    if ($product->product_availability == 0) {
-                        echo "<a class='btn btn-primary' onclick='return confirm('". _("Product is not available at the moment.") ."')' class='m-2'> ". _("Add to Cart") ."  </a></div></div></div>";
-                    }
-                    else {
-                        echo "<a class=\"btn btn-primary\" href='/Cart/addToCart/$product->product_id/$product->store_id' onclick='return confirm('". _("Product successfully added to cart!") ." ')' class='m-2'> ". _("Add to Cart") ." </a> </div> </div></div>";
-                    }
+                } 
+                else if ($product->product_availability == 1 && isset($_SESSION['order->store_id']) && $_SESSION['order->store_id'] != $product->store_id) 
+                        echo "<a class='btn btn-primary' href='/Cart/addToCart/$product->product_id/$product->store_id' 
+                            onclick='return confirm('". _("Your current cart will be cleared if you proceed. Are you sure?") ."')' class='m-2'> ". _("Add to Cart") ." </a>  </div></div>";
+                else {
+                    if ($product->product_availability == 0) 
+                        echo "<a class='btn btn-primary' onclick='return confirm('". _("Product is not available at the moment.") ."')' 
+                            class='m-2'> ". _("Add to Cart") ."  </a></div></div></div>";
+                    else 
+                        echo "<a class=\"btn btn-primary\" href='/Cart/addToCart/$product->product_id/$product->store_id' 
+                            onclick='return confirm('". _("Product successfully added to cart!") ." ')' class='m-2'> ". _("Add to Cart") ." </a> </div> </div></div>";
                 }
             }
         }
-        else {
+        else 
             echo "<h3>No products have been added!</h3>";
-        }
     ?>
 </div>
  

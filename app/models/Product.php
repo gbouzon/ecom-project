@@ -25,11 +25,13 @@
         
             function insert() {
                 var_dump($this->product_availability);
-                $SQL = 'INSERT INTO product(store_id, product_name, product_image, product_availability, product_price, product_description) 
-                VALUES(:store_id, :product_name, :product_image, :product_availability, :product_price, :product_description)';
+                $SQL = 'INSERT INTO product(store_id, product_name, product_image, product_availability, product_price, 
+                    product_description) VALUES(:store_id, :product_name, :product_image, :product_availability, :product_price, 
+                    :product_description)';
                 $STMT = self::$_connection->prepare($SQL);
-                $STMT->execute(['store_id'=>$this->store_id, 'product_name'=>$this->product_name, 'product_image'=>$this->product_image, 'product_availability'=>$this->product_availability,
-                'product_price'=>$this->product_price, 'product_description'=>$this->product_description]);
+                $STMT->execute(['store_id'=>$this->store_id, 'product_name'=>$this->product_name, 'product_image'=>$this->product_image, 
+                    'product_availability'=>$this->product_availability,'product_price'=>$this->product_price, 
+                    'product_description'=>$this->product_description]);
             }
 
             function delete() {
@@ -39,11 +41,11 @@
             }
 
             function update() {
-                $SQL = 'UPDATE product SET store_id  = :store_id, product_name = :product_name, product_image = :product_image, product_price = :product_price, product_description = :product_description WHERE product_id = :product_id';
-    
+                $SQL = 'UPDATE product SET store_id  = :store_id, product_name = :product_name, product_image = :product_image, 
+                    product_price = :product_price, product_description = :product_description WHERE product_id = :product_id';
                 $STMT = self::$_connection->prepare($SQL);
                 $STMT->execute(['store_id'=>$this->store_id, 'product_name'=>$this->product_name, 'product_image'=>$this->product_image, 
-                'product_price'=>$this->product_price, 'product_description'=>$this->product_description, 'product_id' =>$this->product_id]);
+                    'product_price'=>$this->product_price, 'product_description'=>$this->product_description, 'product_id' =>$this->product_id]);
             }
             
             function isAvailable($isAvailable) {
